@@ -24,6 +24,7 @@ Settings="*res://src/autoloads/settings.gd"
 Globals="*res://src/autoloads/globals.gd"
 Utils="*res://src/autoloads/utils.gd"
 GUIDE="*res://addons/guide/guide.gd"
+GameState="*res://src/autoloads/game_state.gd"
 
 [debug]
 
@@ -33,10 +34,14 @@ gdscript/warnings/inferred_declaration=1
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1280
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[dotnet]
+
+project/assembly_name="Godot-4-Jam-Template"
 
 [editor]
 
