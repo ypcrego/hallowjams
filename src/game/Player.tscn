@@ -8,6 +8,7 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_m1lfq"]
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 30
 script = ExtResource("1_6dfmv")
 move_action = ExtResource("2_ievcg")
 

@@ -127,4 +127,3 @@ The file `res://version.txt` is used as a version or build identifier in the mai
 ## Publishing on Itch.io
 
 Publishing your game on Itch.io is not the end of your jam journey. A good looking game page will create a strong first impression before your game is played. Jannik Boysen's Easy-Releasy .png templates are included in the `media` folder to simplify making a great looking page for your game.
-

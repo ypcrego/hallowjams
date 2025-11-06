@@ -1,11 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://bsh8lu3xwvk31"]
+[gd_scene load_steps=5 format=3 uid="uid://bsh8lu3xwvk31"]
 
 [ext_resource type="Script" uid="uid://bho361et10j2w" path="res://src/main.gd" id="1_cii0i"]
 [ext_resource type="PackedScene" uid="uid://u1vgfeia861q" path="res://src/ui/ui.tscn" id="2_e2kwd"]
 [ext_resource type="Resource" uid="uid://v5u0dyabni7e" path="res://src/input/default_mapping_context.tres" id="2_x7eo7"]
+[ext_resource type="PackedScene" uid="uid://bswlu8qntiul6" path="res://src/game/Player.tscn" id="4_fyndt"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_cii0i")
 default_mapping_context = ExtResource("2_x7eo7")
 
 [node name="UI" parent="." instance=ExtResource("2_e2kwd")]
+
+[node name="Player" parent="." instance=ExtResource("4_fyndt")]
+position = Vector2(946, 632)
+
+[node name="Camera2D2" type="Camera2D" parent="Player"]
+zoom = Vector2(4, 4)
+
+[node name="CurrentSceneContainer" type="Node2D" parent="."]

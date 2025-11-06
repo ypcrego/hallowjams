@@ -38,3 +38,6 @@ exports/web/*
 !exports/windows
 exports/windows/*
 !exports/windows/.gdignore
+
+# Tmp
+*.tmp

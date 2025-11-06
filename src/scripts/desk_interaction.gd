@@ -21,11 +21,12 @@ func _on_package_status_changed(is_holding: bool, ap: String):
 
 
 func handle_desk_interaction():
-	if game_state.has_package == false:
-		receive_package()
-	else:
-		# Mensagem se tentar pegar um novo pacote sem entregar o atual
-		print("ALERTA: Entregue o pacote atual para o AP " + game_state.target_ap + " primeiro.")
+	if player_in_range:
+		if game_state.has_package == false:
+			receive_package()
+		else:
+			# Mensagem se tentar pegar um novo pacote sem entregar o atual
+			print("ALERTA: Entregue o pacote atual para o AP " + game_state.target_ap + " primeiro.")
 
 
 func receive_package():
