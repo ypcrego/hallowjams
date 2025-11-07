@@ -43,42 +43,23 @@ func _on_dialogic_signal(arg : String):
 	pass
 
 func _start_package_dialogue(package: Package):
-
+	Dialogic.VAR.set_variable("apartment", current_package.recipient_apartment)
+	Dialogic.VAR.set_variable("weight", current_package.weight_description)
+	Dialogic.VAR.set_variable("hint", current_package.surface_hint)
+	Dialogic.VAR.set_variable("is_creepy", current_package.is_creepy)
 
 	if Dialogic.current_timeline != null:
 		return
 
-	var dialog = Dialogic.start("pacote_dialogue")
+	var dialog = Dialogic.start("pacotes")
 
-	#Dialogic.start_timeline('pacote_dialogue')
-	#get_viewport().set_input_as_handled()
-
-	# Cria a string de diálogo usando BBCode do Dialogic
-	#var dialogue_text = "Pacote para o apto: [color=#88FFAA]" + package.recipient_apartment + "[/color].\n"
-	#dialogue_text += "[shake rate=5 chars=30]Peso: " + package.weight_description + "[/shake]\n"
-	#dialogue_text += "Dica: " + package.surface_hint
-
-	# O Dialogic precisa ser iniciado com a cena/nó onde as opções serão apresentadas
-	# Aqui, vamos usar um nó de opção customizado ou esperar que a próxima interação
-	# do Dialogic seja a de "escolha".
-
-	# Alternativamente, chame uma timeline simples para apresentar a informação
-	# e, em seguida, uma com a opção de escolha.
-	# Por simplicidade, para MVP, você pode querer forçar um evento de escolha logo após.
-
-	# Opção 1: Usar uma função (se você tem um sistema customizado de opções)
-	# dialogue_box.show_dialogue([dialogue_text], self, "_show_package_options")
-
-	# Opção 2: Se você quer integrar diretamente com o sistema de Choices do Dialogic,
-	# você precisa de uma Timeline que contenha o texto e, logo em seguida, a escolha.
-
-	# Exemplo de como você pode disparar a escolha (se o Dialogic estiver configurado para Choices):
-	# Dialogic.start('res://data/dialogic/timeline_check_package.dtl', { "package_details": package })
-
-	# Para o MVP, vamos usar um diálogo simples que prepara para a escolha:
-#	print(dialogue_text)
-	# Próximo passo: Fazer a lógica da escolha (Passo 3)
-
+#func _peek_package_call():
+	#if current_package.is_creepy:
+		# Lógica de Quebra de Parede/Choque
+		# [Seu código para mostrar a cena de choque e pausar o jogo]
+		#Dialogic.start('timeline_peek_shock') # Diálogo pós-choque: "Você olhou...?"
+	#else:
+		#Dialogic.start('timeline_peek_boring') # Diálogo: "Parece só um livro."
 
 
 func receive_package():

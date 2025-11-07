@@ -1,6 +1,9 @@
-Narrador: Era uma noite escura e tempestuosa.
-Porteiro: Quem está aí?
-Porteiro: Vamos lá...
+if {first_time} == true:
+	Porteiro: Vamos lá...
+	set {first_time} = false
+
+Você pega outro pacote.
+
 O pacote é para o Apt. {apartment}.
 {weight}
 {hint}

@@ -39,7 +39,8 @@ directories/dch_directory={
 "Porteiro": "res://src/data/dialogic/Porteiro.dch"
 }
 directories/dtl_directory={
-"pacote_dialogue": "res://src/data/dialogic/pacote_dialogue.dtl"
+"pacote_dialogue": "res://src/data/dialogic/pacote_dialogue.dtl",
+"pacotes": "res://src/assets/facecards/pacotes.dtl"
 }
 layout/style_directory={
 "": "res://src/assets/facecards/custom_style.tres",
@@ -82,7 +83,12 @@ audio/channel_defaults={
 }
 glossary/default_case_sensitive=true
 variables={
-"espiou": false
+"apartment": "",
+"espiou": false,
+"first_time": true,
+"hint": "",
+"is_creepy": false,
+"weight": ""
 }
 
 [display]
