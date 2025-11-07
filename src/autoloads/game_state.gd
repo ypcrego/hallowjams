@@ -1,5 +1,31 @@
 extends Node
 
+# Mapa de dados do dia (Escalável: adicione novos dias aqui)
+const DAY_DATA_PATHS = {
+	1: "res://src/data/days/day1.tres",
+	# ...
+}
+var current_day: int = 1 # Começa no dia 1
+var packages_to_process: Array[Package] = []
+# Inicializa o dia e carrega os pacotes
+func start_day(day: int):
+	var day_data: DayData = load(DAY_DATA_PATHS.get(day))
+
+	# Cria uma cópia da lista de pacotes para manipulação (remover, embaralhar)
+	packages_to_process = day_data.packages_to_process.duplicate()
+	# Opcional, se quiser que a ordem seja aleatória: packages_to_process.shuffle()
+
+	# Dispara o diálogo inicial do dia
+	# [Você implementará isso no próximo passo]
+# Função que a mesa chamará
+func get_next_package_to_process() -> Package:
+	if packages_to_process.size() > 0:
+		return packages_to_process.pop_front()
+	return null # Fim do turno de cadastro
+
+func is_day_task_complete() -> bool:
+	return packages_to_process.is_empty()
+
 # Sinais para notificar a UI ou outros scripts sobre mudanças
 signal package_status_changed(is_holding: bool, target_ap: String)
 # Disparado para que o 'main.gd' gerencie a troca de cena
@@ -7,7 +33,6 @@ signal scene_change_requested(scene_path: String, spawn_point_name: String)
 
 var has_package: bool = false
 var target_ap: String = ""
-var day_count: int = 1 # Começa no dia 1
 
 # Caminho da última cena visitada (útil para salvar/carregar)
 var current_scene_path: String = "res://scenes/kitnet.tscn"
@@ -24,7 +49,7 @@ func set_package_status(is_holding: bool, ap: String) -> void:
 
 # Avança o dia, reiniciando o estado do pacote (novo dia = sem pacote)
 func advance_day() -> void:
-	day_count += 1
+	current_day += 1
 	set_package_status(false, "")
 
 	# Solicita a mudança de cena para a Kitnet, entrando pelo ponto de spawn "Start_From_Door_Back"

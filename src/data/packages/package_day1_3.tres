@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Package" load_steps=2 format=3 uid="uid://bvnqintoa21y8"]
+
+[ext_resource type="Script" uid="uid://cit67nwhs632o" path="res://src/scripts/package.gd" id="1_w5nc8"]
+
+[resource]
+script = ExtResource("1_w5nc8")
+package_name = "Caixa Pesada e Selada"
+recipient_apartment = "444"
+weight_description = "Extremamente pesado, é preciso esforço para movê-lo."
+surface_hint = "Completamente vedada com fita preta. Cheiro fraco de... metal enferrujado."
+is_creepy = true
+is_plot_critical = true
+metadata/_custom_type_script = "uid://cit67nwhs632o"

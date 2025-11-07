@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DayData" load_steps=6 format=3 uid="uid://baey8hhi78d5j"]
+
+[ext_resource type="Script" uid="uid://cit67nwhs632o" path="res://src/scripts/package.gd" id="1_6k08i"]
+[ext_resource type="Script" uid="uid://csfnncd4l367b" path="res://src/scripts/day_data.gd" id="2_bakqf"]
+[ext_resource type="Resource" uid="uid://bkhoico58b8u3" path="res://src/data/packages/package_day1_1.tres" id="2_ng8vg"]
+[ext_resource type="Resource" uid="uid://ch2qdt6kwwxn5" path="res://src/data/packages/package_day1_2.tres" id="3_25nm4"]
+[ext_resource type="Resource" uid="uid://bvnqintoa21y8" path="res://src/data/packages/package_day1_3.tres" id="4_ccooq"]
+
+[resource]
+script = ExtResource("2_bakqf")
+day_number = 1
+packages_to_deliver = Array[ExtResource("1_6k08i")]([ExtResource("2_ng8vg"), ExtResource("3_25nm4"), ExtResource("4_ccooq")])
+metadata/_custom_type_script = "uid://csfnncd4l367b"

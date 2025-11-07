@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Package" load_steps=2 format=3 uid="uid://ch2qdt6kwwxn5"]
+
+[ext_resource type="Script" uid="uid://cit67nwhs632o" path="res://src/scripts/package.gd" id="1_w1bau"]
+
+[resource]
+script = ExtResource("1_w1bau")
+package_name = "Livro de Culinária"
+recipient_apartment = "203"
+weight_description = "Parece um volume único, um pouco pesado, como um livro."
+surface_hint = "\"AP. 203 - Cuidado para não sujar de óleo!\"."
+metadata/_custom_type_script = "uid://cit67nwhs632o"
