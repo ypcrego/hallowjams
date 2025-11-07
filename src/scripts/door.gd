@@ -47,8 +47,8 @@ func handle_door_interaction():
 		# Emite o sinal para o gerenciador de cenas (`main.gd`)
 #		GameState.scene_change_requested.emit(target_scene_path, target_spawn_point_name)
 
-# Opção 2 (Se for baseado em colisão simples, substitua o método acima)
-func _on_body_entered(body: Node2D):
+func _on_proximity_sensor_body_entered(body: Node2D) -> void:
+	print("testando")
 	if body.name == "Player":
 		player_in_range = true
 		print("👣 Jogador perto da porta. Pressione E para entrar.")
@@ -56,6 +56,6 @@ func _on_body_entered(body: Node2D):
 #		GameState.next_spawn_point_name = target_spawn_point_name
 #		GameState.scene_change_requested.emit(target_scene_path, target_spawn_point_name)
 
-func _on_body_exited(body: Node2D) -> void:
+func _on_proximity_sensor_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		player_in_range = false

@@ -14,6 +14,7 @@ var current_scene_path: String = "res://scenes/kitnet.tscn"
 # Nome do nó Marker2D onde o jogador deve aparecer na NOVA cena.
 var next_spawn_point_name: String = "Start_From_Bed"
 
+const RECEPTION_SCENE_PATH = "res://game/reception.tscn"
 
 # Atualiza o status do pacote e notifica os ouvintes
 func set_package_status(is_holding: bool, ap: String) -> void:
@@ -28,5 +29,5 @@ func advance_day() -> void:
 
 	# Solicita a mudança de cena para a Kitnet, entrando pelo ponto de spawn "Start_From_Door_Back"
 	# Você precisará criar o caminho correto da cena da Kitnet.
-	scene_change_requested.emit("res://game/reception.tscn", "Start_From_Door_Back")
+	scene_change_requested.emit(RECEPTION_SCENE_PATH, "Start_From_Door_Back")
 	# Adicione aqui a lógica de salvar o progresso, se for o caso.

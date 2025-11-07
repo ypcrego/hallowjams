@@ -8,13 +8,13 @@ func _ready() -> void:
 	print("a")
 	# Ativa o mapeamento de entrada uma vez quando o Player aparece
 
-func _process(delta:float):
+#func _process(delta:float):
 	# Get the input value from the action and move the player.
-	position += move_action.value_axis_2d * speed * delta
+#	position += move_action.value_axis_2d * speed * delta
 
-#func _physics_process(delta) -> void:
-#	velocity = move_action.value_axis_2d * speed
-#	move_and_slide()
+func _physics_process(delta) -> void:
+	velocity = move_action.value_axis_2d * speed
+	move_and_slide()
 
 
 # --- FUNÇÃO DE INTERAÇÃO (Será usada na ETAPA 3) ---
