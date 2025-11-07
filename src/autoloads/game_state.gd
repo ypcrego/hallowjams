@@ -2,7 +2,7 @@ extends Node
 
 # Mapa de dados do dia (Escalável: adicione novos dias aqui)
 const DAY_DATA_PATHS = {
-	1: "res://src/data/days/day1.tres",
+	1: "res://src/data/days/day_01.tres",
 	# ...
 }
 var current_day: int = 1 # Começa no dia 1
@@ -10,9 +10,10 @@ var packages_to_process: Array[Package] = []
 # Inicializa o dia e carrega os pacotes
 func start_day(day: int):
 	var day_data: DayData = load(DAY_DATA_PATHS.get(day))
+	print("day_data: " , day_data)
 
 	# Cria uma cópia da lista de pacotes para manipulação (remover, embaralhar)
-	packages_to_process = day_data.packages_to_process.duplicate()
+	packages_to_process = day_data.packages_to_deliver.duplicate()
 	# Opcional, se quiser que a ordem seja aleatória: packages_to_process.shuffle()
 
 	# Dispara o diálogo inicial do dia

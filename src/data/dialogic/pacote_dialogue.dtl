@@ -1,0 +1,14 @@
+Narrador: Era uma noite escura e tempestuosa.
+Porteiro: Quem está aí?
+- Espiar
+	set {espiou} = true
+	[signal arg="espiou"]
+- Resistir
+	set {espiou} = false
+if {espiou} == true:
+	Porteiro: Uma olhadinha não mata ninguém...
+	Você cedeu à tentação da curiosidade.
+	[background arg="res://src/assets/facecards/Gk07wFaWUAAtO6-.jpeg" fade="0.0"]
+	[style]
+else:
+	Porteiro: Não tem nada de interessante aqui...

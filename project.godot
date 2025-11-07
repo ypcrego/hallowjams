@@ -39,7 +39,7 @@ directories/dch_directory={
 "Porteiro": "res://src/data/dialogic/Porteiro.dch"
 }
 directories/dtl_directory={
-"timeline": "res://src/data/dialogic/timeline.dtl"
+"pacote_dialogue": "res://src/data/dialogic/pacote_dialogue.dtl"
 }
 layout/style_directory={
 "": "res://src/assets/facecards/custom_style.tres",
@@ -81,7 +81,9 @@ audio/channel_defaults={
 }
 }
 glossary/default_case_sensitive=true
-variables={}
+variables={
+"espiou": false
+}
 
 [display]
 
