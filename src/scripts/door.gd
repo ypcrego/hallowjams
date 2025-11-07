@@ -12,13 +12,11 @@ extends Area2D
 @onready var door_sprite: Sprite2D = $Sprite2D
 
 @export var interact:GUIDEAction
-var game_state : GameState = null
 
 var player_in_range = false
 
 
 func _ready() -> void:
-	game_state = GameState.get_or_create_state()
 
 	# 1. Verifica se a textura e a região estão definidas.
 	if door_tileset_texture:

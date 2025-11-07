@@ -23,7 +23,6 @@ func _ready() -> void:
 	#load_scene(INITIAL_SCENE_PATH, "Start_From_Menu")
 
 func start_initial_game() -> void:
-	print("aaaa")
 
 	load_scene(INITIAL_SCENE_PATH, "Start_From_Menu")
 
@@ -31,7 +30,6 @@ func start_initial_game() -> void:
 
 # Função para carregar e configurar a nova cena
 func load_scene(scene_path: String, spawn_point_name: String):
-	print("loaded?")
 	# 1. Libera a cena antiga
 	if current_scene:
 		current_scene.queue_free()

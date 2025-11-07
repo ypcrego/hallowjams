@@ -30,8 +30,3 @@ func advance_day() -> void:
 	# Você precisará criar o caminho correto da cena da Kitnet.
 	scene_change_requested.emit("res://game/reception.tscn", "Start_From_Door_Back")
 	# Adicione aqui a lógica de salvar o progresso, se for o caso.
-
-# Função placeholder para manter a compatibilidade com a linha antiga,
-# mas em Godot 4+ o Autoload já é o singleton.
-static func get_or_create_state() -> Node:
-	return GameState
