@@ -7,6 +7,9 @@ const DAY_DATA_PATHS = {
 }
 var current_day: int = 1 # Começa no dia 1
 var packages_to_process: Array[Package] = []
+var packages_to_deliver: Array[Package] = [] # Pacotes já cadastrados e prontos para entrega
+var is_processing_complete: bool = false # TRUE quando todos os pacotes foram cadastrados na mesa.
+
 # Inicializa o dia e carrega os pacotes
 func start_day(day: int):
 	var day_data: DayData = load(DAY_DATA_PATHS.get(day))
@@ -14,18 +17,37 @@ func start_day(day: int):
 
 	# Cria uma cópia da lista de pacotes para manipulação (remover, embaralhar)
 	packages_to_process = day_data.packages_to_deliver.duplicate()
+	packages_to_deliver.clear() # Limpa a lista de pacotes a entregar do dia anterior
+	is_processing_complete = false # Reinicia o estado para o novo dia
 	# Opcional, se quiser que a ordem seja aleatória: packages_to_process.shuffle()
 
-	# Dispara o diálogo inicial do dia
-	# [Você implementará isso no próximo passo]
 # Função que a mesa chamará
 func get_next_package_to_process() -> Package:
 	if packages_to_process.size() > 0:
-		return packages_to_process.pop_front()
+		return packages_to_process.front()
 	return null # Fim do turno de cadastro
 
+# Remove o pacote atual da fila de PROCESSAMENTO. (POP)
+func remove_processed_package():
+	if packages_to_process.size() > 0:
+		# Remove o pacote que acabou de ser processado (pacote na frente)
+		packages_to_process.pop_front()
+
+# NOVO: Adiciona um pacote (já processado/espiado) à lista de entrega.
+func add_processed_package_for_delivery(package: Package):
+	packages_to_deliver.append(package)
+
+# NOVO: Marca que o turno de CADASTRO na mesa terminou. (Resposta à Q2)
+func mark_processing_complete() -> void:
+	is_processing_complete = true
+	# Neste ponto, você pode disparar um sinal para que o script principal (Game.gd)
+	# saiba que é hora de ir para a fase de entrega (ex: liberando o elevador).
+
+# Retorna se TODAS as tarefas do dia (cadastro E entrega) estão completas
 func is_day_task_complete() -> bool:
-	return packages_to_process.is_empty()
+	# O dia só está completo se o processamento terminou E não houver pacotes para entregar
+	return is_processing_complete and packages_to_deliver.is_empty()
+
 
 # Sinais para notificar a UI ou outros scripts sobre mudanças
 signal package_status_changed(is_holding: bool, target_ap: String)

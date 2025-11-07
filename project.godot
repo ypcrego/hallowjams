@@ -39,6 +39,7 @@ directories/dch_directory={
 "Porteiro": "res://src/data/dialogic/Porteiro.dch"
 }
 directories/dtl_directory={
+"no_more_packages": "res://src/assets/facecards/no_more_packages.dtl",
 "pacote_dialogue": "res://src/data/dialogic/pacote_dialogue.dtl",
 "pacotes": "res://src/assets/facecards/pacotes.dtl"
 }

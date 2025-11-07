@@ -22,65 +22,67 @@ func _on_package_status_changed(is_holding: bool, ap: String):
 # --- LÓGICA DE INTERAÇÃO ---
 
 func handle_desk_interaction():
-	if player_in_range:
-		if GameState.is_day_task_complete():
-			# Encerra o dia / Passa para a próxima fase (Entregas)
-			#Dialogic.start('timeline_fase_entrega')
-			return
-
-		current_package = GameState.get_next_package_to_process()
-		print(current_package)
-		if current_package != null:
-			_start_package_dialogue(current_package)
-		#else:
-			#Dialogic.start('timeline_fim_de_cadastro')
-
-#		if GameState.has_package == false:
-	#		receive_package()
-
-func _on_dialogic_signal(arg : String):
-	print("a")
-	pass
-
-func _start_package_dialogue(package: Package):
-	Dialogic.VAR.set_variable("apartment", current_package.recipient_apartment)
-	Dialogic.VAR.set_variable("weight", current_package.weight_description)
-	Dialogic.VAR.set_variable("hint", current_package.surface_hint)
-	Dialogic.VAR.set_variable("is_creepy", current_package.is_creepy)
+	if not player_in_range:
+		return
 
 	if Dialogic.current_timeline != null:
 		return
 
+	if GameState.is_processing_complete:
+		_start_day_end_dialogue()
+		return
+
+	_check_for_next_package_and_start_dialogue()
+
+
+# Recebe o sinal do Dialogic após o jogador fazer a escolha (Espiar/Resistir).
+func _on_dialogic_signal(arg : String):
+	# O sinal 'package_registered' é enviado no final da timeline do pacote.
+	if arg == "package_registered" and current_package != null:
+		# Adiciona o pacote processado à fila de entrega
+		GameState.add_processed_package_for_delivery(current_package)
+
+		GameState.remove_processed_package()
+
+		print("LOG: Pacote registrado e pronto para entrega. Pacotes na fila de entrega: %s" % GameState.packages_to_deliver.size())
+		current_package = null # Limpa a variável local
+
+		_check_for_next_package_and_start_dialogue()
+
+# Função central que inicia o diálogo e gerencia o fim da fila. (Loop)
+func _check_for_next_package_and_start_dialogue():
+	if GameState.is_processing_complete:
+		# Cadastro terminou, apenas informa sobre a entrega.
+		print("INFO: Cadastro completo. Agora, entregue os pacotes restantes.")
+		return
+
+	# 1. Tenta PEGAR o próximo pacote (PEEK, sem remover)
+	current_package = GameState.get_next_package_to_process()
+
+	if current_package != null:
+		# Pacote encontrado, inicia o diálogo.
+		print("LOG: Iniciando processamento do pacote para o AP %s." % current_package.recipient_apartment)
+		_start_package_dialogue(current_package)
+	else:
+		GameState.mark_processing_complete()
+
+
+func _start_package_dialogue(package: Package):
+	Dialogic.VAR.set_variable("apartment", package.recipient_apartment)
+	Dialogic.VAR.set_variable("weight", package.weight_description)
+	Dialogic.VAR.set_variable("hint", package.surface_hint)
+	Dialogic.VAR.set_variable("is_creepy", package.is_creepy)
+
+	#if Dialogic.current_timeline != null:
+		#return
+
 	var dialog = Dialogic.start("pacotes")
 
-#func _peek_package_call():
-	#if current_package.is_creepy:
-		# Lógica de Quebra de Parede/Choque
-		# [Seu código para mostrar a cena de choque e pausar o jogo]
-		#Dialogic.start('timeline_peek_shock') # Diálogo pós-choque: "Você olhou...?"
-	#else:
-		#Dialogic.start('timeline_peek_boring') # Diálogo: "Parece só um livro."
+func _start_day_end_dialogue():
 
-
-func receive_package():
-	var target_ap = ""
-	# 2. Define o pacote com base no dia
-	if GameState.day_count == 1:
-		target_ap = "101"
-		print("NOVO: Pacote normal para o AP 101. Entregar.")
-
-	elif GameState.day_count == 2:
-		target_ap = "202"
-		# Na ETAPA 3, você colocará a escolha de espiar AQUI. Por enquanto, apenas registra.
-		print("NOVO: Pacote grande e PESADO para o AP 202. (Gatilho da História)")
-
-	elif GameState.day_count >= 3:
-		# Após o Dia 2, o loop se repete com uma entrega comum
-		target_ap = "104"
-		print("NOVO: Pacote comum para o AP 104.")
-	# 1. Marca que está segurando um pacote
-	GameState.set_package_status(true, target_ap)
-
+	#
+	Dialogic.start('no_more_packages')
+	print("LOG: Fim do cadastro do dia. Iniciando diálogo de encerramento.")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	# Checa se o corpo que entrou na área é o Player (baseado no nome do nó)
