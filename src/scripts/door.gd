@@ -33,7 +33,7 @@ func _ready() -> void:
 func handle_door_interaction():
 	if player_in_range:
 		print("interagiu")
-		GameState.next_spawn_point_name = target_spawn_point_name
+		#GameState.next_spawn_point_name = target_spawn_point_name
 		# Emite o sinal para o gerenciador de cenas (`main.gd`)
 		GameState.scene_change_requested.emit(target_scene_path, target_spawn_point_name)
 

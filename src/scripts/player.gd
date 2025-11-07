@@ -4,7 +4,6 @@ extends CharacterBody2D
 @export var speed:float = 100
 @export var move_action:GUIDEAction
 
-
 func _ready() -> void:
 	print("a")
 	# Ativa o mapeamento de entrada uma vez quando o Player aparecedwq
