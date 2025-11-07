@@ -1,6 +1,10 @@
 # Desk_Interaction.gd
 extends StaticBody2D
 
+# O caminho para o Dialogic deve ser o padrão, a menos que você o tenha alterado.
+const DIALOGUE_SCENE = preload("res://addons/dialogic/Dialogic.tscn")
+const DIALOGUE_RESOURCE_PATH = "res://dialogues/seu_dialogo.json" # Caminho para a sua TimeLine salva
+
 # Variável de controle local para a interação
 @export var interact:GUIDEAction
 

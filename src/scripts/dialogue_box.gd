@@ -27,12 +27,12 @@ signal dialogue_finished
 func _ready():
 	# Esconde a caixa de diálogo no início
 	visible = false
-	
+
 	# Garante que os nós foram configurados (evita erros)
 	if !character_name_node or !dialogue_text_node or !faceset_node:
 		print("ERRO: Configure as variáveis 'character_name_node', 'dialogue_text_node' e 'faceset_node' no Inspector!")
 		return
-	
+
 	# Inicia a conversa se houver textos na fila
 	if not dialogue_queue.is_empty():
 		start_dialogue()
@@ -49,7 +49,7 @@ func _unhandled_input(event):
 		else:
 			# Se o texto já estiver completo, avança para o próximo diálogo
 			go_to_next_dialogue()
-		
+
 		# Marca o evento como manipulado para não ser processado por outros nós
 		get_tree().set_input_as_handled()
 
@@ -67,7 +67,7 @@ func start_dialogue():
 func display_dialogue(data: Dictionary):
 	# 1. Configura o nome do personagem
 	character_name_node.text = data.get("name", "")
-	
+
 	# 2. Configura o faceset (imagem do personagem)
 	var faceset_path = data.get("faceset_path", "")
 	if not faceset_path.is_empty() and ResourceLoader.exists(faceset_path):
@@ -75,7 +75,7 @@ func display_dialogue(data: Dictionary):
 		faceset_node.texture = load(faceset_path)
 	else:
 		faceset_node.texture = null # Ou defina uma textura padrão/vazia
-	
+
 	# 3. Inicia o efeito typewriter para o texto
 	start_writing_text(data.get("text", ""))
 
@@ -83,18 +83,18 @@ func display_dialogue(data: Dictionary):
 func start_writing_text(full_text: String):
 	is_writing = true
 	dialogue_text_node.text = "" # Limpa o texto antes de começar
-	
+
 	# Cria um Timer para controlar a velocidade da escrita
 	var timer = Timer.new()
 	add_child(timer)
 	timer.wait_time = text_speed
 	timer.one_shot = false # Repete até parar
-	
+
 	# Conecta o sinal 'timeout' do Timer a uma função
-	timer.connect("timeout", func(): 
+	timer.connect("timeout", func():
 		# Adiciona o próximo caractere
 		var next_char_index = dialogue_text_node.get_parsed_text().length()
-		
+
 		if next_char_index < full_text.length():
 			# Adiciona o próximo caractere ao RichTextLabel
 			var char_to_add = full_text[next_char_index]
@@ -106,7 +106,7 @@ func start_writing_text(full_text: String):
 			timer.stop()
 			timer.queue_free() # Remove o Timer
 	)
-	
+
 	timer.start()
 
 # Força a exibição completa do texto
@@ -119,7 +119,7 @@ func finish_writing_text():
 				child.stop()
 				child.queue_free()
 				break
-		
+
 		# Define o texto completo (RichTextLabel tem o método `set_bbcode` ou `text =`)
 		# Se você estiver usando um RichTextLabel, certifique-se de usar o texto com BBCode, se aplicável
 		dialogue_text_node.text = dialogue_queue[current_dialogue_index].get("text", "")
@@ -127,7 +127,7 @@ func finish_writing_text():
 # Avança para o próximo bloco de diálogo
 func go_to_next_dialogue():
 	current_dialogue_index += 1
-	
+
 	if current_dialogue_index < dialogue_queue.size():
 		# Ainda há mais diálogos na fila
 		display_dialogue(dialogue_queue[current_dialogue_index])
