@@ -16,6 +16,5 @@ move_action = ExtResource("2_ievcg")
 shape = SubResource("CapsuleShape2D_m1lfq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-0.31249982, -0.06250095)
 scale = Vector2(14.625, 22.125)
 texture = SubResource("PlaceholderTexture2D_m1lfq")

@@ -23,7 +23,6 @@ func _ready() -> void:
 	#load_scene(INITIAL_SCENE_PATH, "Start_From_Menu")
 
 func start_initial_game() -> void:
-	print("aaaa")
 
 	load_scene(INITIAL_SCENE_PATH, "Start_From_Menu")
 
@@ -45,12 +44,13 @@ func load_scene(scene_path: String, spawn_point_name: String):
 		current_scene_container.add_child(current_scene)
 
 		# 4. Encontra o ponto de spawn na nova cena
-		# Espera que a cena e seus filhos estejam prontos antes de procurar o ponto
-		await current_scene.ready
+		# Espera que a cena e seus filhos eswatejam prontos antes de procurar o ponto
+		await _wait_scene_ready()
 
-		var spawn_point = current_scene.find_child(spawn_point_name)
-
+		var spawn_point = current_scene.find_child(spawn_point_name, true, false)
+		print(spawn_point)
 		if spawn_point:
+			await get_tree().physics_frame
 			# 5. Move o jogador persistente para o ponto de spawn
 			player_node.global_position = spawn_point.global_position
 		else:
@@ -60,6 +60,11 @@ func load_scene(scene_path: String, spawn_point_name: String):
 		# Atualiza o estado global da cena
 		GameState.current_scene_path = scene_path
 
+func _wait_scene_ready():
+	# Aguarda um frame de processamento (ready dos filhos)
+	await get_tree().process_frame
+	# Aguarda um frame de física (garante colisões/posições corretas)
+	await get_tree().physics_frame
 
 func _on_scene_change_requested(scene_path: String, spawn_point_name: String):
 	load_scene(scene_path, spawn_point_name)

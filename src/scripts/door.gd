@@ -12,13 +12,11 @@ extends Area2D
 @onready var door_sprite: Sprite2D = $Sprite2D
 
 @export var interact:GUIDEAction
-var game_state : GameState = null
 
 var player_in_range = false
 
 
 func _ready() -> void:
-	game_state = GameState.get_or_create_state()
 
 	# 1. Verifica se a textura e a região estão definidas.
 	if door_tileset_texture:
@@ -33,7 +31,7 @@ func _ready() -> void:
 func handle_door_interaction():
 	if player_in_range:
 		print("interagiu")
-		GameState.next_spawn_point_name = target_spawn_point_name
+		#GameState.next_spawn_point_name = target_spawn_point_name
 		# Emite o sinal para o gerenciador de cenas (`main.gd`)
 		GameState.scene_change_requested.emit(target_scene_path, target_spawn_point_name)
 
