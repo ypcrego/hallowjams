@@ -11,9 +11,16 @@ class_name ApartmentDeliveryAction
 # ID do diálogo para falha na entrega
 @export var dialogue_failure_id: String = "delivery_failure"
 
+var style: DialogicStyle = load("res://src/data/dialogic/custom_syle.tres")
+
 
 func execute(interactor: Node) -> void:
-	print ('ta com pacote?' , GameState.has_package)
+	style.prepare()
+	# Captura o estado antes da tentativa de entrega
+	var was_holding_package = GameState.get_has_package()
+	var former_target_ap = GameState.get_target_ap()
+
+	print ('ta com pacote?' , was_holding_package)
 	# Apenas uma chamada, e um retorno simples:
 	var delivered_successfully: bool = GameState.try_deliver_package_at_apartment(apartment_number)
 	print ('entrego ucorretamentw???', delivered_successfully)
@@ -24,7 +31,7 @@ func execute(interactor: Node) -> void:
 		# A entrega ocorreu; GameState já cuidou dos efeitos colaterais (is_creepy)
 		timeline_to_start = dialogue_success_id # Diálogo de sucesso genérico
 
-	elif GameState.has_package and GameState.target_ap != apartment_number:
+	elif was_holding_package and former_target_ap != apartment_number:
 		# Está segurando um pacote, mas é o errado
 		timeline_to_start = dialogue_failure_id
 

@@ -95,6 +95,8 @@ variables={
 "is_creepy": false,
 "weight": ""
 }
+timer/process_in_physics=false
+layout/end_behaviour=0
 
 [display]
 

@@ -44,7 +44,7 @@ func _on_dialogic_signal(arg : String):
 
 		GameState.remove_processed_package()
 
-		print("LOG: Pacote registrado e pronto para entrega. Pacotes na fila de entrega: %s" % GameState.packages_to_deliver.size())
+		print("LOG: Pacote registrado e pronto para entrega. Pacotes na fila de entrega: %s" % GameState.get_packages_to_deliver().size())
 		current_package = null # Limpa a variável local
 
 		_check_for_next_package_and_start_dialogue()
