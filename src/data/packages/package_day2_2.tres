@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_5qx4k")
 package_name = "Som oco"
+recipient_apartment = "303"
 weight_description = "Caixa pequena, bem leve, e parece vazia quando chacoalhada."
 surface_hint = "Etiqueta escrita à mão: “Ap. 307 - Entregar com cuidado (muito frágil)”."
 real_content = "Não há nada visível, apenas um som baixo de respiração abafada quando a caixa se abre. Ao fechar, o som cessa."

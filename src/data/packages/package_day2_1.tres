@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_njt8p")
 package_name = "Cheiro de lavanda"
-recipient_apartment = "303"
+recipient_apartment = "101"
 weight_description = "Embalagem leve, embrulhada com papel pardo e fita roxa."
 surface_hint = "Há um leve cheiro de lavanda vindo de dentro."
 real_content = "Várias pequenas flores secas cuidadosamente organizadas, parecendo formar uma cruz. No fundo, uma foto queimada, indistinguível."

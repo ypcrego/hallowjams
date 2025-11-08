@@ -6,5 +6,6 @@ Porteiro: Para que andar eu devo ir?
 - 2º andar
 	do Elevator.go_to_floor(2)
 - 3º andar
+	do Elevator.go_to_floor(3)
 - 4º andar
 	do Elevator.go_to_floor(4)
