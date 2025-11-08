@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DoorData" load_steps=5 format=3 uid="uid://cf5t03vesiwtj"]
+
+[ext_resource type="Texture2D" uid="uid://dqaktyul2becp" path="res://src/assets/tileset/Inside_E.png" id="1_1h870"]
+[ext_resource type="Script" uid="uid://n8yc2dfxdli7" path="res://src/scripts/interactions/ApartmentDeliveryAction.gd" id="1_goljs"]
+[ext_resource type="Script" uid="uid://gjyn4rojs8rn" path="res://src/scripts/door_data.gd" id="2_goljs"]
+
+[sub_resource type="Resource" id="Resource_k43gn"]
+script = ExtResource("1_goljs")
+metadata/_custom_type_script = "uid://n8yc2dfxdli7"
+
+[resource]
+script = ExtResource("2_goljs")
+apartment_number = "102"
+delivery_action = SubResource("Resource_k43gn")
+metadata/_custom_type_script = "uid://gjyn4rojs8rn"
