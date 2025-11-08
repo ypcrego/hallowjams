@@ -4,6 +4,7 @@ extends Node2D
 const FloorData = preload("res://src/scripts/floor_data.gd")
 const DOOR_SCENE: PackedScene = preload("res://src/game/Door.tscn")
 
+
 @export var floor_data: FloorData = null
 
 @onready var _tile_map = $TileMap
@@ -11,6 +12,8 @@ const DOOR_SCENE: PackedScene = preload("res://src/game/Door.tscn")
 
 # 2. VARIÁVEL INTERNA: A seed agora é derivada do FloorData
 var current_hall_seed: int = 0
+
+
 
 func _ready():
 	if floor_data == null:
@@ -39,12 +42,14 @@ func _apply_visual_variations(seed: int, objects_paths: Array[NodePath]):
 
 	# Itera sobre os CAMINHOS DOS NÓS
 	for object_path in objects_paths:
-		# Usar get_node() para obter o objeto real
+		# PONTO CHAVE: Usar get_node() para obter o objeto real
 		var object_node = get_node(object_path)
 
 		if not is_instance_valid(object_node) or not object_node is Node2D:
 			push_warning("Caminho de nó inválido ou tipo incorreto em FloorData: " + str(object_path))
 			continue # Pula para o próximo
+
+		# Seus exemplos de variação (agora em object_node)
 
 		# Exemplo 1: Movimento sutil (para todos os objetos)
 		var offset_x = rng.randi_range(-4, 4)
@@ -58,12 +63,11 @@ func _apply_visual_variations(seed: int, objects_paths: Array[NodePath]):
 
 
 # --- Lógica de Diálogo Único por CENA ---
-# --- Lógica de Construção de Portas (CORRIGIDA) ---
 func _build_doors():
-	print('Iniciando construção de portas')
-	# 1. Encontra o container (ou itera sobre os filhos do próprio Hall, se for o caso)
+	print('buildando portass')
+	# 1. Garante que o container "Doors" existe
 	var doors_container = get_node("Doors")
-	if not is_instance_valid(doors_container):
+	if !is_instance_valid(doors_container):
 		push_error("ApartmentHall precisa de um nó 'Doors' Node2D para o container.")
 		return
 
@@ -71,21 +75,25 @@ func _build_doors():
 	for child in doors_container.get_children():
 		child.queue_free()
 
-	# 2. Itera sobre os VALORES do NOVO dicionário apartment_configs:
-	# O erro era tentar acessar 'floor_data.doors', que não existe.
-	# Agora usamos 'floor_data.apartment_configs.values()' para obter todos os DoorData/ApartmentConfig.
-	for door_config in floor_data.apartment_configs.values():
+	# 2. Itera sobre a lista de portas definidas no FloorData
+	for door_data in floor_data.doors:
 		var door_instance = DOOR_SCENE.instantiate()
 		doors_container.add_child(door_instance)
 
-		# O CÓDIGO DO HALL DEVE DEFINIR AS PROPRIEDADES ESPACIAIS DIRETAMENTE.
-		# ASSUME-SE que door_config AINDA TEM position e z_index_offset POR ENQUANTO!
-		door_instance.position = door_config.position
-		door_instance.z_index = door_config.z_index_offset
+		# CHAVE: Injetar a posição, z-index, textura e ação do RECURSO
+		# Você deve ter um script na sua Door.tscn que tem o método init_with_data()
+		door_instance.init_with_data(door_data)
 
-		# E então, o Door.gd é inicializado com o restante dos dados.
-		# A função foi renomeada no passo 1.
-		door_instance.init_with_config(door_config)
+		# A posição deve ser definida no Door.tscn/Door.gd usando door_data.position
+		# Já que você setou position no script original:
+		door_instance.position = door_data.position
+		door_instance.z_index = door_data.z_index_offset
+
+		# A lógica de textura/sprite deve ser chamada após a injeção dos dados
+		# O script Door.gd é o responsável por isso.
+		#if door_instance.has_method("setup_door_sprite"):
+			#door_instance.setup_door_sprite()
+
 
 
 func _check_and_trigger_first_visit_dialogue():

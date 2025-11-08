@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="FloorData" load_steps=2 format=3 uid="uid://c03kr8w42ifk2"]
-
-[ext_resource type="Script" uid="uid://5b2hwbpngk1n" path="res://src/scripts/floor_data.gd" id="1_cjuii"]
-
-[resource]
-script = ExtResource("1_cjuii")
-unique_floor_id = "1"
-metadata/_custom_type_script = "uid://5b2hwbpngk1n"
