@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://yjwduofn0grh"]
+[gd_scene load_steps=14 format=3 uid="uid://yjwduofn0grh"]
 
 [ext_resource type="Texture2D" uid="uid://dqaktyul2becp" path="res://src/assets/tileset/Inside_E.png" id="1_q2vsq"]
 [ext_resource type="Texture2D" uid="uid://bepelt4mg5j74" path="res://src/assets/tileset/A4.png" id="2_un3c5"]
 [ext_resource type="Texture2D" uid="uid://cksefu0phrhfq" path="res://src/assets/tileset/A5.png" id="3_ny2ur"]
+[ext_resource type="PackedScene" uid="uid://ccd4nglpnueb1" path="res://src/game/Door.tscn" id="5_sd6p6"]
+[ext_resource type="Script" uid="uid://bwc67s3vtcbex" path="res://src/scripts/interactions/SceneChangeAction.gd" id="6_q5oat"]
 [ext_resource type="Script" uid="uid://bbqka14cnal6a" path="res://src/scripts/apartment_hall.gd" id="6_sd6p6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sd6p6"]
@@ -1820,6 +1822,12 @@ func _check_and_trigger_first_visit_dialogue():
 		pass # Deixamos a lógica de diálogo mais complexa para o GameState/Interactions
 "
 
+[sub_resource type="Resource" id="Resource_u2vef"]
+script = ExtResource("6_q5oat")
+target_scene_path = "res://src/game/elevator.tscn"
+target_spawn_point_name = "SP_From_Floor"
+metadata/_custom_type_script = "uid://bwc67s3vtcbex"
+
 [node name="ApartmentHall" type="Node2D"]
 script = ExtResource("6_sd6p6")
 
@@ -1833,8 +1841,12 @@ layer_1/name = "Layer1"
 layer_1/z_index = -1
 layer_1/tile_data = PackedInt32Array(65537, 0, 1, 131073, 0, 2, 196609, 0, 3, 262145, 0, 4, 327681, 0, 5, 393217, 0, 6, 458753, 0, 7, 524289, 0, 8, 65538, 786432, 15, 131074, 786432, 16, 196610, 786432, 17, 262146, 786432, 17, 327682, 786432, 16, 393218, 786432, 17, 458754, 786432, 16, 524290, 786432, 17, 65539, 851968, 15, 131075, 851968, 16, 196611, 851968, 17, 262147, 851968, 17, 327683, 851968, 16, 393219, 851968, 17, 458755, 851968, 16, 524291, 851968, 17, 65540, 917504, 15, 131076, 917504, 16, 196612, 917504, 17, 262148, 917504, 17, 327684, 917504, 16, 393220, 917504, 17, 458756, 917504, 16, 524292, 917504, 17, 65541, 983040, 15, 131077, 983040, 16, 196613, 983040, 17, 262149, 983040, 17, 327685, 983040, 16, 393221, 983040, 17, 458757, 983040, 16, 524293, 983040, 17, 65542, 1048576, 15, 131078, 1048576, 16, 196614, 1048576, 17, 262150, 1048576, 17, 327686, 1048576, 16, 393222, 1048576, 17, 458758, 1048576, 16, 524294, 1048576, 17, 65543, 1114112, 15, 131079, 1114112, 16, 196615, 1114112, 17, 262151, 1114112, 17, 327687, 1114112, 16, 393223, 1114112, 17, 458759, 1114112, 16, 524295, 1114112, 17, 65544, 1179648, 15, 131080, 1179648, 16, 196616, 1179648, 17, 262152, 1179648, 17, 327688, 1179648, 16, 393224, 1179648, 17, 458760, 1179648, 16, 524296, 1179648, 17, 65545, 1245184, 15, 131081, 1245184, 16, 196617, 1245184, 17, 262153, 1245184, 17, 327689, 1245184, 16, 393225, 1245184, 17, 458761, 1245184, 16, 524297, 1245184, 17, 655370, 131072, 33, 589834, 131072, 33, 589835, 131072, 33, 655371, 131072, 33, 720905, 1245187, 24, 589833, 1245187, 24, 655372, 1245187, 24, 589836, 1245187, 24, 655369, 1245187, 24, 720908, 1245187, 24, 786441, 1245187, 24, 786442, 131072, 33, 786443, 131072, 33, 786444, 1245187, 24, 720906, 131072, 33, 720907, 131072, 33)
 
-[node name="SP_From_Test" type="Marker2D" parent="."]
+[node name="SP_From_Elevator" type="Marker2D" parent="."]
 position = Vector2(901, 528)
 script = SubResource("GDScript_ny2ur")
 
 [node name="Doors" type="Node2D" parent="."]
+
+[node name="Door_To_Elevator" parent="." instance=ExtResource("5_sd6p6")]
+position = Vector2(902, 588)
+action = SubResource("Resource_u2vef")

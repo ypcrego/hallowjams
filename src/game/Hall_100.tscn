@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b0yvk8sxul3uc"]
 
 [ext_resource type="PackedScene" uid="uid://yjwduofn0grh" path="res://src/game/apartment_hall.tscn" id="1_6up8i"]
-[ext_resource type="Resource" uid="uid://c03kr8w42ifk2" path="res://src/scripts/interactions/floor_100s.tres" id="2_bdda2"]
+[ext_resource type="Resource" uid="uid://c03kr8w42ifk2" path="res://src/assets/resources/floor_100s.tres" id="2_bdda2"]
 
 [node name="Hall100" type="Node2D"]
 
