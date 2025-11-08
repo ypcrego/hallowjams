@@ -51,6 +51,9 @@ func is_day_task_complete() -> bool:
 
 # Sinais para notificar a UI ou outros scripts sobre mudanças
 signal package_status_changed(is_holding: bool, target_ap: String)
+# Sinal para notificar que um pacote creepy foi entregue.
+signal creepy_package_delivered(creepy_scene_path: String)
+
 # Disparado para que o 'main.gd' gerencie a troca de cena
 signal scene_change_requested(scene_path: String, spawn_point_name: String)
 
@@ -79,3 +82,38 @@ func advance_day() -> void:
 	# Você precisará criar o caminho correto da cena da Kitnet.
 	scene_change_requested.emit(RECEPTION_SCENE_PATH, "Start_From_Door_Back")
 	# Adicione aqui a lógica de salvar o progresso, se for o caso.
+
+
+func try_deliver_package_at_apartment(apartment_num: String) -> bool:
+	# 1. Verificar se o jogador está segurando o pacote para este apartamento.
+	if target_ap == apartment_num:
+		var package_to_remove: Package = null
+		var index_to_remove: int = -1
+
+		# 2. Procurar o pacote na lista de entregas pendentes
+		for i in range(packages_to_deliver.size()):
+			var package: Package = packages_to_deliver[i]
+			if package.recipient_apartment == apartment_num:
+				package_to_remove = package
+				index_to_remove = i
+				break
+
+		if package_to_remove != null:
+					# 3. >>> LÓGICA DE EVENTO MOVIDA PARA CÁ (ENCAPSULAMENTO) <<<
+					if package_to_remove.is_creepy:
+						# Se for creepy, o GameState dispara a notificação
+						print("🚨 Pacote creepy entregue! Disparando evento.")
+						creepy_package_delivered.emit(package_to_remove.creepy_scene_path)
+
+					# 4. Remover o pacote e limpar o status do jogador.
+					packages_to_deliver.remove_at(index_to_remove)
+					set_package_status(false, "")
+
+					# 5. Checar o fim do dia
+					if is_day_task_complete():
+						print("📦 Dia completo!")
+						#var kitnet_path = "res://scenes/kitnet.tscn"
+						#var bed_spawn = "Start_From_Bed"
+						#scene_change_requested.emit(kitnet_path, bed_spawn) # Dispara encerramento
+					return true
+	return false

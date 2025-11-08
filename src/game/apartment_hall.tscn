@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://yjwduofn0grh"]
+[gd_scene load_steps=13 format=3 uid="uid://yjwduofn0grh"]
 
 [ext_resource type="Texture2D" uid="uid://dqaktyul2becp" path="res://src/assets/tileset/Inside_E.png" id="1_q2vsq"]
 [ext_resource type="PackedScene" uid="uid://ccd4nglpnueb1" path="res://src/game/Door.tscn" id="1_un3c5"]
 [ext_resource type="Script" uid="uid://cjas1p3gxd660" path="res://src/scripts/interactions/DialogueAction.gd" id="2_ny2ur"]
 [ext_resource type="Texture2D" uid="uid://bepelt4mg5j74" path="res://src/assets/tileset/A4.png" id="2_un3c5"]
 [ext_resource type="Texture2D" uid="uid://cksefu0phrhfq" path="res://src/assets/tileset/A5.png" id="3_ny2ur"]
+[ext_resource type="Script" uid="uid://bbqka14cnal6a" path="res://src/scripts/apartment_hall.gd" id="6_sd6p6"]
 
 [sub_resource type="Resource" id="Resource_sd6p6"]
 script = ExtResource("2_ny2ur")
@@ -1761,3 +1762,4 @@ layer_1/tile_data = PackedInt32Array(65537, 0, 1, 131073, 0, 2, 196609, 0, 3, 26
 
 [node name="SP_From_Test" type="Marker2D" parent="."]
 position = Vector2(901, 528)
+script = ExtResource("6_sd6p6")

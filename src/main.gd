@@ -15,7 +15,6 @@ var current_scene: Node = null
 func _ready() -> void:
 	# Sinal do autoload
 	GameState.scene_change_requested.connect(_on_scene_change_requested)
-	GameState.start_day(1)
 
 	GUIDE.enable_mapping_context(default_mapping_context)
 	show_main_menu.call_deferred()
@@ -26,6 +25,7 @@ func _ready() -> void:
 func start_initial_game() -> void:
 
 	load_scene(INITIAL_SCENE_PATH, "Start_From_Menu")
+	GameState.start_day(1)
 
 	$UI.hide_ui("MainMenu")
 
