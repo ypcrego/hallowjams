@@ -1,7 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0yvk8sxul3uc"]
+[gd_scene load_steps=2 format=3 uid="uid://ba1oekmdr5pdp"]
 
 [ext_resource type="PackedScene" uid="uid://yjwduofn0grh" path="res://src/game/apartment_hall.tscn" id="1_gitxx"]
 
-[node name="Hall100" type="Node2D"]
+[node name="Hall" type="Node2D"]
 
 [node name="ApartmentHall" parent="." instance=ExtResource("1_gitxx")]

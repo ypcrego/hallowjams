@@ -46,18 +46,6 @@ func setup_door_sprite():
 		return
 
 
-# DEBUG: Verifica se o CollisionShape2D está na árvore e ativo
-	var collision_shape = find_child("CollisionShape2D") # Ajuste o nome se necessário
-	if is_instance_valid(collision_shape):
-		print("DEBUG: CollisionShape encontrada e válida na porta: ", self.name)
-
-		if collision_shape.shape == null:
-			push_error("ERRO GRAVE: CollisionShape não tem recurso 'Shape' atribuído!")
-		else:
-			print("DEBUG: Shape do Collision: ", collision_shape.shape.resource_name)
-	else:
-		push_error("ERRO CRÍTICO: CollisionShape2D não é filho da porta!")
-
 	# 1. Verifica se a textura e a região estão definidas.
 	if door_tileset_texture:
 		door_sprite.texture = door_tileset_texture
