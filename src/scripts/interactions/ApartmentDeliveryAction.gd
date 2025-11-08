@@ -13,8 +13,10 @@ class_name ApartmentDeliveryAction
 
 
 func execute(interactor: Node) -> void:
+	print ('ta com pacote?' , GameState.has_package)
 	# Apenas uma chamada, e um retorno simples:
 	var delivered_successfully: bool = GameState.try_deliver_package_at_apartment(apartment_number)
+	print ('entrego ucorretamentw???', delivered_successfully)
 
 	var timeline_to_start: String = ""
 

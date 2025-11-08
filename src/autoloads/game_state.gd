@@ -20,6 +20,7 @@ func start_day(day: int):
 	packages_to_deliver.clear() # Limpa a lista de pacotes a entregar do dia anterior
 	is_processing_complete = false # Reinicia o estado para o novo dia
 	# Opcional, se quiser que a ordem seja aleatória: packages_to_process.shuffle()
+	_update_current_delivery_target()
 
 # Função que a mesa chamará
 func get_next_package_to_process() -> Package:
@@ -36,6 +37,21 @@ func remove_processed_package():
 # NOVO: Adiciona um pacote (já processado/espiado) à lista de entrega.
 func add_processed_package_for_delivery(package: Package):
 	packages_to_deliver.append(package)
+	_update_current_delivery_target()
+
+
+# NOVO: Função Privada para Manter a Consistência do Estado (A ÚNICA AUTORIDADE)
+func _update_current_delivery_target() -> void:
+	if packages_to_deliver.size() > 0:
+		# O jogador está sempre "segurando" o primeiro pacote da fila de entrega
+		# como um marcador para a UI/HUD. A lógica de entrega é flexível.
+		var next_package: Package = packages_to_deliver.front()
+		set_package_status(true, next_package.recipient_apartment)
+		print("LOG: Jogador está 'segurando' o pacote para o AP ", next_package.recipient_apartment)
+	else:
+		# Não há mais pacotes para entregar.
+		set_package_status(false, "")
+		print("LOG: Jogador de 'mãos vazias'.")
 
 # NOVO: Marca que o turno de CADASTRO na mesa terminou. (Resposta à Q2)
 func mark_processing_complete() -> void:
@@ -85,35 +101,44 @@ func advance_day() -> void:
 
 
 func try_deliver_package_at_apartment(apartment_num: String) -> bool:
-	# 1. Verificar se o jogador está segurando o pacote para este apartamento.
-	if target_ap == apartment_num:
-		var package_to_remove: Package = null
-		var index_to_remove: int = -1
+# Lógica para garantir que o jogador tenha um pacote antes de tentar entregar
+	if not has_package:
+		print("AVISO: Jogador tentou entregar sem pacote.")
+		return false
 
-		# 2. Procurar o pacote na lista de entregas pendentes
-		for i in range(packages_to_deliver.size()):
-			var package: Package = packages_to_deliver[i]
-			if package.recipient_apartment == apartment_num:
-				package_to_remove = package
-				index_to_remove = i
-				break
+	print('Tentando entregar para ap:', apartment_num, '. Pacote carregado (UI) para: ', target_ap)
 
-		if package_to_remove != null:
-					# 3. >>> LÓGICA DE EVENTO MOVIDA PARA CÁ (ENCAPSULAMENTO) <<<
-					if package_to_remove.is_creepy:
-						# Se for creepy, o GameState dispara a notificação
-						print("🚨 Pacote creepy entregue! Disparando evento.")
-						creepy_package_delivered.emit(package_to_remove.creepy_scene_path)
+	var package_to_remove: Package = null
+	var index_to_remove: int = -1
 
-					# 4. Remover o pacote e limpar o status do jogador.
-					packages_to_deliver.remove_at(index_to_remove)
-					set_package_status(false, "")
+	# 1. Procurar O PRIMEIRO pacote CORRESPONDENTE na lista de entregas pendentes
+	# O loop permite a entrega em qualquer ordem, encontrando o pacote correto na fila.
+	for i in range(packages_to_deliver.size()):
+		var package: Package = packages_to_deliver[i]
+		if package.recipient_apartment == apartment_num:
+			package_to_remove = package
+			index_to_remove = i
+			break
 
-					# 5. Checar o fim do dia
-					if is_day_task_complete():
-						print("📦 Dia completo!")
-						#var kitnet_path = "res://scenes/kitnet.tscn"
-						#var bed_spawn = "Start_From_Bed"
-						#scene_change_requested.emit(kitnet_path, bed_spawn) # Dispara encerramento
-					return true
+	# 2. Se encontrou um pacote para este apartamento
+	if package_to_remove != null:
+
+		# 3. Lógica de evento creepy
+		if package_to_remove.is_creepy:
+			print("🚨 Pacote creepy entregue! Disparando evento.")
+			creepy_package_delivered.emit(package_to_remove.creepy_scene_path)
+
+		# 4. Remover o pacote.
+		packages_to_deliver.remove_at(index_to_remove)
+
+		_update_current_delivery_target() # <--- OBRIGA A SINCRONIZAÇÃO APÓS A MUDANÇA
+
+		# 5. Checar o fim do dia
+		if is_day_task_complete():
+			print("📦 Dia completo!")
+			#var kitnet_path = "res://scenes/kitnet.tscn"
+			#var bed_spawn = "Start_From_Bed"
+			#scene_change_requested.emit(kitnet_path, bed_spawn) # Dispara encerramento
+		return true
+
 	return false
