@@ -26,7 +26,7 @@ func _ready() -> void:
 		call_deferred("setup_door_sprite")
 
 func init_with_config(config: DoorConfigResource) -> void:
-	self.apartment_config = config
+	self.door_config = config
 	self.action = config.delivery_action
 
 	# 2. Sobrescreve as propriedades visuais com os dados do Recurso.

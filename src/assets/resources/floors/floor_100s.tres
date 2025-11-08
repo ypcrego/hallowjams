@@ -1,8 +1,14 @@
-[gd_resource type="Resource" script_class="FloorData" load_steps=2 format=3 uid="uid://c03kr8w42ifk2"]
+[gd_resource type="Resource" script_class="FloorData" load_steps=4 format=3 uid="uid://c03kr8w42ifk2"]
 
+[ext_resource type="Script" uid="uid://cm7giy5twc4me" path="res://src/scripts/DoorLocationData.gd" id="1_aco5g"]
 [ext_resource type="Script" uid="uid://5b2hwbpngk1n" path="res://src/scripts/floor_data.gd" id="1_cjuii"]
+
+[sub_resource type="Resource" id="Resource_aco5g"]
+script = ExtResource("1_aco5g")
+metadata/_custom_type_script = "uid://cm7giy5twc4me"
 
 [resource]
 script = ExtResource("1_cjuii")
 unique_floor_id = "1"
+door_locations = Array[ExtResource("1_aco5g")]([SubResource("Resource_aco5g")])
 metadata/_custom_type_script = "uid://5b2hwbpngk1n"
