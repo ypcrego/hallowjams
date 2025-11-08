@@ -41,15 +41,18 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "choose_elevator_floor": "res://src/data/dialogic/choose_elevator_floor.dtl",
+"delivery_end_day_1": "res://src/data/dialogic/delivery_end_day_1.dtl",
 "delivery_failure": "res://src/data/dialogic/delivery_failure.dtl",
 "delivery_success_101": "res://src/data/dialogic/delivery_success_101.dtl",
 "delivery_success_202": "res://src/data/dialogic/delivery_success_202.dtl",
 "delivery_success_444": "res://src/data/dialogic/delivery_success_444.dtl",
 "door_dialogue": "res://src/assets/facecards/door_dialogue.dtl",
+"new_day_2": "res://src/data/dialogic/new_day_2.dtl",
 "no_more_packages": "res://src/assets/facecards/no_more_packages.dtl",
 "no_package_dialogue": "res://src/data/dialogic/no_package_dialogue.dtl",
 "pacote_dialogue": "res://src/data/dialogic/pacote_dialogue.dtl",
-"pacotes": "res://src/assets/facecards/pacotes.dtl"
+"pacotes": "res://src/assets/facecards/pacotes.dtl",
+"sleep_day_1": "res://src/data/dialogic/sleep_day_1.dtl"
 }
 layout/style_directory={
 "": "res://src/data/dialogic/custom_syle.tres",
@@ -93,8 +96,10 @@ audio/channel_defaults={
 glossary/default_case_sensitive=true
 variables={
 "apartment": "",
+"day": 1,
 "espiou": false,
-"first_time": true,
+"espiou_algo_creepy_dia_1": false,
+"first_package_day": true,
 "hint": "",
 "is_creepy": false,
 "weight": ""

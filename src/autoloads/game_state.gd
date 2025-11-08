@@ -3,10 +3,12 @@ extends Node
 # Mapa de dados do dia (Escalável: adicione novos dias aqui)
 const DAY_DATA_PATHS = {
 	1: "res://src/data/days/day_01.tres",
-	# ...
+	2: "res://src/data/days/day_02.tres",
+
 }
 var current_day: int = 1 # Começa no dia 1
 var packages_to_process: Array[Package] = []
+var current_day_data: DayData # Para armazenar o recurso do dia atual
 
 var _packages_to_deliver: Array[Package] = [] # Pacotes já cadastrados e prontos para entrega
 var is_processing_complete: bool = false # TRUE quando todos os pacotes foram cadastrados na mesa.
@@ -31,7 +33,7 @@ func get_packages_to_deliver() -> Array[Package]:
 # Inicializa o dia e carrega os pacotes
 func start_day(day: int):
 	var day_data: DayData = load(DAY_DATA_PATHS.get(day))
-	print("day_data: " , day_data)
+	current_day_data = day_data
 
 	# Cria uma cópia da lista de pacotes para manipulação (remover, embaralhar)
 	packages_to_process = day_data.packages_to_deliver.duplicate()
@@ -79,7 +81,8 @@ func mark_processing_complete() -> void:
 # Retorna se TODAS as tarefas do dia (cadastro E entrega) estão completas
 func is_day_task_complete() -> bool:
 	# O dia só está completo se o processamento terminou E não houver pacotes para entregar
-	return is_processing_complete and _packages_to_deliver.is_empty()
+	return true
+	#return is_processing_complete and _packages_to_deliver.is_empty()
 
 
 # Sinais para notificar a UI ou outros scripts sobre mudanças
@@ -96,9 +99,10 @@ signal scene_change_requested_with_data(scene_path: String, spawn_point_name: St
 # Caminho da última cena visitada (útil para salvar/carregar)
 var current_scene_path: String = "res://scenes/kitnet.tscn"
 # Nome do nó Marker2D onde o jogador deve aparecer na NOVA cena.
-var next_spawn_point_name: String = "Start_From_Bed"
+var next_spawn_point_name: String = "SP_From_Bed"
 
 const RECEPTION_SCENE_PATH = "res://game/reception.tscn"
+const KITNET_SCENE_PATH = "res://game/reception.tscn"
 
 # Atualiza o status do pacote e notifica os ouvintes
 func set_package_status(is_holding: bool, ap: String) -> void:
@@ -111,7 +115,9 @@ func advance_day() -> void:
 
 	# Solicita a mudança de cena para a Kitnet, entrando pelo ponto de spawn "Start_From_Door_Back"
 	# Você precisará criar o caminho correto da cena da Kitnet.
-	scene_change_requested.emit(RECEPTION_SCENE_PATH, "Start_From_Door_Back")
+	scene_change_requested.emit(KITNET_SCENE_PATH, "SP_From_Bed")
+	print("estasos em um novo dia !")
+
 	# Adicione aqui a lógica de salvar o progresso, se for o caso.
 
 
@@ -152,9 +158,34 @@ func try_deliver_package_at_apartment(apartment_num: String) -> bool:
 		# 5. Checar o fim do dia
 		if is_day_task_complete():
 			print("📦 Dia completo!")
-			#var kitnet_path = "res://scenes/kitnet.tscn"
-			#var bed_spawn = "Start_From_Bed"
-			#scene_change_requested.emit(kitnet_path, bed_spawn) # Dispara encerramento
+
 		return true
 
 	return false
+
+	# NOVO: Inicia a sequência de fim da fase de entregas.
+func start_delivery_end_sequence():
+	if !current_day_data:
+		push_error("DayData não carregado. Não é possível encerrar o dia.")
+		return
+
+	# 1. Conecta o sinal para avançar para a próxima fase após o diálogo.
+	if not Dialogic.is_connected("timeline_ended", Callable(self, "_on_delivery_end_dialogue_ended")):
+		Dialogic.connect("timeline_ended", Callable(self, "_on_delivery_end_dialogue_ended"))
+
+		# 2. Inicia o diálogo de fim da fase de entregas.
+	var delivery_end_timeline = "delivery_end_day_" + str(current_day) # Ex: "delivery_end_day_1"
+	print(delivery_end_timeline)
+
+	# **OBSERVAÇÃO:** Você precisará criar a(s) timeline(s) no Dialogic com o nome padronizado.
+	Dialogic.start(delivery_end_timeline)
+
+
+# Chamado quando o diálogo de fim de entregas termina.
+func _on_delivery_end_dialogue_ended():
+	print('delivery ended')
+	if current_day_data:
+		# Manda o jogador para a Kitnet para a fase de descanso.
+		var kitnet_path = current_day_data.next_scene_on_complete # Pega o caminho da cena do DayData
+		var bed_spawn = "Start_From_Bed"
+		scene_change_requested.emit(kitnet_path, bed_spawn)

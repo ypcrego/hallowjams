@@ -42,6 +42,18 @@ func execute(interactor: Node) -> void:
 	if Dialogic.current_timeline != null:
 		return
 
-	if timeline_to_start and Dialogic:
+	if timeline_to_start:
 		print(timeline_to_start)
+		if not Dialogic.is_connected("timeline_ended", Callable(self, "_on_delivery_dialogue_ended")):
+			Dialogic.connect("timeline_ended", Callable(self, "_on_delivery_dialogue_ended"))
+
 		Dialogic.start(timeline_to_start)
+
+func _on_delivery_dialogue_ended():
+	var is_day_complete = GameState.is_day_task_complete()
+
+	if Dialogic.is_connected("timeline_ended", Callable(self, "_on_delivery_dialogue_ended")):
+		Dialogic.disconnect("timeline_ended", Callable(self, "_on_delivery_dialogue_ended"))
+
+	if is_day_complete:
+		GameState.start_delivery_end_sequence()

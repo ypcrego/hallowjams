@@ -1,9 +1,7 @@
-if {first_time} == true:
-	Porteiro: Vamos lá...
-	Você pega o primeiro pacote do dia.
-	set {first_time} = false
+Você pega o primeiro pacote do dia.
+set {first_package_day} = false
 else:
-	Você pega outro pacote.
+Você pega outro pacote.
 
 O pacote é para o Apt. {apartment}.
 {weight}
@@ -18,6 +16,7 @@ if {espiou} == true:
 	Você cedeu à tentação da curiosidade.
 	if {is_creepy} == true:
 		[background arg="res://src/assets/facecards/Gk07wFaWUAAtO6-.jpeg" fade="0.0"]
-else:
-	Porteiro: Não tem nada de interessante aqui...
+		set {espiou_algo_creepy_dia_1} = true
+	else:
+		Porteiro: Não tem nada de interessante aqui...
 [signal arg="package_registered"]
