@@ -39,16 +39,16 @@ directories/dch_directory={
 "Porteiro": "res://src/data/dialogic/Porteiro.dch"
 }
 directories/dtl_directory={
+"door_dialogue": "res://src/assets/facecards/door_dialogue.dtl",
 "no_more_packages": "res://src/assets/facecards/no_more_packages.dtl",
 "pacote_dialogue": "res://src/data/dialogic/pacote_dialogue.dtl",
 "pacotes": "res://src/assets/facecards/pacotes.dtl"
 }
 layout/style_directory={
-"": "res://src/assets/facecards/custom_style.tres",
 "custom_style": "res://src/assets/facecards/custom_style.tres"
 }
 layout/style_list=["res://src/assets/facecards/custom_style.tres"]
-layout/default_style="res://src/assets/facecards/custom_style.tres"
+layout/default_style=""
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true

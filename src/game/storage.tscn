@@ -1,12 +1,19 @@
-[gd_scene load_steps=16 format=3 uid="uid://bhsiyh7htemxt"]
+[gd_scene load_steps=19 format=3 uid="uid://bhsiyh7htemxt"]
 
 [ext_resource type="Script" uid="uid://cji1c3mocoxqn" path="res://src/game/game.gd" id="1_e3os7"]
 [ext_resource type="Texture2D" uid="uid://bepelt4mg5j74" path="res://src/assets/tileset/A4.png" id="3_vkwem"]
 [ext_resource type="Texture2D" uid="uid://dqaktyul2becp" path="res://src/assets/tileset/Inside_E.png" id="3_wobgr"]
 [ext_resource type="Texture2D" uid="uid://cksefu0phrhfq" path="res://src/assets/tileset/A5.png" id="4_oy22p"]
+[ext_resource type="Script" uid="uid://bwc67s3vtcbex" path="res://src/scripts/interactions/SceneChangeAction.gd" id="4_vkwem"]
 [ext_resource type="Script" uid="uid://cfcfaryohbf75" path="res://src/scripts/desk_interaction.gd" id="5_gtcnr"]
 [ext_resource type="Resource" uid="uid://cokjrm8sl1nr4" path="res://src/input/interact.tres" id="6_y53gh"]
 [ext_resource type="PackedScene" uid="uid://ccd4nglpnueb1" path="res://src/game/Door.tscn" id="7_wobgr"]
+
+[sub_resource type="Resource" id="Resource_oy22p"]
+script = ExtResource("4_vkwem")
+target_scene_path = "res://src/game/reception.tscn"
+target_spawn_point_name = "SP_From_Storage"
+metadata/_custom_type_script = "uid://bwc67s3vtcbex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wobgr"]
 resource_name = "Doors"
@@ -1748,15 +1755,20 @@ size = Vector2(5, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvpot"]
 
+[sub_resource type="Resource" id="Resource_vkwem"]
+script = ExtResource("4_vkwem")
+target_scene_path = "res://src/game/apartment_hall.tscn"
+target_spawn_point_name = "SP_From_Test"
+metadata/_custom_type_script = "uid://bwc67s3vtcbex"
+
 [node name="Storage" type="Node2D"]
 script = ExtResource("1_e3os7")
 
 [node name="Door_To_Reception" parent="." instance=ExtResource("7_wobgr")]
 position = Vector2(965, 548)
-target_scene_path = "res://src/game/reception.tscn"
-target_spawn_point_name = "SP_From_Storage"
 door_tileset_texture = ExtResource("3_wobgr")
 door_texture_region = Rect2(692, 635, 48, 85)
+action = SubResource("Resource_oy22p")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(877, 576)
@@ -1788,6 +1800,12 @@ shape = SubResource("RectangleShape2D_cvpot")
 
 [node name="SP_From_Reception" type="Marker2D" parent="."]
 position = Vector2(966, 596)
+
+[node name="Door_To_Test" parent="." instance=ExtResource("7_wobgr")]
+position = Vector2(1034, 767)
+door_tileset_texture = ExtResource("3_wobgr")
+door_texture_region = Rect2(692, 635, 48, 85)
+action = SubResource("Resource_vkwem")
 
 [connection signal="body_entered" from="Desk_Area/Area2D" to="Desk_Area" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Desk_Area/Area2D" to="Desk_Area" method="_on_area_2d_body_exited"]
