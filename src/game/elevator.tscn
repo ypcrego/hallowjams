@@ -1738,7 +1738,7 @@ sources/3 = SubResource("TileSetAtlasSource_jue4s")
 sources/4 = SubResource("TileSetAtlasSource_nf15m")
 sources/0 = SubResource("TileSetAtlasSource_5q8ug")
 
-[sub_resource type="Resource" id="Resource_5q8ug"]
+[sub_resource type="Resource" id="Resource_ait6l"]
 script = ExtResource("5_ait6l")
 dialogue_id = "choose_elevator_floor"
 metadata/_custom_type_script = "uid://cjas1p3gxd660"
@@ -1756,9 +1756,7 @@ layer_1/z_index = -1
 
 [node name="Door_To_Floor" parent="." instance=ExtResource("4_ait6l")]
 position = Vector2(965, 548)
-door_tileset_texture = ExtResource("1_kijkc")
-door_texture_region = Rect2(692, 635, 48, 85)
-action = SubResource("Resource_5q8ug")
+action = SubResource("Resource_ait6l")
 
 [node name="SP_From_Floor" type="Marker2D" parent="."]
 position = Vector2(966, 596)

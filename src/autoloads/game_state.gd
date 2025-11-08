@@ -90,6 +90,9 @@ signal creepy_package_delivered(creepy_scene_path: String)
 # Disparado para que o 'main.gd' gerencie a troca de cena
 signal scene_change_requested(scene_path: String, spawn_point_name: String)
 
+signal scene_change_requested_with_data(scene_path: String, spawn_point_name: String, floor_data_resource: Resource)
+
+
 # Caminho da última cena visitada (útil para salvar/carregar)
 var current_scene_path: String = "res://scenes/kitnet.tscn"
 # Nome do nó Marker2D onde o jogador deve aparecer na NOVA cena.

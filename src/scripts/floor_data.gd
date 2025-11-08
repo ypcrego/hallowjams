@@ -1,17 +1,14 @@
-# Novo Script: src/scripts/floor_data.gd
+# src/scripts/floor_data.gd (CORRIGIDO)
 extends Resource
 class_name FloorData
 
-## ID único para o sistema de Seed (e salvamento)
-@export var floor_id: String = "TÉRREO"
-@export var floor_name: String = "Térreo"
+# Novo ID único para a cena de Hall (ex: "Hall_100", "Hall_200")
+@export var unique_floor_id: String = ""
 
-## Caminho da cena para onde o elevador leva neste andar
-#@export var next_scene_path: String = ""
-#@export var next_spawn_point_name: String = ""
+# Lista de recursos DoorData para este andar
+@export var doors: Array[DoorData]
 
-## Lista de todas as portas neste andar
-@export var doors: Array[DoorData] # Precisamos de um DoorData Resource
+@export var decorative_objects: Array[NodePath]
 
-# Você também pode exportar aqui o Tileset/Theme se cada andar tiver um visual bem diferente
-# @export var floor_tileset: TileSet
+# Propriedade para o diálogo (opcional, pode vir de outro lugar)
+@export var hall_dialogue_id: String = ""

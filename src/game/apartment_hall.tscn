@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://yjwduofn0grh"]
+[gd_scene load_steps=12 format=3 uid="uid://yjwduofn0grh"]
 
 [ext_resource type="Texture2D" uid="uid://dqaktyul2becp" path="res://src/assets/tileset/Inside_E.png" id="1_q2vsq"]
 [ext_resource type="Texture2D" uid="uid://bepelt4mg5j74" path="res://src/assets/tileset/A4.png" id="2_un3c5"]
 [ext_resource type="Texture2D" uid="uid://cksefu0phrhfq" path="res://src/assets/tileset/A5.png" id="3_ny2ur"]
 [ext_resource type="PackedScene" uid="uid://ccd4nglpnueb1" path="res://src/game/Door.tscn" id="5_sd6p6"]
-[ext_resource type="Script" uid="uid://bwc67s3vtcbex" path="res://src/scripts/interactions/SceneChangeAction.gd" id="6_q5oat"]
 [ext_resource type="Script" uid="uid://bbqka14cnal6a" path="res://src/scripts/apartment_hall.gd" id="6_sd6p6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sd6p6"]
@@ -1822,12 +1821,6 @@ func _check_and_trigger_first_visit_dialogue():
 		pass # Deixamos a lógica de diálogo mais complexa para o GameState/Interactions
 "
 
-[sub_resource type="Resource" id="Resource_u2vef"]
-script = ExtResource("6_q5oat")
-target_scene_path = "res://src/game/elevator.tscn"
-target_spawn_point_name = "SP_From_Floor"
-metadata/_custom_type_script = "uid://bwc67s3vtcbex"
-
 [node name="ApartmentHall" type="Node2D"]
 script = ExtResource("6_sd6p6")
 
@@ -1849,4 +1842,3 @@ script = SubResource("GDScript_ny2ur")
 
 [node name="Door_To_Elevator" parent="." instance=ExtResource("5_sd6p6")]
 position = Vector2(902, 588)
-action = SubResource("Resource_u2vef")

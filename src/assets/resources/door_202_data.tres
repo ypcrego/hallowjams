@@ -6,5 +6,7 @@
 
 [resource]
 script = ExtResource("3_uhykv")
+position = Vector2(880, 368)
+apartment_number = "202"
 delivery_action = ExtResource("1_kl7ff")
 metadata/_custom_type_script = "uid://gjyn4rojs8rn"
