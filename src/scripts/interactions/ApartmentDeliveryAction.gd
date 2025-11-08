@@ -30,5 +30,9 @@ func execute(interactor: Node) -> void:
 		# Não está segurando nada
 		timeline_to_start = "no_package_dialogue"
 
+	if Dialogic.current_timeline != null:
+		return
+
 	if timeline_to_start and Dialogic:
+		print(timeline_to_start)
 		Dialogic.start(timeline_to_start)

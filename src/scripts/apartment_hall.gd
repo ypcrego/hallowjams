@@ -7,7 +7,7 @@ extends Node2D
 @export var decorative_objects: Array[Node2D]
 
 @export var floor_data: FloorData
-var door_scene: PackedScene = preload("res://src/game/Door.tscn")
+const DOOR_SCENE: PackedScene = preload("res://src/game/Door.tscn")
 # Usado para garantir que a variação visual seja a mesma se o jogador sair e voltar
 var current_day_seed: int = 0
 
@@ -58,33 +58,39 @@ func _apply_visual_variations(seed: int):
 
 # --- Lógica de Diálogo Único por CENA ---
 func _build_doors():
-	if not floor_data:
-		push_error("FloorData não está definido para este ApartmentHall.")
+	print('buildando portass')
+	# 1. Garante que o container "Doors" existe
+	var doors_container = get_node("Doors")
+	if !is_instance_valid(doors_container):
+		push_error("ApartmentHall precisa de um nó 'Doors' Node2D para o container.")
 		return
 
-	# Limpa portas antigas (se for reusado)
-	for child in $Doors.get_children(): # Supondo que você crie um nó 'Doors' Node2D
+	# Limpa portas antigas (necessário se o Hall for reutilizado sem recarregar a cena)
+	for child in doors_container.get_children():
 		child.queue_free()
 
+	# 2. Itera sobre a lista de portas definidas no FloorData
 	for door_data in floor_data.doors:
-		var door_instance = door_scene.instantiate()
-		$Doors.add_child(door_instance)
+		var door_instance = DOOR_SCENE.instantiate()
+		doors_container.add_child(door_instance)
 
-		# 3. Posição e Z-index
+		# 1. Posição (ok)
 		door_instance.position = door_data.position
 		door_instance.z_index = door_data.z_index_offset
 
-		# 4. Ação de Interação e Configuração Visual
+		# 2. Ação (ok)
 		door_instance.action = door_data.delivery_action
+
+		door_instance.door_tileset_texture = door_data.door_tileset_texture
 		door_instance.door_texture_region = door_data.door_texture_region
+
+		if door_instance.has_method("setup_door_sprite"):
+			door_instance.setup_door_sprite()
 		# (O door_instance.door_tileset_texture, se necessário, pode ser
 		# carregado aqui ou no Door.gd se for estático.)
 
 		# O Door.gd usa a propriedade 'action' para interagir.
 		# Você deve garantir que a Door.tscn é uma Area2D.
-
-		# O script ApartmentDeliveryAction já tem o apartment_number
-		# (Você precisa garantir que o Door.tscn tenha um nó 'Sprite2D' ou similar)
 
 
 

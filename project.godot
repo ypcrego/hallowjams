@@ -39,16 +39,20 @@ directories/dch_directory={
 "Porteiro": "res://src/data/dialogic/Porteiro.dch"
 }
 directories/dtl_directory={
+"delivery_failure": "res://src/data/dialogic/delivery_failure.dtl",
+"delivery_success_101": "res://src/data/dialogic/delivery_success_101.dtl",
 "door_dialogue": "res://src/assets/facecards/door_dialogue.dtl",
 "no_more_packages": "res://src/assets/facecards/no_more_packages.dtl",
+"no_package_dialogue": "res://src/data/dialogic/no_package_dialogue.dtl",
 "pacote_dialogue": "res://src/data/dialogic/pacote_dialogue.dtl",
 "pacotes": "res://src/assets/facecards/pacotes.dtl"
 }
 layout/style_directory={
-"custom_style": "res://src/assets/facecards/custom_style.tres"
+"": "res://src/data/dialogic/custom_syle.tres",
+"custom_syle": "res://src/data/dialogic/custom_syle.tres"
 }
-layout/style_list=["res://src/assets/facecards/custom_style.tres"]
-layout/default_style=""
+layout/style_list=["res://src/data/dialogic/custom_syle.tres"]
+layout/default_style="res://src/data/dialogic/custom_syle.tres"
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true

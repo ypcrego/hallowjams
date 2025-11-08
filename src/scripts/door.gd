@@ -12,15 +12,21 @@ var player_in_range = false
 
 
 func _ready() -> void:
-	# 1. Verifica se a textura e a região estão definidas.
-	if door_tileset_texture:
-		door_sprite.texture = door_tileset_texture
-		door_sprite.region_enabled = true # Habilita o recorte
-		door_sprite.region_rect = door_texture_region # Aplica o retângulo de recorte
+	setup_door_sprite()
 
 	# 2. Conecta sinais de transição, etc.
 	interact.triggered.connect(handle_door_interaction)
 
+# NOVO: Função para configurar o sprite a qualquer momento
+func setup_door_sprite():
+	# 1. Verifica se a textura e a região estão definidas.
+	if door_tileset_texture:
+		door_sprite.texture = door_tileset_texture
+		door_sprite.region_enabled = true
+		door_sprite.region_rect = door_texture_region
+
+		# Se você tiver uma collision shape de sprite, pode querer atualizá-la aqui
+		# Ex: door_sprite.set_texture_filter(CanvasItem.TEXTURE_FILTER_NEAREST)
 
 func handle_door_interaction():
 	print("aa")
