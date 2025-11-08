@@ -2,17 +2,18 @@ extends Area2D
 
 
 # Importa as classes de Recurso para tipagem
-const DoorData = preload("res://src/scripts/door_data.gd")
+const DoorConfigResource = preload("res://src/scripts/apartment_config.gd")
 
 @onready var door_sprite: Sprite2D = $Sprite2D
 
 @export var interact: GUIDEAction
-@export var door_tileset_texture: Texture2D = null
-@export var door_texture_region: Rect2 = Rect2(0, 0, 32, 32)
-@export var z_index_offset: int = 0
-@export var action: InteractionAction = null
+# Estes agora são os valores padrão do TRES (se não houverem dados injetados)
+@export var door_tileset_texture: Texture2D = preload("res://src/assets/tileset/Inside_E.png")
+@export var door_texture_region: Rect2 = Rect2(692, 635, 48, 85)
 
-var door_data: DoorData = null
+# Variáveis que serão preenchidas pelos dados injetados
+var door_config: DoorConfigResource = null
+@export var action: InteractionAction = null
 
 var player: Node2D = null
 var player_in_range = false
@@ -21,20 +22,16 @@ var player_in_range = false
 func _ready() -> void:
 	interact.triggered.connect(handle_door_interaction)
 
-	if door_data == null:
-		self.z_index = self.z_index_offset
+	if door_config == null:
 		call_deferred("setup_door_sprite")
 
+func init_with_config(config: DoorConfigResource) -> void:
+	self.apartment_config = config
+	self.action = config.delivery_action
 
-func init_with_data(data: DoorData) -> void:
-	# 1. Armazena os dados
-	self.door_data = data
-	self.action = data.delivery_action
-	self.door_tileset_texture = data.door_tileset_texture
-	self.door_texture_region = data.door_texture_region
-
-	self.position = data.position
-	self.z_index = data.z_index_offset
+	# 2. Sobrescreve as propriedades visuais com os dados do Recurso.
+	self.door_tileset_texture = config.door_tileset_texture
+	self.door_texture_region = config.door_texture_region
 
 	call_deferred("setup_door_sprite")
 

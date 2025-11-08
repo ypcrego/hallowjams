@@ -1847,6 +1847,15 @@ script = SubResource("GDScript_ny2ur")
 
 [node name="Doors" type="Node2D" parent="."]
 
+[node name="Door_101" type="Marker2D" parent="Doors"]
+position = Vector2(822, 395)
+
+[node name="Door_202" type="Marker2D" parent="Doors"]
+position = Vector2(903, 392)
+
+[node name="Door_444" type="Marker2D" parent="Doors"]
+position = Vector2(942, 393)
+
 [node name="Door_To_Elevator" parent="." instance=ExtResource("5_sd6p6")]
 position = Vector2(902, 588)
 door_tileset_texture = null

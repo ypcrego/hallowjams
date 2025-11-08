@@ -1,55 +1,26 @@
-extends Area2D
-# Se você tiver um recurso para o Dialogic, use-o aqui
-# @export var elevator_dialogue: DialogicResource
+extends Node2D
 
+
+const FLOOR_MASTER_LIST = preload("res://src/assets/resources/floors/floor_master.tres")
 const HALL_SCENE: PackedScene = preload("res://src/game/Hall.tscn")
+const DEFAULT_SPAWN_POINT = "SP_From_Elevator"
 
-# 2. Pré-carregue os DADOS (Resources) de cada andar
-const FLOOR_100_DATA = preload("res://src/assets/resources/floor_100s.tres")
-const FLOOR_200_DATA = preload("res://src/assets/resources/floor_200s.tres")
-const FLOOR_400_DATA = preload("res://src/assets/resources/floor_400s.tres")
+var FLOOR_DATA_MAP: Dictionary = {}
 
-# const FLOOR_300_DATA = preload("res://src/assets/resources/floor_300s.tres")
-
-const FLOOR_MAP = {
-	0: {
-		# Exemplo: O storage/recepção ainda pode ser uma cena normal,
-		# ou você pode criar um Resource Data para ele também.
-		"scene_path": "res://src/game/storage.tscn",
-		"spawn_point": "SP_From_Elevator",
-		"data": null # Nenhuma injeção de dados necessária aqui
-	},
-	1: {
-		"scene_path": "res://src/game/Hall.tscn", # Sempre a CENA GENÉRICA
-		"spawn_point": "SP_From_Elevator",
-		"data": FLOOR_100_DATA # O recurso de dados para o Hall 100
-	},
-	2: {
-		"scene_path": "res://src/game/Hall.tscn", # Sempre a CENA GENÉRICA
-		"spawn_point": "SP_From_Elevator",
-		"data": FLOOR_200_DATA # O recurso de dados para o Hall 200
-	},
-	4: {
-		"scene_path": "res://src/game/Hall.tscn", # Sempre a CENA GENÉRICA
-		"spawn_point": "SP_From_Elevator",
-		"data": FLOOR_400_DATA # O recurso de dados para o Hall 200
-	},
-
-	# Adicione os novos andares usando a mesma cena mestre e um novo recurso:
-	#3: {
-	#	"scene_path": "res://src/game/Hall.tscn",
-	#	"spawn_point": "SP_From_Elevator",
-	#	"data": FLOOR_300_DATA
-	#},
-}
+func _ready() -> void:
+	# Certifique-se de chamar a função de construção
+	build_floor_data_map()
+	# ... (resto do _ready)
 
 # Esta é a função que o Dialogic chamará (o "calcanhar de Aquiles" da lógica)
 func go_to_floor(floor_id: int) -> void:
-	if FLOOR_MAP.has(floor_id):
-		var target_data = FLOOR_MAP[floor_id]
+	print(FLOOR_DATA_MAP)
+	print(floor_id)
+	if FLOOR_DATA_MAP.has(floor_id):
+		var target_data = FLOOR_DATA_MAP[floor_id]
+		var floor_data_resource = target_data.data # Pode ser null
 		var target_scene_path = target_data.scene_path
 		var target_spawn_point_name = target_data.spawn_point
-		var floor_data_resource = target_data.data # Pode ser null
 
 		# Se for um andar (Hall.tscn) que precisa de dados, emite o NOVO sinal:
 		if floor_data_resource != null:
@@ -67,3 +38,26 @@ func go_to_floor(floor_id: int) -> void:
 
 	else:
 		push_error("Andar não mapeado: ", floor_id)
+
+
+func build_floor_data_map():
+	# Limpa o mapa se for chamado várias vezes
+	FLOOR_DATA_MAP.clear()
+
+	# Adiciona o andar de recepção (exceção que não usa FloorData)
+	FLOOR_DATA_MAP[0] = {
+		"scene_path": "res://src/game/storage.tscn", # Exemplo seu
+		"spawn_point": DEFAULT_SPAWN_POINT,
+		"data": null
+	}
+
+	# Itera sobre a lista de FloorData para preencher o mapa
+	for floor_data in FLOOR_MASTER_LIST.floor_data_list:
+		# Usa o unique_floor_id ("100", "200") como chave do dicionário
+		var floor_id = floor_data.unique_floor_id.to_int()
+		FLOOR_DATA_MAP[floor_id] = {
+			"scene_path": HALL_SCENE.resource_path,
+			"spawn_point": DEFAULT_SPAWN_POINT,
+			"data": floor_data # O Recurso FloorData inteiro
+		}
+		print(FLOOR_DATA_MAP)

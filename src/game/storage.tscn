@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bhsiyh7htemxt"]
+[gd_scene load_steps=18 format=3 uid="uid://bhsiyh7htemxt"]
 
 [ext_resource type="Script" uid="uid://cji1c3mocoxqn" path="res://src/game/game.gd" id="1_e3os7"]
 [ext_resource type="Texture2D" uid="uid://bepelt4mg5j74" path="res://src/assets/tileset/A4.png" id="3_vkwem"]
@@ -8,12 +8,6 @@
 [ext_resource type="Script" uid="uid://cfcfaryohbf75" path="res://src/scripts/desk_interaction.gd" id="5_gtcnr"]
 [ext_resource type="Resource" uid="uid://cokjrm8sl1nr4" path="res://src/input/interact.tres" id="6_y53gh"]
 [ext_resource type="PackedScene" uid="uid://ccd4nglpnueb1" path="res://src/game/Door.tscn" id="7_wobgr"]
-
-[sub_resource type="Resource" id="Resource_oy22p"]
-script = ExtResource("4_vkwem")
-target_scene_path = "res://src/game/reception.tscn"
-target_spawn_point_name = "SP_From_Storage"
-metadata/_custom_type_script = "uid://bwc67s3vtcbex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oy22p"]
 resource_name = "Doors"
@@ -1766,7 +1760,6 @@ script = ExtResource("1_e3os7")
 
 [node name="Door_To_Reception" parent="." instance=ExtResource("7_wobgr")]
 position = Vector2(965, 548)
-action = SubResource("Resource_oy22p")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(877, 576)

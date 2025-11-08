@@ -5,8 +5,9 @@ class_name FloorData
 # Novo ID único para a cena de Hall (ex: "Hall_100", "Hall_200")
 @export var unique_floor_id: String = ""
 
-# Lista de recursos DoorData para este andar
-@export var doors: Array[DoorData]
+# Mapeia o número do apartamento (String) para a configuração de porta (ApartmentConfig)
+# Ex: {"101": [Resource:ApartmentConfig], "102": [Resource:ApartmentConfig], ...}
+@export var apartment_configs: Dictionary = {}
 
 @export var decorative_objects: Array[NodePath]
 
