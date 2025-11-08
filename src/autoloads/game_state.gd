@@ -32,12 +32,13 @@ func get_packages_to_deliver() -> Array[Package]:
 
 # Inicializa o dia e carrega os pacotes
 func start_day(day: int):
+	print("Funcao de comecar dia foi chamada")
 	var day_data: DayData = load(DAY_DATA_PATHS.get(day))
 	current_day_data = day_data
 
 	# Cria uma cópia da lista de pacotes para manipulação (remover, embaralhar)
-	packages_to_process = day_data.packages_to_deliver.duplicate()
 	set_packages_to_deliver([]) # Limpa a lista de pacotes a entregar do dia anterior
+	packages_to_process = day_data.packages_to_deliver.duplicate()
 	is_processing_complete = false # Reinicia o estado para o novo dia
 	# Opcional, se quiser que a ordem seja aleatória: packages_to_process.shuffle()
 
@@ -72,6 +73,10 @@ func _update_current_delivery_target() -> void:
 		set_package_status(false, "")
 		print("LOG: Jogador de 'mãos vazias'.")
 
+	print('printando numero de pacotes pra entregar: ', _packages_to_deliver.size())
+	print('printando processamento completo: ', is_processing_complete)
+
+
 # Marca que o turno de CADASTRO na mesa terminou.
 func mark_processing_complete() -> void:
 	is_processing_complete = true
@@ -80,9 +85,9 @@ func mark_processing_complete() -> void:
 
 # Retorna se TODAS as tarefas do dia (cadastro E entrega) estão completas
 func is_day_task_complete() -> bool:
+	print('dia terminou ? ', is_processing_complete and _packages_to_deliver.is_empty())
 	# O dia só está completo se o processamento terminou E não houver pacotes para entregar
-	return true
-	#return is_processing_complete and _packages_to_deliver.is_empty()
+	return is_processing_complete and _packages_to_deliver.is_empty()
 
 
 # Sinais para notificar a UI ou outros scripts sobre mudanças
@@ -102,7 +107,7 @@ var current_scene_path: String = "res://scenes/kitnet.tscn"
 var next_spawn_point_name: String = "SP_From_Bed"
 
 const RECEPTION_SCENE_PATH = "res://game/reception.tscn"
-const KITNET_SCENE_PATH = "res://game/reception.tscn"
+const KITNET_SCENE_PATH = "res://game/kitnet.tscn"
 
 # Atualiza o status do pacote e notifica os ouvintes
 func set_package_status(is_holding: bool, ap: String) -> void:
@@ -110,13 +115,14 @@ func set_package_status(is_holding: bool, ap: String) -> void:
 
 # Avança o dia, reiniciando o estado do pacote (novo dia = sem pacote)
 func advance_day() -> void:
+	print("avançando o dia !!!!!")
 	current_day += 1
 	set_package_status(false, "")
 
-	# Solicita a mudança de cena para a Kitnet, entrando pelo ponto de spawn "Start_From_Door_Back"
-	# Você precisará criar o caminho correto da cena da Kitnet.
-	scene_change_requested.emit(KITNET_SCENE_PATH, "SP_From_Bed")
+	start_day(current_day)
+
 	print("estasos em um novo dia !")
+
 
 	# Adicione aqui a lógica de salvar o progresso, se for o caso.
 
@@ -169,23 +175,26 @@ func start_delivery_end_sequence():
 		push_error("DayData não carregado. Não é possível encerrar o dia.")
 		return
 
-	# 1. Conecta o sinal para avançar para a próxima fase após o diálogo.
-	if not Dialogic.is_connected("timeline_ended", Callable(self, "_on_delivery_end_dialogue_ended")):
-		Dialogic.connect("timeline_ended", Callable(self, "_on_delivery_end_dialogue_ended"))
+	# Nome da timeline de encerramento
+	var delivery_end_timeline = "delivery_end_day_" + str(current_day)
+	print("Iniciando timeline de fim de entrega:", delivery_end_timeline)
 
-		# 2. Inicia o diálogo de fim da fase de entregas.
-	var delivery_end_timeline = "delivery_end_day_" + str(current_day) # Ex: "delivery_end_day_1"
-	print(delivery_end_timeline)
+	# Evita conexões duplicadas
+	if Dialogic.is_connected("timeline_ended", Callable(self, "_on_delivery_end_dialogue_ended")):
+		Dialogic.disconnect("timeline_ended", Callable(self, "_on_delivery_end_dialogue_ended"))
 
-	# **OBSERVAÇÃO:** Você precisará criar a(s) timeline(s) no Dialogic com o nome padronizado.
+	Dialogic.connect("timeline_ended", Callable(self, "_on_delivery_end_dialogue_ended"))
 	Dialogic.start(delivery_end_timeline)
 
 
 # Chamado quando o diálogo de fim de entregas termina.
 func _on_delivery_end_dialogue_ended():
 	print('delivery ended')
+
+	if Dialogic.is_connected("timeline_ended", Callable(self, "_on_delivery_end_dialogue_ended")):
+		Dialogic.disconnect("timeline_ended", Callable(self, "_on_delivery_end_dialogue_ended"))
+
 	if current_day_data:
-		# Manda o jogador para a Kitnet para a fase de descanso.
-		var kitnet_path = current_day_data.next_scene_on_complete # Pega o caminho da cena do DayData
-		var bed_spawn = "Start_From_Bed"
+		var kitnet_path = current_day_data.next_scene_on_complete
+		var bed_spawn = "SP_From_Bed"
 		scene_change_requested.emit(kitnet_path, bed_spawn)

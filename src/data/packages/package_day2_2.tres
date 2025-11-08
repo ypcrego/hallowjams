@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Package" load_steps=2 format=3 uid="uid://ci0htcda62l5a"]
+
+[ext_resource type="Script" uid="uid://cit67nwhs632o" path="res://src/scripts/package.gd" id="1_5qx4k"]
+
+[resource]
+script = ExtResource("1_5qx4k")
+package_name = "Som oco"
+weight_description = "Caixa pequena, bem leve, e parece vazia quando chacoalhada."
+surface_hint = "Etiqueta escrita à mão: “Ap. 307 - Entregar com cuidado (muito frágil)”."
+real_content = "Não há nada visível, apenas um som baixo de respiração abafada quando a caixa se abre. Ao fechar, o som cessa."
+metadata/_custom_type_script = "uid://cit67nwhs632o"

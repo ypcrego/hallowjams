@@ -102,6 +102,7 @@ variables={
 "first_package_day": true,
 "hint": "",
 "is_creepy": false,
+"real_content": "",
 "weight": ""
 }
 timer/process_in_physics=false

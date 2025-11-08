@@ -68,7 +68,6 @@ func load_scene(scene_path: String, spawn_point_name: String, floor_data_resourc
 		await _wait_scene_ready()
 
 		var spawn_point = current_scene.find_child(spawn_point_name, true, false)
-		print(spawn_point)
 		if spawn_point:
 			await get_tree().physics_frame
 			# 5. Move o jogador persistente para o ponto de spawn

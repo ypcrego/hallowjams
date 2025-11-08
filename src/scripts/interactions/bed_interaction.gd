@@ -32,7 +32,6 @@ func handle_bed_interaction():
 		#_dialogic.start("not_all_packages_delivered") # **CRIE ESSA TIMELINE NO DIALOGIC** (Ex: "Ainda tenho entregas a fazer...")
 		return
 
-	# 3. Se o dia estiver completo, inicie a sequência de sono na Kitnet
 	print("LOG: Interação com a cama bem-sucedida. Iniciando sequência de sono.")
 
 	if kitnet_manager.has_method("start_sleep_sequence"):

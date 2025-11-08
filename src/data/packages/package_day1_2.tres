@@ -7,5 +7,6 @@ script = ExtResource("1_w1bau")
 package_name = "Livro de Culinária"
 recipient_apartment = "202"
 weight_description = "Parece um volume único, um pouco pesado, como um livro."
-surface_hint = "\"AP. 203 - Cuidado para não sujar de óleo!\"."
+surface_hint = "\"AP. 202 - Cuidado para não sujar de óleo!\"."
+real_content = "Um livro de receitas comum."
 metadata/_custom_type_script = "uid://cit67nwhs632o"

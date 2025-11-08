@@ -50,10 +50,14 @@ func execute(interactor: Node) -> void:
 		Dialogic.start(timeline_to_start)
 
 func _on_delivery_dialogue_ended():
-	var is_day_complete = GameState.is_day_task_complete()
-
 	if Dialogic.is_connected("timeline_ended", Callable(self, "_on_delivery_dialogue_ended")):
 		Dialogic.disconnect("timeline_ended", Callable(self, "_on_delivery_dialogue_ended"))
 
-	if is_day_complete:
-		GameState.start_delivery_end_sequence()
+	# Só verifica o fim de dia se o jogador tiver entregado pelo menos 1 pacote
+	if GameState.get_packages_to_deliver().size() < GameState.current_day_data.packages_to_deliver.size():
+		var is_day_complete = GameState.is_day_task_complete()
+		if is_day_complete:
+			print("Chamando o fim da sequencia de fim do dia")
+			GameState.start_delivery_end_sequence()
+	else:
+		print("Ignorando chamada indevida de fim de dia (nenhuma entrega feita ainda)")
