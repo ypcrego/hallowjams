@@ -43,6 +43,8 @@ directories/dtl_directory={
 "choose_elevator_floor": "res://src/data/dialogic/choose_elevator_floor.dtl",
 "delivery_failure": "res://src/data/dialogic/delivery_failure.dtl",
 "delivery_success_101": "res://src/data/dialogic/delivery_success_101.dtl",
+"delivery_success_202": "res://src/data/dialogic/delivery_success_202.dtl",
+"delivery_success_444": "res://src/data/dialogic/delivery_success_444.dtl",
 "door_dialogue": "res://src/assets/facecards/door_dialogue.dtl",
 "no_more_packages": "res://src/assets/facecards/no_more_packages.dtl",
 "no_package_dialogue": "res://src/data/dialogic/no_package_dialogue.dtl",

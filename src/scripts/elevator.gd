@@ -7,6 +7,8 @@ const HALL_SCENE: PackedScene = preload("res://src/game/Hall.tscn")
 # 2. Pré-carregue os DADOS (Resources) de cada andar
 const FLOOR_100_DATA = preload("res://src/assets/resources/floor_100s.tres")
 const FLOOR_200_DATA = preload("res://src/assets/resources/floor_200s.tres")
+const FLOOR_400_DATA = preload("res://src/assets/resources/floor_400s.tres")
+
 # const FLOOR_300_DATA = preload("res://src/assets/resources/floor_300s.tres")
 
 const FLOOR_MAP = {
@@ -27,6 +29,12 @@ const FLOOR_MAP = {
 		"spawn_point": "SP_From_Elevator",
 		"data": FLOOR_200_DATA # O recurso de dados para o Hall 200
 	},
+	4: {
+		"scene_path": "res://src/game/Hall.tscn", # Sempre a CENA GENÉRICA
+		"spawn_point": "SP_From_Elevator",
+		"data": FLOOR_400_DATA # O recurso de dados para o Hall 200
+	},
+
 	# Adicione os novos andares usando a mesma cena mestre e um novo recurso:
 	#3: {
 	#	"scene_path": "res://src/game/Hall.tscn",

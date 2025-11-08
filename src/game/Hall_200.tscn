@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://d08ore7bgyvaa"]
-
-[ext_resource type="PackedScene" uid="uid://yjwduofn0grh" path="res://src/game/apartment_hall.tscn" id="1_bi44i"]
-[ext_resource type="Resource" uid="uid://c03kr8w42ifk2" path="res://src/assets/resources/floor_100s.tres" id="2_c0ogw"]
-
-[node name="Hall200" type="Node2D"]
-
-[node name="ApartmentHall" parent="." instance=ExtResource("1_bi44i")]
-floor_data = ExtResource("2_c0ogw")
