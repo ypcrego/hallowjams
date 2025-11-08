@@ -3,7 +3,6 @@ extends Node2D
 
 const FloorData = preload("res://src/scripts/floor_data.gd")
 const DOOR_SCENE: PackedScene = preload("res://src/game/Door.tscn")
-const DoorPlaceholder = preload("res://src/scripts/DoorPlaceholder.gd")
 
 @export var floor_data: FloorData = null
 
@@ -61,44 +60,32 @@ func _apply_visual_variations(seed: int, objects_paths: Array[NodePath]):
 # --- Lógica de Diálogo Único por CENA ---
 # --- Lógica de Construção de Portas (CORRIGIDA) ---
 func _build_doors():
-	print('Iniciando construção de portas a partir dos Placeholders')
+	print('Iniciando construção de portas')
+	# 1. Encontra o container (ou itera sobre os filhos do próprio Hall, se for o caso)
 	var doors_container = get_node("Doors")
 	if not is_instance_valid(doors_container):
 		push_error("ApartmentHall precisa de um nó 'Doors' Node2D para o container.")
 		return
 
+	# Limpa portas antigas (necessário se o Hall for reutilizado sem recarregar a cena)
 	for child in doors_container.get_children():
 		child.queue_free()
 
-
-	# Itera sobre os NÓS (Marker2D) que você posicionou na cena
-	for placeholder in doors_container.get_children():
-
-		# 1. Checa se o nó tem o script DoorPlaceholder anexado
-		if not placeholder is DoorPlaceholder:
-			push_warning("Nó não-Placeholder encontrado no container 'Doors': " + placeholder.name + ". Pulando.")
-			continue
-
-		var apartment_config = placeholder.apartment_config
-
-		if apartment_config == null:
-			push_warning("Placeholder '"+ placeholder.name +"' sem ApartmentConfig. Pulando.")
-			continue
-
+	# 2. Itera sobre os VALORES do NOVO dicionário apartment_configs:
+	# O erro era tentar acessar 'floor_data.doors', que não existe.
+	# Agora usamos 'floor_data.apartment_configs.values()' para obter todos os DoorData/ApartmentConfig.
+	for door_config in floor_data.apartment_configs.values():
 		var door_instance = DOOR_SCENE.instantiate()
 		doors_container.add_child(door_instance)
 
-		# 2. POSICIONAMENTO: Obtido diretamente do nó Marker2D da cena!
-		door_instance.global_position = placeholder.global_position
-		door_instance.z_index = placeholder.z_index
+		# O CÓDIGO DO HALL DEVE DEFINIR AS PROPRIEDADES ESPACIAIS DIRETAMENTE.
+		# ASSUME-SE que door_config AINDA TEM position e z_index_offset POR ENQUANTO!
+		door_instance.position = door_config.position
+		door_instance.z_index = door_config.z_index_offset
 
-		# 3. INICIALIZAÇÃO: Injeta o recurso de comportamento
-		door_instance.init_with_config(apartment_config)
-
-		# 4. LIMPEZA: O nó Placeholder (Marker2D) não é mais necessário
-		placeholder.queue_free()
-
-	print("FIM DA CONSTRUÇÃO: Portas adicionadas.")
+		# E então, o Door.gd é inicializado com o restante dos dados.
+		# A função foi renomeada no passo 1.
+		door_instance.init_with_config(door_config)
 
 
 func _check_and_trigger_first_visit_dialogue():
