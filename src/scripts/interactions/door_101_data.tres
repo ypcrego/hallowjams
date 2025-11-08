@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DoorData" load_steps=3 format=3 uid="uid://bekhja2qt6frr"]
+
+[ext_resource type="Script" uid="uid://gjyn4rojs8rn" path="res://src/scripts/door_data.gd" id="1_5lc2j"]
+[ext_resource type="Resource" uid="uid://bgnso2qkgb44w" path="res://src/scripts/interactions/delivery_101.tres" id="1_yg3bb"]
+
+[resource]
+script = ExtResource("1_5lc2j")
+delivery_action = ExtResource("1_yg3bb")
+metadata/_custom_type_script = "uid://gjyn4rojs8rn"

@@ -1,28 +1,35 @@
 # src/game/ApartmentHall.gd
 extends Node2D
 
+@export var scene_id: String = "HALL_DEFAULT" # Ex: "HALL_100", "HALL_200"
 ## Lista de todos os objetos decorativos na cena que podem variar.
 ## Preencha esta lista no Inspector com os nós Sprite2D ou Marker2D.
 @export var decorative_objects: Array[Node2D]
 
-## Dicionário que mapeia um número de apt para um ID de diálogo de "primeira visita".
-@export var unique_visit_dialogues: Dictionary = {
-	"101": "APT_101_FIRST_VISIT_DIALOGUE",
-	"202": "APT_202_FIRST_VISIT_DIALOGUE",
-}
-
-# Caminho completo da cena atual (definido em GameState)
-var current_scene_path: String = ""
-
+@export var floor_data: FloorData
+var door_scene: PackedScene = preload("res://src/game/Door.tscn")
 # Usado para garantir que a variação visual seja a mesma se o jogador sair e voltar
 var current_day_seed: int = 0
 
+# (Remova a lógica 'unique_visit_dialogues' e 'current_scene_path' se o GameState gerenciar a primeira visita)
+# Dicionário que mapeia um número de apt para um ID de diálogo de "primeira visita".
+#@export var unique_visit_dialogues: Dictionary = {
+#	"101": "APT_101_FIRST_VISIT_DIALOGUE",
+#	"202": "APT_202_FIRST_VISIT_DIALOGUE",
+#}
+# Caminho completo da cena atual (definido em GameState)
+#var current_scene_path: String = ""
+
+
 func _ready():
 	# Garantir que a seed seja consistente por dia
-	current_day_seed = GameState.current_day #
+	current_day_seed = GameState.current_day
 
+	var unique_seed = hash(str(current_day_seed) + scene_id)
 	# Aplica as variações visuais
-	_apply_visual_variations(current_day_seed)
+	_apply_visual_variations(unique_seed)
+
+	_build_doors()
 
 	# Dispara o diálogo de "primeira vez" (se houver)
 	_check_and_trigger_first_visit_dialogue()
@@ -50,9 +57,39 @@ func _apply_visual_variations(seed: int):
 		# Adicione mais regras de variação aqui (cores, sprites etc.)
 
 # --- Lógica de Diálogo Único por CENA ---
+func _build_doors():
+	if not floor_data:
+		push_error("FloorData não está definido para este ApartmentHall.")
+		return
+
+	# Limpa portas antigas (se for reusado)
+	for child in $Doors.get_children(): # Supondo que você crie um nó 'Doors' Node2D
+		child.queue_free()
+
+	for door_data in floor_data.doors:
+		var door_instance = door_scene.instantiate()
+		$Doors.add_child(door_instance)
+
+		# 3. Posição e Z-index
+		door_instance.position = door_data.position
+		door_instance.z_index = door_data.z_index_offset
+
+		# 4. Ação de Interação e Configuração Visual
+		door_instance.action = door_data.delivery_action
+		door_instance.door_texture_region = door_data.door_texture_region
+		# (O door_instance.door_tileset_texture, se necessário, pode ser
+		# carregado aqui ou no Door.gd se for estático.)
+
+		# O Door.gd usa a propriedade 'action' para interagir.
+		# Você deve garantir que a Door.tscn é uma Area2D.
+
+		# O script ApartmentDeliveryAction já tem o apartment_number
+		# (Você precisa garantir que o Door.tscn tenha um nó 'Sprite2D' ou similar)
+
+
 
 func _check_and_trigger_first_visit_dialogue():
-	# O SceneManager (se houver) deve definir a variável `current_scene_path` no GameState.
+	# O SceneManager (se houver) deve definir a v ariável `current_scene_path` no GameState.
 	# Usamos o caminho da cena como um ID único.
 	var scene_id = GameState.current_scene_path
 

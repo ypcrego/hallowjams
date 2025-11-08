@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FloorData" load_steps=4 format=3 uid="uid://c03kr8w42ifk2"]
+
+[ext_resource type="Script" uid="uid://gjyn4rojs8rn" path="res://src/scripts/door_data.gd" id="1_nlm6m"]
+[ext_resource type="Resource" uid="uid://bekhja2qt6frr" path="res://src/scripts/interactions/door_101_data.tres" id="2_8031v"]
+[ext_resource type="Script" uid="uid://5b2hwbpngk1n" path="res://src/scripts/floor_data.gd" id="2_jt4uj"]
+
+[resource]
+script = ExtResource("2_jt4uj")
+floor_id = "TERREO"
+doors = Array[ExtResource("1_nlm6m")]([ExtResource("2_8031v")])
+metadata/_custom_type_script = "uid://5b2hwbpngk1n"

@@ -2,12 +2,15 @@
 extends InteractionAction
 class_name ApartmentDeliveryAction
 
+
+
 @export var apartment_number: String = "101"
 
 # ID do diálogo para sucesso na entrega
 @export var dialogue_success_id: String = ""
 # ID do diálogo para falha na entrega
-@export var dialogue_failure_id: String = ""
+@export var dialogue_failure_id: String = "delivery_failure"
+
 
 func execute(interactor: Node) -> void:
 	# Apenas uma chamada, e um retorno simples:

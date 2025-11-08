@@ -1757,7 +1757,7 @@ size = Vector2(5, 1)
 
 [sub_resource type="Resource" id="Resource_vkwem"]
 script = ExtResource("4_vkwem")
-target_scene_path = "res://src/game/apartment_hall.tscn"
+target_scene_path = "res://src/game/Hall_100.tscn"
 target_spawn_point_name = "SP_From_Test"
 metadata/_custom_type_script = "uid://bwc67s3vtcbex"
 
