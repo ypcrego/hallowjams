@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ApartmentDeliveryAction" load_steps=2 format=3 uid="uid://bgnso2qkgb44w"]
+
+[ext_resource type="Script" uid="uid://n8yc2dfxdli7" path="res://src/scripts/interactions/ApartmentDeliveryAction.gd" id="1_idcy8"]
+
+[resource]
+script = ExtResource("1_idcy8")
+dialogue_success_id = "delivery_success_101"
+metadata/_custom_type_script = "uid://n8yc2dfxdli7"

@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d286imsit4ows" path="res://src/assets/tileset/Inside_D.png" id="3_vp3wh"]
 [ext_resource type="PackedScene" uid="uid://ccd4nglpnueb1" path="res://src/game/Door.tscn" id="4_pbver"]
 [ext_resource type="Texture2D" uid="uid://n6hxhk53uu4q" path="res://src/assets/tileset/escada_pardde.png" id="6_vp3wh"]
+[ext_resource type="Script" uid="uid://bwc67s3vtcbex" path="res://src/scripts/interactions/SceneChangeAction.gd" id="5_e4nf2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kvwdw"]
 resource_name = "Doors"
@@ -4843,6 +4844,12 @@ sources/6 = SubResource("TileSetAtlasSource_2i1nj")
 sources/7 = SubResource("TileSetAtlasSource_kb83b")
 sources/11 = SubResource("TileSetAtlasSource_xqc6k")
 
+[sub_resource type="Resource" id="Resource_vgxig"]
+script = ExtResource("5_e4nf2")
+target_scene_path = "res://src/game/storage.tscn"
+target_spawn_point_name = "SP_From_Reception"
+metadata/_custom_type_script = "uid://bwc67s3vtcbex"
+
 [node name="Reception" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -4862,10 +4869,15 @@ layer_3/tile_data = PackedInt32Array(-524291, 196619, 12, -524290, 262155, 12, -
 
 [node name="Door_To_Storage" parent="." instance=ExtResource("4_pbver")]
 position = Vector2(831, 366)
-target_scene_path = "res://src/game/storage.tscn"
-target_spawn_point_name = "SP_From_Reception"
 door_tileset_texture = ExtResource("1_at6ha")
 door_texture_region = Rect2(692, 635, 48, 85)
+action = SubResource("Resource_vgxig")
 
 [node name="SP_From_Storage" type="Marker2D" parent="."]
 position = Vector2(825, 415)
+
+[node name="Door_To_Storage" parent="SP_From_Storage" instance=ExtResource("4_pbver")]
+position = Vector2(831, 366)
+door_tileset_texture = ExtResource("1_at6ha")
+door_texture_region = Rect2(692, 635, 48, 85)
+action = SubResource("Resource_vgxig")

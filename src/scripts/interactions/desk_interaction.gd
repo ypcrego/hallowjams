@@ -44,7 +44,7 @@ func _on_dialogic_signal(arg : String):
 
 		GameState.remove_processed_package()
 
-		print("LOG: Pacote registrado e pronto para entrega. Pacotes na fila de entrega: %s" % GameState.packages_to_deliver.size())
+		print("LOG: Pacote registrado e pronto para entrega. Pacotes na fila de entrega: %s" % GameState.get_packages_to_deliver().size())
 		current_package = null # Limpa a variável local
 
 		_check_for_next_package_and_start_dialogue()
@@ -68,10 +68,16 @@ func _check_for_next_package_and_start_dialogue():
 
 
 func _start_package_dialogue(package: Package):
+	if (GameState.get_packages_to_deliver().is_empty()):
+		Dialogic.VAR.set_variable("first_package_day", true)
+
 	Dialogic.VAR.set_variable("apartment", package.recipient_apartment)
 	Dialogic.VAR.set_variable("weight", package.weight_description)
 	Dialogic.VAR.set_variable("hint", package.surface_hint)
 	Dialogic.VAR.set_variable("is_creepy", package.is_creepy)
+	if (package.real_content != null):
+		Dialogic.VAR.set_variable("real_content", package.real_content)
+
 
 	#if Dialogic.current_timeline != null:
 		#return

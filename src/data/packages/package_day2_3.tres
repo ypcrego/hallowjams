@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Package" load_steps=2 format=3 uid="uid://dgykveqptbwyf"]
+
+[ext_resource type="Script" uid="uid://cit67nwhs632o" path="res://src/scripts/package.gd" id="1_74fms"]
+
+[resource]
+script = ExtResource("1_74fms")
+package_name = "Som oco"
+recipient_apartment = "444"
+weight_description = "Caixa média, pesada e úmida embaixo."
+surface_hint = "Etiqueta borrada - mal dá pra ler o número do apartamento, apenas um “Ap. 4?4”.
+Um cheiro metálico forte, quase como sangue velho, sai pelas frestas."
+is_creepy = true
+is_plot_critical = true
+metadata/_custom_type_script = "uid://cit67nwhs632o"
