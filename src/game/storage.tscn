@@ -1,14 +1,21 @@
-[gd_scene load_steps=16 format=3 uid="uid://bhsiyh7htemxt"]
+[gd_scene load_steps=19 format=3 uid="uid://bhsiyh7htemxt"]
 
 [ext_resource type="Script" uid="uid://cji1c3mocoxqn" path="res://src/game/game.gd" id="1_e3os7"]
 [ext_resource type="Texture2D" uid="uid://bepelt4mg5j74" path="res://src/assets/tileset/A4.png" id="3_vkwem"]
 [ext_resource type="Texture2D" uid="uid://dqaktyul2becp" path="res://src/assets/tileset/Inside_E.png" id="3_wobgr"]
 [ext_resource type="Texture2D" uid="uid://cksefu0phrhfq" path="res://src/assets/tileset/A5.png" id="4_oy22p"]
-[ext_resource type="Script" uid="uid://cfcfaryohbf75" path="res://src/scripts/desk_interaction.gd" id="5_gtcnr"]
+[ext_resource type="Script" uid="uid://bwc67s3vtcbex" path="res://src/scripts/interactions/SceneChangeAction.gd" id="4_vkwem"]
+[ext_resource type="Script" uid="uid://cfcfaryohbf75" path="res://src/scripts/interactions/desk_interaction.gd" id="5_gtcnr"]
 [ext_resource type="Resource" uid="uid://cokjrm8sl1nr4" path="res://src/input/interact.tres" id="6_y53gh"]
 [ext_resource type="PackedScene" uid="uid://ccd4nglpnueb1" path="res://src/game/Door.tscn" id="7_wobgr"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wobgr"]
+[sub_resource type="Resource" id="Resource_oy22p"]
+script = ExtResource("4_vkwem")
+target_scene_path = "res://src/game/reception.tscn"
+target_spawn_point_name = "SP_From_Storage"
+metadata/_custom_type_script = "uid://bwc67s3vtcbex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oy22p"]
 resource_name = "Doors"
 texture = ExtResource("3_wobgr")
 0:1/0 = 0
@@ -599,7 +606,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
 agent_radius = 0.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vkwem"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gtcnr"]
 resource_name = "Walls"
 texture = ExtResource("3_vkwem")
 0:15/0 = 0
@@ -1401,7 +1408,7 @@ texture = ExtResource("3_vkwem")
 18:19/0 = 0
 18:22/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oy22p"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y53gh"]
 resource_name = "Floors"
 texture = ExtResource("4_oy22p")
 0:0/0 = 0
@@ -1736,9 +1743,9 @@ texture = ExtResource("4_oy22p")
 [sub_resource type="TileSet" id="TileSet_etvrb"]
 physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
-sources/3 = SubResource("TileSetAtlasSource_vkwem")
-sources/4 = SubResource("TileSetAtlasSource_oy22p")
-sources/0 = SubResource("TileSetAtlasSource_wobgr")
+sources/3 = SubResource("TileSetAtlasSource_gtcnr")
+sources/4 = SubResource("TileSetAtlasSource_y53gh")
+sources/0 = SubResource("TileSetAtlasSource_oy22p")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xniy2"]
 size = Vector2(12, 8)
@@ -1748,15 +1755,18 @@ size = Vector2(5, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvpot"]
 
+[sub_resource type="Resource" id="Resource_vkwem"]
+script = ExtResource("4_vkwem")
+target_scene_path = "res://src/game/elevator.tscn"
+target_spawn_point_name = "SP_From_Floor"
+metadata/_custom_type_script = "uid://bwc67s3vtcbex"
+
 [node name="Storage" type="Node2D"]
 script = ExtResource("1_e3os7")
 
 [node name="Door_To_Reception" parent="." instance=ExtResource("7_wobgr")]
 position = Vector2(965, 548)
-target_scene_path = "res://src/game/reception.tscn"
-target_spawn_point_name = "SP_From_Storage"
-door_tileset_texture = ExtResource("3_wobgr")
-door_texture_region = Rect2(692, 635, 48, 85)
+action = SubResource("Resource_oy22p")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(877, 576)
@@ -1788,6 +1798,13 @@ shape = SubResource("RectangleShape2D_cvpot")
 
 [node name="SP_From_Reception" type="Marker2D" parent="."]
 position = Vector2(966, 596)
+
+[node name="Door_To_Elevator" parent="." instance=ExtResource("7_wobgr")]
+position = Vector2(1034, 767)
+action = SubResource("Resource_vkwem")
+
+[node name="SP_From_Elevator" type="Marker2D" parent="."]
+position = Vector2(1032, 715)
 
 [connection signal="body_entered" from="Desk_Area/Area2D" to="Desk_Area" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Desk_Area/Area2D" to="Desk_Area" method="_on_area_2d_body_exited"]

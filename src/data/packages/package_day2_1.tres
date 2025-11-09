@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Package" load_steps=2 format=3 uid="uid://bk86f0ib7xm6o"]
+
+[ext_resource type="Script" uid="uid://cit67nwhs632o" path="res://src/scripts/package.gd" id="1_njt8p"]
+
+[resource]
+script = ExtResource("1_njt8p")
+package_name = "Cheiro de lavanda"
+recipient_apartment = "101"
+weight_description = "Embalagem leve, embrulhada com papel pardo e fita roxa."
+surface_hint = "Há um leve cheiro de lavanda vindo de dentro."
+real_content = "Várias pequenas flores secas cuidadosamente organizadas, parecendo formar uma cruz. No fundo, uma foto queimada, indistinguível."
+metadata/_custom_type_script = "uid://cit67nwhs632o"

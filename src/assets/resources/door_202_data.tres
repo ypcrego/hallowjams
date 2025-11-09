@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DoorData" load_steps=4 format=3 uid="uid://bwdog718g5tqg"]
+
+[ext_resource type="Resource" uid="uid://eboxjtfn3t1x" path="res://src/assets/resources/delivery_202.tres" id="1_kl7ff"]
+[ext_resource type="Texture2D" uid="uid://dqaktyul2becp" path="res://src/assets/tileset/Inside_E.png" id="2_3pkle"]
+[ext_resource type="Script" uid="uid://gjyn4rojs8rn" path="res://src/scripts/door_data.gd" id="3_uhykv"]
+
+[resource]
+script = ExtResource("3_uhykv")
+position = Vector2(880, 368)
+apartment_number = "202"
+delivery_action = ExtResource("1_kl7ff")
+metadata/_custom_type_script = "uid://gjyn4rojs8rn"

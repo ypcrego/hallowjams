@@ -4,4 +4,9 @@
 
 [resource]
 script = ExtResource("1_l03sw")
+package_name = "Encomenda Comum"
+recipient_apartment = "101"
+weight_description = "Parece leve. Talvez roupas?"
+surface_hint = "Caixa parda e sem marcas aparentes."
+real_content = "Alguns tecidos para costura."
 metadata/_custom_type_script = "uid://cit67nwhs632o"
