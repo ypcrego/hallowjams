@@ -41,4 +41,5 @@ func _on_sleep_dialogue_ended():
 
 
 	# 3. Inicia o diálogo de novo dia (sem await)
-	Dialogic.start(new_day_dialogue_timeline)
+	#Dialogic.start(new_day_dialogue_timeline)
+	# ao inves disso acima talvez fazer transicao sla

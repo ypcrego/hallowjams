@@ -44,6 +44,9 @@ func start_day(day: int):
 	set_packages_to_deliver([]) # Limpa a lista de pacotes a entregar do dia anterior
 	packages_to_process = day_data.packages_to_deliver.duplicate()
 	is_processing_complete = false # Reinicia o estado para o novo dia
+
+	if Dialogic.current_timeline == null:
+		Dialogic.start(day_data.opening_dialogue_key)
 	# Opcional, se quiser que a ordem seja aleatória: packages_to_process.shuffle()
 
 # Função que a mesa chamará

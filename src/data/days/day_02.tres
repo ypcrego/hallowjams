@@ -9,7 +9,7 @@
 [resource]
 script = ExtResource("2_l4wd3")
 day_number = 2
-opening_dialogue_key = "DIA_2_INTRO_COLEGA"
+opening_dialogue_key = "DIA_2_INTRO"
 packages_to_deliver = Array[ExtResource("1_5h5rs")]([ExtResource("2_u7sgr"), ExtResource("3_vfc01"), ExtResource("4_cm4v2")])
 auto_start_dialogues = {
 "storage": "DIA_2_COLEGA"

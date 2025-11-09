@@ -50,7 +50,7 @@ func start_initial_game() -> void:
 	GameState.start_day(1)
 
 	Dialogic.signal_event.connect(_on_dialogic_event)
-	Dialogic.start("DIA_1_INTRO")
+	#Dialogic.start("DIA_1_INTRO")
 
 
 # Função para carregar e configurar a nova cena

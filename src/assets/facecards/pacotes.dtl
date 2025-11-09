@@ -18,12 +18,7 @@ if {espiou} == true:
 	if {real_content}:
 		{real_content}
 	if {is_creepy} == true:
-		[background arg="res://src/assets/facecards/Gk07wFaWUAAtO6-.jpeg" fade="0.0"]
-		set {espiou_algo_creepy_dia_1} = true
-		[wait_input]
-		[background fade="0.0"]
-		Porteiro: Que **** é essa?
-		Porteiro: Eu não devia ter feito isso...
+		Porteiro: ...
 	else:
 		Não tem nada de interessante aqui.
 else:
