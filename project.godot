@@ -52,11 +52,16 @@ directories/dtl_directory={
 "delivery_success_202": "res://src/data/dialogic/delivery_success_202.dtl",
 "delivery_success_444": "res://src/data/dialogic/delivery_success_444.dtl",
 "door_dialogue": "res://src/assets/facecards/door_dialogue.dtl",
+"elevator_note": "res://src/data/dialogic/elevator_note.dtl",
+"elevator_note_funcionarios": "res://src/data/dialogic/elevator_note_funcionarios.dtl",
+"estatua": "res://src/data/dialogic/estatua.dtl",
+"maquina": "res://src/data/dialogic/maquina.dtl",
 "finished_pacotes": "res://src/data/dialogic/finished_pacotes.dtl",
 "new_day_2": "res://src/data/dialogic/new_day_2.dtl",
 "no_more_packages": "res://src/assets/facecards/no_more_packages.dtl",
 "no_package_dialogue": "res://src/data/dialogic/no_package_dialogue.dtl",
 "pacotes": "res://src/assets/facecards/pacotes.dtl",
+"quadro_noticias": "res://src/data/dialogic/quadro_noticias.dtl",
 "sleep_day_1": "res://src/data/dialogic/sleep_day_1.dtl"
 }
 layout/style_directory={
@@ -72,10 +77,10 @@ text/text_reveal_skip_delay=0.1
 text/advance_delay=0.1
 text/autoadvance_per_character_delay=0.1
 text/autoadvance_ignored_characters_enabled=true
-animations/join_default_length=0.5
-animations/join_default_wait=true
+animations/join_default_length=0.1
+animations/join_default_wait=false
 animations/leave_default_length=0.5
-animations/leave_default_wait=true
+animations/leave_default_wait=false
 animations/cross_fade_default_length=0.5
 choices/autofocus_first=false
 choices/delay=0.2
@@ -113,6 +118,8 @@ variables={
 timer/process_in_physics=false
 layout/end_behaviour=0
 text/input_action="dialogic_default_action"
+animations/join_default="Instant In"
+animations/leave_default="Instant Out"
 
 [display]
 
