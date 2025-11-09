@@ -1,35 +1,57 @@
 extends Node
 
 @export var default_mapping_context: GUIDEMappingContext
+signal guide_ready
 
 # Caminho da cena de início (Sua Kitnet)
-const INITIAL_SCENE_PATH = "res://src/game/storage.tscn"
+const INITIAL_SCENE_PATH = "res://src/game/kitnet.tscn"
 
 # Variáveis para a cena e o jogador
 var current_scene: Node = null
 @onready var current_scene_container = $CurrentSceneContainer # Certifique-se que o nome do nó bate!
 @onready var player_node = $Player # Certifique-se que o nome do nó Player está correto!
 
+@onready var fade_layer: ColorRect = $FadeCanvas/FadeLayer
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	player_node.process_mode = Node.PROCESS_MODE_DISABLED
+	player_node.visible = false
+
 	# Sinal do autoload
 	GameState.scene_change_requested.connect(_on_scene_change_requested)
 
 	GameState.scene_change_requested_with_data.connect(_on_scene_change_requested_with_data)
 
 	GUIDE.enable_mapping_context(default_mapping_context)
+	emit_signal("guide_ready")
+
 	show_main_menu.call_deferred()
 
 	# Inicia o jogo carregando a primeira cena (Kitnet)
 	#load_scene(INITIAL_SCENE_PATH, "Start_From_Menu")
 
 func start_initial_game() -> void:
+	$UI.hide_ui("MainMenu")
+	player_node.process_mode = Node.PROCESS_MODE_INHERIT
 
-	load_scene(INITIAL_SCENE_PATH, "Start_From_Menu")
+	if not $UI.is_preset_ready:
+		await $UI.preset_ready
+	$UI.show_ui("Game")
+
+	player_node.visible = true
+
+	fade_layer.visible = true
+	fade_layer.modulate.a = 1.0
+
+	load_scene(INITIAL_SCENE_PATH, "SP_From_Bed")
+
 	GameState.start_day(1)
 
-	$UI.hide_ui("MainMenu")
+	Dialogic.signal_event.connect(_on_dialogic_event)
+	Dialogic.start("DIA_1_INTRO")
+
 
 # Função para carregar e configurar a nova cena
 # Função para carregar e configurar a nova cena
@@ -94,3 +116,24 @@ func show_main_menu() -> void:
 	if not $UI.is_preset_ready:
 		await $UI.preset_ready
 	$UI.show_ui("MainMenu")
+
+func fade_in(duration: float = 1.0):
+	var tween = create_tween()
+	tween.tween_property(fade_layer, "modulate:a", 0.0, duration)
+
+func fade_out(duration: float = 1.0):
+	var tween = create_tween()
+	tween.tween_property(fade_layer, "modulate:a", 1.0, duration)
+
+func _on_dialogic_event(argument: String):
+	if argument == "mostrar_cena":
+		fade_in(1.5)
+
+func _input(event: InputEvent):
+	# Permite que a função de cheat seja chamada de qualquer lugar no jogo
+	if event.is_action_pressed("ui_accept") and Input.is_key_pressed(KEY_V):
+		print("cheatou")
+		# Nota: "ui_accept" é o input padrão para Enter/Espaço/Joystick A
+
+		# Certifica-se de que GameState está carregado (é um Autoload, então deve estar)
+		GameState.cheat_complete_day()

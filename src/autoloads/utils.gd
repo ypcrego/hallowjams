@@ -14,3 +14,13 @@ func nudge_inside_viewport(item_rect: Rect2) -> Vector2:
 	var merged: Rect2 = vp_rect.merge(item_rect)
 	var offset: Vector2 = (vp_rect.get_center() - merged.get_center()) * 2
 	return offset
+
+func get_current_scene_key() -> String:
+	# 1. Obtém o caminho completo (e.g., "res://src/game/reception.tscn")
+	var scene_path = get_tree().current_scene.scene_file_path
+
+	# 2. Retorna apenas o nome do arquivo (e.g., "reception.tscn")
+	var file_name_with_extension = scene_path.get_file()
+
+	# 3. Retorna o nome base (e.g., "reception")
+	return file_name_with_extension.get_basename()

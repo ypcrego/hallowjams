@@ -9,6 +9,7 @@ const DAY_DATA_PATHS = {
 var current_day: int = 1 # Começa no dia 1
 var packages_to_process: Array[Package] = []
 var current_day_data: DayData # Para armazenar o recurso do dia atual
+var completed_scene_intros: Dictionary = {}
 
 var _packages_to_deliver: Array[Package] = [] # Pacotes já cadastrados e prontos para entrega
 var is_processing_complete: bool = false # TRUE quando todos os pacotes foram cadastrados na mesa.
@@ -34,7 +35,10 @@ func get_packages_to_deliver() -> Array[Package]:
 func start_day(day: int):
 	print("Funcao de comecar dia foi chamada")
 	var day_data: DayData = load(DAY_DATA_PATHS.get(day))
+	print("Arquivo de dados carregado:", DAY_DATA_PATHS[day])
+	print("ESTAMOS INICIANDO UM NOVO DIA: ", day)
 	current_day_data = day_data
+	completed_scene_intros.clear()
 
 	# Cria uma cópia da lista de pacotes para manipulação (remover, embaralhar)
 	set_packages_to_deliver([]) # Limpa a lista de pacotes a entregar do dia anterior
@@ -198,3 +202,20 @@ func _on_delivery_end_dialogue_ended():
 		var kitnet_path = current_day_data.next_scene_on_complete
 		var bed_spawn = "SP_From_Bed"
 		scene_change_requested.emit(kitnet_path, bed_spawn)
+
+
+func cheat_complete_day() -> void:
+	print("LOG: Ativando trapaça para completar o dia...")
+
+	# 1. Força a conclusão do turno de cadastro na mesa.
+	mark_processing_complete() # Define is_processing_complete = true
+
+	# 2. Limpa a lista de pacotes a entregar (simula que todos foram entregues).
+	# Usamos set_packages_to_deliver para garantir que o status seja atualizado corretamente.
+	set_packages_to_deliver([]) # Define _packages_to_deliver como vazio
+
+	# Opcional: Chama a função de verificação para garantir que o estado está correto e atualizar a UI
+	# (Apesar de set_packages_to_deliver já fazer isso internamente, é um bom check)
+	_update_current_delivery_target()
+
+	print("LOG: Cheat de final de dia executado. Você agora pode interagir com a cama.")

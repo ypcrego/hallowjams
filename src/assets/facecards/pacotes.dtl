@@ -15,7 +15,6 @@ O pacote é para o Apt. {apartment}.
 if {espiou} == true:
 	Porteiro: Uma olhadinha não mata ninguém...
 	Você cedeu à tentação da curiosidade.
-	Dentro do pacote, você vê...
 	if {real_content}:
 		{real_content}
 	if {is_creepy} == true:
@@ -26,5 +25,7 @@ if {espiou} == true:
 		Porteiro: Que **** é essa?
 		Porteiro: Eu não devia ter feito isso...
 	else:
-		Porteiro: Não tem nada de interessante aqui...
+		Não tem nada de interessante aqui.
+else:
+	Porteiro: Melhor não...
 [signal arg="package_registered"]

@@ -65,6 +65,9 @@ func _check_for_next_package_and_start_dialogue():
 		_start_package_dialogue(current_package)
 	else:
 		GameState.mark_processing_complete()
+		if (GameState.current_day == 1):
+			var dialog = Dialogic.start("finished_pacotes")
+
 
 
 func _start_package_dialogue(package: Package):
