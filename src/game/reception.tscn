@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://hoiep2xd14dy"]
+[gd_scene load_steps=28 format=3 uid="uid://hoiep2xd14dy"]
 
 [ext_resource type="Texture2D" uid="uid://dqaktyul2becp" path="res://src/assets/tileset/Inside_E.png" id="1_at6ha"]
 [ext_resource type="Texture2D" uid="uid://drom2i3kon3tf" path="res://src/assets/tileset/Inside_C.png" id="2_kvwdw"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://bwc67s3vtcbex" path="res://src/scripts/interactions/SceneChangeAction.gd" id="5_e4nf2"]
 [ext_resource type="Texture2D" uid="uid://n6hxhk53uu4q" path="res://src/assets/tileset/escada_pardde.png" id="6_vp3wh"]
 [ext_resource type="Texture2D" uid="uid://cen41e32wecll" path="res://src/assets/tileset/doors_updated.png" id="7_vgxig"]
+[ext_resource type="Script" uid="uid://c5vkyjk3kguo4" path="res://src/game/Note_Elevator.gd" id="10_x347c"]
+[ext_resource type="Resource" uid="uid://cokjrm8sl1nr4" path="res://src/input/interact.tres" id="11_h2p3x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kvwdw"]
 resource_name = "Doors"
@@ -5745,6 +5747,9 @@ target_scene_path = "res://src/game/storage.tscn"
 target_spawn_point_name = "SP_From_Reception"
 metadata/_custom_type_script = "uid://bwc67s3vtcbex"
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2i1nj"]
+radius = 2.828427
+
 [node name="Reception" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -5780,3 +5785,14 @@ position = Vector2(825, 415)
 [node name="Door_To_Storage" parent="SP_From_Storage" instance=ExtResource("4_pbver")]
 position = Vector2(831, 366)
 action = SubResource("Resource_vgxig")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("10_x347c")
+interact_action = ExtResource("11_h2p3x")
+
+[node name="CollisionShape2DElevador" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(927, 107)
+shape = SubResource("CircleShape2D_2i1nj")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
