@@ -5787,11 +5787,13 @@ position = Vector2(831, 366)
 action = SubResource("Resource_vgxig")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(927, 110)
+scale = Vector2(5, 5)
 script = ExtResource("10_x347c")
 interact_action = ExtResource("11_h2p3x")
 
 [node name="CollisionShape2DElevador" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(927, 107)
+position = Vector2(-0.40000492, 8.8)
 shape = SubResource("CircleShape2D_2i1nj")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

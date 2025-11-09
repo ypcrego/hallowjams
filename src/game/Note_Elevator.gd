@@ -2,7 +2,7 @@ extends Area2D
 class_name NoteInteraction
 
 # O nome da Timeline do Dialogic que deve ser iniciada
-@export var timeline_name: String = "Elevator_Note" # <-- Configure isso no Inspetor
+@export var timeline_name: String = "elevator_note" # <-- Configure isso no Inspetor
 
 # Referência à ação de interação (GUIDEAction)
 @export var interact_action: GUIDEAction # <-- Arraste seu recurso aqui no Inspetor
@@ -16,7 +16,7 @@ func _ready():
 func handle_interaction():
 	if not player_in_range:
 		return
-	if Dialogic.is_open: 
+	if Dialogic.current_timeline != null:
 		return
 		
 	if not timeline_name.is_empty():
