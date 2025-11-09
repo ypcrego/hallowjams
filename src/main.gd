@@ -12,6 +12,7 @@ var current_scene: Node = null
 @onready var player_node = $Player # Certifique-se que o nome do nó Player está correto!
 
 @onready var fade_layer: ColorRect = $FadeCanvas/FadeLayer
+var first_scene_loaded := false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -29,10 +30,8 @@ func _ready() -> void:
 
 	show_main_menu.call_deferred()
 
-	# Inicia o jogo carregando a primeira cena (Kitnet)
-	#load_scene(INITIAL_SCENE_PATH, "Start_From_Menu")
-
 func start_initial_game() -> void:
+
 	$UI.hide_ui("MainMenu")
 	player_node.process_mode = Node.PROCESS_MODE_INHERIT
 
@@ -50,13 +49,17 @@ func start_initial_game() -> void:
 	GameState.start_day(1)
 
 	Dialogic.signal_event.connect(_on_dialogic_event)
-	#Dialogic.start("DIA_1_INTRO")
+
+
 
 
 # Função para carregar e configurar a nova cena
 # Função para carregar e configurar a nova cena
 # O parâmetro floor_data_resource é OPCIONAL (se for null, carrega a cena normal)
 func load_scene(scene_path: String, spawn_point_name: String, floor_data_resource: Resource = null):
+	if first_scene_loaded:
+		await fade_out(1.25)
+
 	# 1. Libera a cena antiga
 	if current_scene:
 		current_scene.queue_free()
@@ -100,6 +103,11 @@ func load_scene(scene_path: String, spawn_point_name: String, floor_data_resourc
 		# Atualiza o estado global da cena
 		GameState.current_scene_path = scene_path
 
+		if first_scene_loaded:
+			await fade_in(1.25)
+		else:
+			first_scene_loaded = true  # Marca que a primeira já foi
+
 func _wait_scene_ready():
 	# Aguarda um frame de processamento (ready dos filhos)
 	await get_tree().process_frame
@@ -117,13 +125,19 @@ func show_main_menu() -> void:
 		await $UI.preset_ready
 	$UI.show_ui("MainMenu")
 
-func fade_in(duration: float = 1.0):
+func fade_in(duration: float = 1.0) -> void:
+	fade_layer.visible = true
 	var tween = create_tween()
 	tween.tween_property(fade_layer, "modulate:a", 0.0, duration)
+	await tween.finished
+	# Esconde o fade layer no fim (evita sobreposição de input/click)
+	fade_layer.visible = false
 
-func fade_out(duration: float = 1.0):
+func fade_out(duration: float = 1.0) -> void:
+	fade_layer.visible = true
 	var tween = create_tween()
 	tween.tween_property(fade_layer, "modulate:a", 1.0, duration)
+	await tween.finished
 
 func _on_dialogic_event(argument: String):
 	if argument == "mostrar_cena":
