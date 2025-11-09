@@ -3161,7 +3161,7 @@ sources/1 = SubResource("TileSetAtlasSource_vlooj")
 
 [sub_resource type="Resource" id="Resource_2gqti"]
 script = ExtResource("5_5gn77")
-target_scene_path = "res://src/game/storage.tscn"
+target_scene_path = "res://src/game/reception.tscn"
 target_spawn_point_name = "SP_From_Reception"
 metadata/_custom_type_script = "uid://bwc67s3vtcbex"
 

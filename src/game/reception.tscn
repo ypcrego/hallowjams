@@ -4916,7 +4916,7 @@ sources/11 = SubResource("TileSetAtlasSource_xqc6k")
 
 [sub_resource type="Resource" id="Resource_vgxig"]
 script = ExtResource("5_e4nf2")
-target_scene_path = "res://src/game/storage.tscn"
+target_scene_path = "res://src/game/kitnet.tscn"
 target_spawn_point_name = "SP_From_Reception"
 metadata/_custom_type_script = "uid://bwc67s3vtcbex"
 
@@ -4946,4 +4946,8 @@ position = Vector2(825, 415)
 
 [node name="Door_To_Storage" parent="SP_From_Storage" instance=ExtResource("4_pbver")]
 position = Vector2(831, 366)
+action = SubResource("Resource_vgxig")
+
+[node name="Door_To_Kitnet" parent="." instance=ExtResource("4_pbver")]
+position = Vector2(871, 587)
 action = SubResource("Resource_vgxig")
