@@ -1,8 +1,8 @@
 extends Area2D
-class_name NoteInteractionFuncionarios
+class_name EstatuaInteraction
 
 # O nome da Timeline do Dialogic que deve ser iniciada
-@export var timeline_name: String = "elevator_note" # <-- Configure isso no Inspetor
+@export var timeline_name: String = "estatua" # <-- Configure isso no Inspetor
 
 # Referência à ação de interação (GUIDEAction)
 @export var interact_action: GUIDEAction # <-- Arraste seu recurso aqui no Inspetor
