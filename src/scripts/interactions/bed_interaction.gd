@@ -42,7 +42,7 @@ func handle_bed_interaction():
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.name == "Player": # Certifique-se que o nome corresponde ao seu Player
+	if body.name == "Player" and GameState.is_day_task_complete():
 		player_in_range = true
 		print("PROMPT: Pressione E para descansar.")
 
