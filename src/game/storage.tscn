@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bhsiyh7htemxt"]
+[gd_scene load_steps=23 format=3 uid="uid://bhsiyh7htemxt"]
 
 [ext_resource type="Script" uid="uid://cji1c3mocoxqn" path="res://src/game/game.gd" id="1_e3os7"]
 [ext_resource type="Texture2D" uid="uid://bepelt4mg5j74" path="res://src/assets/tileset/A4.png" id="3_vkwem"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://drom2i3kon3tf" path="res://src/assets/tileset/Inside_C.png" id="4_gtcnr"]
 [ext_resource type="Texture2D" uid="uid://cksefu0phrhfq" path="res://src/assets/tileset/A5.png" id="4_oy22p"]
 [ext_resource type="Script" uid="uid://bwc67s3vtcbex" path="res://src/scripts/interactions/SceneChangeAction.gd" id="4_vkwem"]
-[ext_resource type="Script" uid="uid://cfcfaryohbf75" path="res://src/scripts/interactions/desk_interaction.gd" id="5_gtcnr"]
+[ext_resource type="Script" path="res://src/scripts/interactions/desk_interaction.gd" id="5_gtcnr"]
 [ext_resource type="Texture2D" uid="uid://d286imsit4ows" path="res://src/assets/tileset/Inside_D.png" id="5_y53gh"]
 [ext_resource type="Resource" uid="uid://cokjrm8sl1nr4" path="res://src/input/interact.tres" id="6_y53gh"]
 [ext_resource type="PackedScene" uid="uid://ccd4nglpnueb1" path="res://src/game/Door.tscn" id="7_wobgr"]

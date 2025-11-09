@@ -1,6 +1,7 @@
 extends Node
 
 @export var default_mapping_context: GUIDEMappingContext
+signal guide_ready
 
 # Caminho da cena de início (Sua Kitnet)
 const INITIAL_SCENE_PATH = "res://src/game/kitnet.tscn"
@@ -24,6 +25,8 @@ func _ready() -> void:
 	GameState.scene_change_requested_with_data.connect(_on_scene_change_requested_with_data)
 
 	GUIDE.enable_mapping_context(default_mapping_context)
+	emit_signal("guide_ready")
+
 	show_main_menu.call_deferred()
 
 	# Inicia o jogo carregando a primeira cena (Kitnet)

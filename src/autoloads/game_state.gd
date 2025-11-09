@@ -9,6 +9,7 @@ const DAY_DATA_PATHS = {
 var current_day: int = 1 # Começa no dia 1
 var packages_to_process: Array[Package] = []
 var current_day_data: DayData # Para armazenar o recurso do dia atual
+var completed_scene_intros: Dictionary = {}
 
 var _packages_to_deliver: Array[Package] = [] # Pacotes já cadastrados e prontos para entrega
 var is_processing_complete: bool = false # TRUE quando todos os pacotes foram cadastrados na mesa.
@@ -35,6 +36,7 @@ func start_day(day: int):
 	print("Funcao de comecar dia foi chamada")
 	var day_data: DayData = load(DAY_DATA_PATHS.get(day))
 	current_day_data = day_data
+	completed_scene_intros.clear()
 
 	# Cria uma cópia da lista de pacotes para manipulação (remover, embaralhar)
 	set_packages_to_deliver([]) # Limpa a lista de pacotes a entregar do dia anterior
