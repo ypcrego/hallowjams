@@ -15,7 +15,7 @@ O pacote é para o Apt. {apartment}.
 if {espiou} == true:
 	Porteiro: Uma olhadinha não mata ninguém...
 	Você cedeu à tentação da curiosidade.
-	Dentro do pacote, você vê...
+	Colega: Vem ver também.
 	if {real_content}:
 		{real_content}
 	if {is_creepy} == true:

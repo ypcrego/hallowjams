@@ -1,0 +1,37 @@
+Você chega no armazém.
+Seu colega já está na sala, cadastrando pacotes na mesa.
+Porteiro: Cara, eu te entendo agora.
+Porteiro: O cachorro da pessoa em cima do meu quarto ficou maluco essa noite também.
+Colega: Bom dia.. nem me cumprimenta e já tá tirando onda comigo, hein?
+Porteiro: Como assim, colega?
+Colega: Que cachorro? Não tem ninguém morando em cima do seu quarto.
+Colega: Para de falar besteira e vem me ajudar aqui.
+Porteiro: Estranho..
+Você se aproxima da mesa para ajudar com as encomendas.
+Colega: O cara do 873 é aquele grandão?
+Porteiro: O fortão? Acho que é, por quê?
+Colega: Ele não tem filha, né?
+Colega: Não sabia que ele gostava dessas coisas..
+Você dá uma espiada e nota algo que parece ser um kit fantasia das fadas Winx, com um pôster embaixo.
+Porteiro: Quem nunca, né?
+Colega: Cadastrado.. deixa eu ver esse outro aqui também.
+Colega: Esse aqui é pro 4.. ué, tá meio embaçado, será que molhou?
+Ele mostra pra você a rotulagem do pacote. Só é possível enxergar o primeiro número do apartamento.
+Colega: Vou dar uma olhada, vai que eu sei pra quem é..
+Colega: Vem ver também.
+Você se aproxima.
+Porteiro: Sendo sincero, não faz mal a ninguém...
+- Espiar com colega
+	[background arg="res://src/assets/facecards/Gk07wFaWUAAtO6-.jpeg" fade="0.0"]
+	set {espiou_algo_creepy_dia_1} = true
+	[wait_input]
+	[background fade="0.0"]
+	Colega: Que ***** é essa?
+	Colega: Que ***** é essa?
+	Ele fecha rapidamente a caixa, com as mãos tremendo.
+	Colega: Que desgraça...
+Colega: Que *****..
+Colega: Eu vou fazer logo minhas entregas.. deixa isso aí, fica com os que sobraram.
+Colega: Que desgraça...
+Seu colega sai.
+Você permanece em silêncio, imóvel.
