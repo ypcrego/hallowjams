@@ -123,3 +123,12 @@ func fade_out(duration: float = 1.0):
 func _on_dialogic_event(argument: String):
 	if argument == "mostrar_cena":
 		fade_in(1.5)
+
+func _input(event: InputEvent):
+	# Permite que a função de cheat seja chamada de qualquer lugar no jogo
+	if event.is_action_pressed("ui_accept") and Input.is_key_pressed(KEY_V):
+		print("cheatou")
+		# Nota: "ui_accept" é o input padrão para Enter/Espaço/Joystick A
+
+		# Certifica-se de que GameState está carregado (é um Autoload, então deve estar)
+		GameState.cheat_complete_day()

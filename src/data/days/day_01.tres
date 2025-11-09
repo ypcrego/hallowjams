@@ -10,4 +10,7 @@
 script = ExtResource("2_bakqf")
 day_number = 1
 packages_to_deliver = Array[ExtResource("1_6k08i")]([ExtResource("2_ng8vg"), ExtResource("3_25nm4"), ExtResource("4_ccooq")])
+auto_start_dialogues = {
+"reception": "DIA_1_CONVERSA_COLEGA"
+}
 metadata/_custom_type_script = "uid://csfnncd4l367b"

@@ -8,20 +8,25 @@ func _ready():
 func _check_and_run_dialogue():
 	# 1. Obtém a chave da cena de forma dinâmica (ex: "reception")
 	var current_scene_key = _get_scene_key()
-
 	if current_scene_key.is_empty():
 		return
 
 	var day_data = GameState.current_day_data
+	print ("DAY DATA : ", day_data)
 
 	# NOVO PASSO: Verifica se o diálogo JÁ foi executado HOJE (ou nesta sessão/dia)
 	if GameState.completed_scene_intros.has(current_scene_key):
 		print("LOG: Diálogo de introdução para ", current_scene_key, " já foi concluído hoje.")
 		return # Já foi visto, então sai.
 
+	if !is_instance_valid(day_data):
+		push_error("ERRO: Nenhum 'DayData' válido encontrado para o dia atual.")
+		return
+
 	# 2. Verifica se há um diálogo mapeado para a cena neste dia
-	if is_instance_valid(day_data) and day_data.auto_start_dialogues.has(current_scene_key):
+	if day_data.auto_start_dialogues.has(current_scene_key):
 		var dialogue_id = day_data.auto_start_dialogues[current_scene_key]
+		print("ID DO DIALOGO : ", dialogue_id)
 
 		# 3. Inicia o diálogo
 		Dialogic.start(dialogue_id)
