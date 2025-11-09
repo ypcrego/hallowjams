@@ -38,6 +38,7 @@ func start_day(day: int):
 	print("Arquivo de dados carregado:", DAY_DATA_PATHS[day])
 	print("ESTAMOS INICIANDO UM NOVO DIA: ", day)
 	current_day_data = day_data
+	completed_scene_intros.clear()
 
 	# Cria uma cópia da lista de pacotes para manipulação (remover, embaralhar)
 	set_packages_to_deliver([]) # Limpa a lista de pacotes a entregar do dia anterior

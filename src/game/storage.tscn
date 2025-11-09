@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://drom2i3kon3tf" path="res://src/assets/tileset/Inside_C.png" id="4_gtcnr"]
 [ext_resource type="Texture2D" uid="uid://cksefu0phrhfq" path="res://src/assets/tileset/A5.png" id="4_oy22p"]
 [ext_resource type="Script" uid="uid://bwc67s3vtcbex" path="res://src/scripts/interactions/SceneChangeAction.gd" id="4_vkwem"]
-[ext_resource type="Script" path="res://src/scripts/interactions/desk_interaction.gd" id="5_gtcnr"]
+[ext_resource type="Script" uid="uid://cfcfaryohbf75" path="res://src/scripts/interactions/desk_interaction.gd" id="5_gtcnr"]
 [ext_resource type="Texture2D" uid="uid://d286imsit4ows" path="res://src/assets/tileset/Inside_D.png" id="5_y53gh"]
 [ext_resource type="Resource" uid="uid://cokjrm8sl1nr4" path="res://src/input/interact.tres" id="6_y53gh"]
 [ext_resource type="PackedScene" uid="uid://ccd4nglpnueb1" path="res://src/game/Door.tscn" id="7_wobgr"]

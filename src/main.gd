@@ -35,6 +35,11 @@ func _ready() -> void:
 func start_initial_game() -> void:
 	$UI.hide_ui("MainMenu")
 	player_node.process_mode = Node.PROCESS_MODE_INHERIT
+
+	if not $UI.is_preset_ready:
+		await $UI.preset_ready
+	$UI.show_ui("Game")
+
 	player_node.visible = true
 
 	fade_layer.visible = true

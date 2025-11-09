@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cksefu0phrhfq" path="res://src/assets/tileset/A5.png" id="3_ny2ur"]
 [ext_resource type="PackedScene" uid="uid://ccd4nglpnueb1" path="res://src/game/Door.tscn" id="5_sd6p6"]
 [ext_resource type="Script" uid="uid://bwc67s3vtcbex" path="res://src/scripts/interactions/SceneChangeAction.gd" id="6_q5oat"]
-[ext_resource type="Script" uid="uid://bbqka14cnal6a" path="res://src/scripts/apartment_hall.gd" id="6_sd6p6"]
+[ext_resource type="Script" path="res://src/scripts/apartment_hall.gd" id="6_sd6p6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sd6p6"]
 resource_name = "Doors"
