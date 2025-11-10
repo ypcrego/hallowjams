@@ -1,7 +1,7 @@
-[gd_scene load_steps=36 format=3 uid="uid://hoiep2xd14dy"]
+[gd_scene load_steps=38 format=3 uid="uid://hoiep2xd14dy"]
 
 [ext_resource type="Texture2D" uid="uid://dqaktyul2becp" path="res://src/assets/tileset/Inside_E.png" id="1_at6ha"]
-[ext_resource type="Script" uid="uid://bad35xwjevkko" path="res://src/scripts/reception.gd" id="1_vgxig"]
+[ext_resource type="Script" path="res://src/scripts/reception.gd" id="1_vgxig"]
 [ext_resource type="Texture2D" uid="uid://drom2i3kon3tf" path="res://src/assets/tileset/Inside_C.png" id="2_kvwdw"]
 [ext_resource type="Texture2D" uid="uid://bepelt4mg5j74" path="res://src/assets/tileset/A4.png" id="2_pbver"]
 [ext_resource type="Texture2D" uid="uid://cksefu0phrhfq" path="res://src/assets/tileset/A5.png" id="3_e4nf2"]
@@ -5771,6 +5771,12 @@ target_scene_path = "res://src/game/storage.tscn"
 target_spawn_point_name = "SP_From_Reception"
 metadata/_custom_type_script = "uid://bwc67s3vtcbex"
 
+[sub_resource type="Resource" id="Resource_h2p3x"]
+script = ExtResource("5_e4nf2")
+target_scene_path = "res://src/game/kitnet.tscn"
+target_spawn_point_name = "SP_From_Reception"
+metadata/_custom_type_script = "uid://bwc67s3vtcbex"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_2i1nj"]
 radius = 2.828427
 
@@ -5824,9 +5830,11 @@ door_tileset_texture = null
 door_texture_region = Rect2(0, 0, 0, 0)
 action = SubResource("Resource_x347c")
 
-[node name="Door_To_Storage" parent="SP_From_Storage" instance=ExtResource("4_pbver")]
-position = Vector2(831, 366)
-action = SubResource("Resource_vgxig")
+[node name="Door_To_Kitnet" parent="." instance=ExtResource("4_pbver")]
+position = Vector2(1524, 416)
+door_tileset_texture = null
+door_texture_region = Rect2(0, 0, 0, 0)
+action = SubResource("Resource_h2p3x")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(927, 110)

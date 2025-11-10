@@ -8,12 +8,15 @@ var can_move := true
 @onready var sprite = $AnimatedSprite2D
 
 func _ready() -> void:
-	Dialogic.timeline_started.connect(set_physics_process.bind(false))
-	Dialogic.timeline_started.connect(set_process_input.bind(false))
+	Dialogic.timeline_started.connect(_on_timeline_started)
 	Dialogic.timeline_ended.connect(set_physics_process.bind(true))
 	Dialogic.timeline_ended.connect(set_process_input.bind(true))
 
 
+func _on_timeline_started() -> void:
+	set_process_input(false)
+	set_physics_process(false)
+	_keep_animation()
 
 
 func _physics_process(delta) -> void:
@@ -52,16 +55,7 @@ func _physics_process(delta) -> void:
 
 	else:
 		# PERSONAGEM ESTÁ PARADO
-
-		# Mantém a pose parada na última direção que estava
-		if sprite.animation == "andando para frente" or sprite.animation == "parado frente":
-			current_animation = "parado frente"
-		elif sprite.animation == "andando para tras" or sprite.animation == "parado costas":
-			current_animation = "parado costas"
-		else:
-			# Padrão para "Lado" se não tinha um estado definido ou estava nos lados
-			current_animation = "parado lado"
-			# O flip_h deve ser mantido do último movimento lateral
+		_keep_animation()
 
 	# Toca a animação, mas só se ela for diferente da atual para não reiniciar
 	if sprite.animation != current_animation:
@@ -69,3 +63,16 @@ func _physics_process(delta) -> void:
 
 	# 4. Finaliza o movimento do CharacterBody2D
 	move_and_slide()
+
+func _keep_animation() -> void:
+	var current_animation = ""
+	# Mantém a pose parada na última direção que estava
+	if sprite.animation == "andando para frente" or sprite.animation == "parado frente":
+		current_animation = "parado frente"
+	elif sprite.animation == "andando para tras" or sprite.animation == "parado costas":
+		current_animation = "parado costas"
+	else:
+		# Padrão para "Lado" se não tinha um estado definido ou estava nos lados
+		current_animation = "parado lado"
+		# O flip_h deve ser mantido do último movimento lateral
+	sprite.play(current_animation)
