@@ -9,3 +9,4 @@ Porteiro: Para que andar eu devo ir?
 	do Elevator.go_to_floor(3)
 - 4º andar
 	do Elevator.go_to_floor(4)
+O seu colega vai na frente e se distancia rapidamente.

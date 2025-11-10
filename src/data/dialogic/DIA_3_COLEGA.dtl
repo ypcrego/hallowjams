@@ -1,0 +1,17 @@
+do MusicManager.change_music_by_name("bgm33")
+O armazém está quieto.
+Todo o resto da sala está normal.
+Porteiro: Cadê ele...?
+Há uma encomenda na mesa do computador.
+do MusicManager.set_music_bus_volume_db(4.0)
+do MusicManager.change_music_by_name("d3c")
+V̵o̷c̴ê̷ ̶s̷e̵ ̶a̷p̴r̶o̶x̵i̷m̵a̶ ̸a̶n̶t̸e̴s̸ ̷q̷u̸e̷ ̷p̷e̷r̵c̴e̵b̶a̶.̴.̸.̷
+A̷͙͛ ̷̩̋m̶̯͠█ṟ̴̹͑̈́t̸̂̎͜█ ̷̰̄̅ś̵͓̏ẽ̷͆͜ ̶̮̀̂█ṗ̶̦͔̇r̵̬̭͋o̷̜͕̍͝x̷͕̒̄██a̶̜̿̀.̸̣͝.̴̙̽.̷͇͍̈́̋
+O pacote está semiaberto.
+V̷̝̅͊ò̸͙c̶͙̖̍͋ê̷̯͆̓ ̷̝͐n̸̯͔͗̑ã̵̢̛̬ó̷̪ ̸͖͝c̴̞͋o̵̢̘̍ñ̵͚̣̊s̷̛̱̍ĕ̸̺̞͒g̴͉̀ů̵̻e̵̠͐̈́ ̴̖́̊r̸̺̎e̴̟̪̅̾s̶̩̓i̶̯̍̕s̴͍̤̈́͝t̴͚͒î̵ͅr̵̘̀.̸͚̏.̸̺͌.̷̖͆̂
+- Espiar
+███████...
+O̶̝͠ ̶͇̟̋m̴͔̊̽█n̴̘̆̑d̶͈̃█ ̷̨́̅͜ŝ̷̨e̷̙͎͊ ̶̢̅t̸̘̂͝o̶̧͕͋͛ṛ̷̜̒n̴͚͂a̸̡̓̔ ̸̱̆t̸̞͂█r̸̢̫͂v̸̂͝ͅ█.̸̤͋
+do MusicManager.set_music_bus_volume_db(5.0)
+[signal arg="morreu"]
+do MusicManager.change_music_by_name("end")

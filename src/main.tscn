@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsh8lu3xwvk31"]
+[gd_scene load_steps=7 format=3 uid="uid://bsh8lu3xwvk31"]
 
 [ext_resource type="Script" uid="uid://bho361et10j2w" path="res://src/main.gd" id="1_cii0i"]
 [ext_resource type="PackedScene" uid="uid://u1vgfeia861q" path="res://src/ui/ui.tscn" id="2_e2kwd"]
 [ext_resource type="Resource" uid="uid://v5u0dyabni7e" path="res://src/input/default_mapping_context.tres" id="2_x7eo7"]
+[ext_resource type="Shader" uid="uid://c2q1irvcp506y" path="res://src/assets/shaders/greyscale.gdshader" id="3_fyndt"]
 [ext_resource type="PackedScene" uid="uid://bswlu8qntiul6" path="res://src/game/Player.tscn" id="4_fyndt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kmhfv"]
+shader = ExtResource("3_fyndt")
+shader_parameter/intensity = 1.0
 
 [node name="Main" type="Node" groups=["Main"]]
 script = ExtResource("1_cii0i")
@@ -29,3 +34,12 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="UI" parent="." instance=ExtResource("2_e2kwd")]
+
+[node name="PostProcessGrayscale" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_kmhfv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

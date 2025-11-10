@@ -45,7 +45,7 @@ size_flags_vertical = 0
 
 [node name="Label" type="Label" parent="BoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Keyboard"
+text = "Teclado"
 horizontal_alignment = 1
 
 [node name="KeyboardMouseActions" type="GridContainer" parent="BoxContainer/VBoxContainer"]

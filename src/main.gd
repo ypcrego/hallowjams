@@ -5,7 +5,6 @@ signal guide_ready
 
 # Caminho da cena de início (Sua Kitnet)
 const INITIAL_SCENE_PATH = "res://src/game/kitnet.tscn"
-
 # Variáveis para a cena e o jogador
 var current_scene: Node = null
 @onready var current_scene_container = $CurrentSceneContainer # Certifique-se que o nome do nó bate!
@@ -34,6 +33,7 @@ func start_initial_game() -> void:
 
 	$UI.hide_ui("MainMenu")
 	player_node.process_mode = Node.PROCESS_MODE_INHERIT
+
 
 	if not $UI.is_preset_ready:
 		await $UI.preset_ready
@@ -143,6 +143,16 @@ func _on_dialogic_event(argument: String):
 	if argument == "mostrar_cena":
 		fade_in(1.5)
 
+	if argument == "finished_day_2":
+		# Inicia o fluxo de transição forçada
+		force_day_transition()
+# >>> INÍCIO DA MUDANÇA PARA FIM DE JOGO
+	if argument == "morreu":
+		print("LOG: Sinal 'morreu' recebido. Iniciando sequência de Fim de Jogo.")
+		# Usamos call_deferred para garantir que o evento de diálogo atual termine
+		call_deferred("end_game_sequence")
+	# <<< FIM DA MUDANÇA PARA FIM DE JOGO
+
 func _input(event: InputEvent):
 	# Permite que a função de cheat seja chamada de qualquer lugar no jogo
 	if event.is_action_pressed("ui_accept") and Input.is_key_pressed(KEY_V):
@@ -151,3 +161,63 @@ func _input(event: InputEvent):
 
 		# Certifica-se de que GameState está carregado (é um Autoload, então deve estar)
 		GameState.cheat_complete_day()
+
+
+func force_day_transition() -> void:
+	# 1. Tela preta (Fade Out)
+	await fade_out(1.5)
+
+	# 2. [CORREÇÃO: TROCA DE CENA] Força o retorno para a Kitnet ANTES de avançar o dia
+	# O spawn point "SP_From_Bed" deve ser válido na cena da kitnet.
+	load_scene(INITIAL_SCENE_PATH, "SP_From_Bed")
+
+	# IMPORTANTE: Garante que a cena nova está pronta para a próxima instrução
+	# (load_scene já tem um await para _wait_scene_ready() e load_scene(..))
+
+	# 3. [DELAY MANTIDO] Adiciona o atraso na tela preta.
+	await get_tree().create_timer(1.5).timeout
+
+	# 4. Atualizar o estado do jogo para o novo dia
+	GameState.advance_day()
+	var next_day_number = GameState.current_day
+	var new_day_dialogue_timeline: String = "new_day_" + str(next_day_number)
+
+	print("LOG: Transição abrupta concluída. Iniciando diálogo para o dia: ", next_day_number)
+
+	# 5. Iniciar o novo diálogo
+	Dialogic.start(new_day_dialogue_timeline)
+
+	# 6. Espera um frame para o Dialogic (mantido)
+	await get_tree().process_frame
+
+	# 7. [FADE IN MANTIDO] Força o Fade In para revelar a cena e o diálogo.
+	await fade_in(1.5)
+
+func end_game_sequence():
+	Dialogic.end_timeline(true)
+
+	await enable_grayscale(3.5)
+
+	# 2. Tela preta (Fade Out)
+	await fade_out(6.5)
+
+	# 3. Desabilita o jogador e a UI do jogo
+	player_node.process_mode = Node.PROCESS_MODE_DISABLED
+	player_node.visible = false
+	if $UI.is_shown("Game"):
+		await $UI.hide_ui("Game") # Esconde a HUD/UI principal do jogo
+
+	# 4. Mostra a tela de "Obrigado por Jogar"
+	# "ThanksForPlaying" é o nome do nó da cena em src/ui/thanks_for_playing/thank_for_playing.tscn
+	$UI.show_ui("ThanksForPlaying")
+
+	# 5. Fade In para revelar a tela final
+	await fade_in(1.5)
+
+func enable_grayscale(duration := 1.0):
+	var grayscale = $PostProcessGrayscale
+	grayscale.visible = true
+	var mat = grayscale.material as ShaderMaterial
+	mat.set_shader_parameter("intensity", 0.0)
+	var tween = create_tween()
+	tween.tween_property(mat, "shader_parameter/intensity", 1.0, duration)

@@ -22,8 +22,8 @@ func hide_ui() -> void:
 	#tween.tween_property(self, "scale", Vector2.ZERO, 0.15).set_trans(Tween.TRANS_SINE)
 	#await tween.finished
 	visible = false
-	
-	
+
+
 func show_ui() -> void:
 	visible = true
 	#var tween: Tween = create_tween()

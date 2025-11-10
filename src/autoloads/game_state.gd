@@ -4,6 +4,7 @@ extends Node
 const DAY_DATA_PATHS = {
 	1: "res://src/data/days/day_01.tres",
 	2: "res://src/data/days/day_02.tres",
+	3: "res://src/data/days/day_03.tres",
 
 }
 var current_day: int = 1 # Começa no dia 1

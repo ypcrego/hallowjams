@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DayData" load_steps=3 format=3 uid="uid://dpeuw6dar341p"]
+
+[ext_resource type="Script" uid="uid://cit67nwhs632o" path="res://src/scripts/package.gd" id="1_3ck72"]
+[ext_resource type="Script" uid="uid://csfnncd4l367b" path="res://src/scripts/day_data.gd" id="2_mfayk"]
+
+[resource]
+script = ExtResource("2_mfayk")
+opening_dialogue_key = "DIA_3_INTRO"
+auto_start_dialogues = {
+"storage": "DIA_3_COLEGA"
+}
+metadata/_custom_type_script = "uid://csfnncd4l367b"
