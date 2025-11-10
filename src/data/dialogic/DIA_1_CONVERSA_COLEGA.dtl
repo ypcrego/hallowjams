@@ -13,7 +13,8 @@ Porteiro: É, isolado do som, do vento, da luz do sol...
 Colega: Hehe. É assim mesmo, mas você se acostuma.
 A conversa de vocês é interrompida por um barulho de caminhão.
 Colega: Opa, acho que chegaram as encomendas do dia, bora lá?
-Vocês se direcionam à entrada, para o caminhão, de onde um homem de meia-idade está saindo.
+[signal arg="ColegaDaRecepcao.mover_para,753, 471"]
+*mexe mexe
 Com a ajuda dele, vocês descarregam e pegam todos os pacotes, usando os carrinhos da recepção.
 Colega: Bora cadastrar isso logo, quero me livrar rápido pra dar uma cochilada..
 Colega: Tá lembrado, né? Porta da esquerda.

@@ -145,7 +145,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 30
 script = ExtResource("1_6dfmv")
 move_action = ExtResource("2_ievcg")
