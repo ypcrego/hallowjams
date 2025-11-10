@@ -60,7 +60,7 @@ func _on_ui_scale_value_changed(value: float) -> void:
 func _init_display() -> void:
 	%UiScale.value_changed.connect(_on_ui_scale_value_changed)
 
-	
+
 func _update_display() -> void:
 	var settings_level: Variant = Settings.get_value(
 		Settings.Section.DISPLAY, "ui_scale", null

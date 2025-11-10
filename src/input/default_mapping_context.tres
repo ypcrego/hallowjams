@@ -27,7 +27,7 @@ script = ExtResource("7_31sda")
 script = ExtResource("3_mbp6c")
 override_action_settings = true
 is_remappable = true
-display_name = "Move Up"
+display_name = "Cima"
 input = SubResource("Resource_sd0dg")
 modifiers = Array[ExtResource("5_irygv")]([SubResource("Resource_hwg04"), SubResource("Resource_x42ip")])
 
@@ -42,7 +42,7 @@ script = ExtResource("6_mm7up")
 script = ExtResource("3_mbp6c")
 override_action_settings = true
 is_remappable = true
-display_name = "Move Left"
+display_name = "Esquerda"
 input = SubResource("Resource_go01m")
 modifiers = Array[ExtResource("5_irygv")]([SubResource("Resource_r1ke3")])
 
@@ -57,7 +57,7 @@ script = ExtResource("7_31sda")
 script = ExtResource("3_mbp6c")
 override_action_settings = true
 is_remappable = true
-display_name = "Move Down"
+display_name = "Baixo"
 input = SubResource("Resource_jh3mp")
 modifiers = Array[ExtResource("5_irygv")]([SubResource("Resource_wv2l4")])
 
@@ -69,7 +69,7 @@ key = 68
 script = ExtResource("3_mbp6c")
 override_action_settings = true
 is_remappable = true
-display_name = "Move Right"
+display_name = "Direita"
 input = SubResource("Resource_vkgdo")
 
 [sub_resource type="Resource" id="Resource_4telq"]
@@ -93,6 +93,9 @@ script = ExtResource("11_exdak")
 
 [sub_resource type="Resource" id="Resource_exdak"]
 script = ExtResource("3_mbp6c")
+override_action_settings = true
+is_remappable = true
+display_name = "Interagir"
 input = SubResource("Resource_b4xb3")
 triggers = Array[ExtResource("7_7eb4v")]([SubResource("Resource_w7rtp")])
 

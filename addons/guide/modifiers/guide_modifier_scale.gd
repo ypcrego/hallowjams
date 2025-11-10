@@ -8,8 +8,8 @@ extends GUIDEModifier
 	set(value):
 		scale = value
 		emit_changed()
-		
-		
+
+
 ## If true, delta time will be multiplied in addition to the scale.
 @export var apply_delta_time:bool = false:
 	set(value):
