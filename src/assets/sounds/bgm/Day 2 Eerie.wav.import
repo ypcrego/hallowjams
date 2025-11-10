@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bxl7rusl6a5x"
+path="res://.godot/imported/Day 2 Eerie.wav-773fd67967b63fdb136eca82a823e07b.sample"
+
+[deps]
+
+source_file="res://src/assets/sounds/bgm/Day 2 Eerie.wav"
+dest_files=["res://.godot/imported/Day 2 Eerie.wav-773fd67967b63fdb136eca82a823e07b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

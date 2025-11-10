@@ -1,3 +1,4 @@
+do MusicManager.change_music_by_name("d3e")
 Porteiro: Já amanheceu...?
 Porteiro: Eu não lembro...
 Porteiro: Como eu cheguei aqui...?

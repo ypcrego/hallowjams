@@ -1,2 +1,3 @@
+do MusicManager.change_music_by_name("d2e")
 O som do despertador te acorda mais uma vez. O sol raiou.
 Porteiro: Mal posso esperar pra voltar a dormir...

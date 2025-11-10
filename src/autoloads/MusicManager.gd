@@ -5,6 +5,11 @@ var music_bus_index: int = -1
 
 const MUSIC_MAP = {
 	"bgm": "res://src/assets/sounds/bgm/Mind's Eye Full.wav",
+	"d2c": "res://src/assets/sounds/bgm/Day 2 Creepy.wav",
+	"d2e": "res://src/assets/sounds/bgm/Day 2 Eerie.wav",
+	"d3c": "res://src/assets/sounds/bgm/Day 3 Creepy.wav",
+	"d3e": "res://src/assets/sounds/bgm/Day 3 Eerie.wav",
+	"end": "res://src/assets/sounds/bgm/end.wav",
 }
 
 # A função de inicialização pode permanecer a mesma ou tocar um tema padrão

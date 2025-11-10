@@ -23,8 +23,10 @@ Você se aproxima.
 Porteiro: Sendo sincero, não faz mal a ninguém...
 - Espiar com colega
 	[background arg="res://src/assets/facecards/Gk07wFaWUAAtO6-.jpeg" fade="0.0"]
+	do MusicManager.stop_music()
 	set {espiou_algo_creepy_dia_1} = true
-	[wait_input]
+	[wait time="1.5"]
+	do MusicManager.change_music_by_name("d2c")
 	[background fade="0.0"]
 	Colega: Que ***** é essa?
 	Colega: Que ***** é essa?
