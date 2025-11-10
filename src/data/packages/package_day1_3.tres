@@ -5,9 +5,8 @@
 [resource]
 script = ExtResource("1_w5nc8")
 package_name = "Caixa Pesada e Selada"
-recipient_apartment = "444"
-weight_description = "Extremamente pesado, é preciso esforço para movê-lo."
-surface_hint = "Completamente vedada com fita preta. Cheiro fraco de... metal enferrujado."
-is_creepy = true
-is_plot_critical = true
+recipient_apartment = "303"
+weight_description = "A caixa tem o peso leve."
+surface_hint = "Tem uma indicação de \"CUIDADO: FRÁGIL\"."
+real_content = "Aparentemente, é só um frasco de perfume."
 metadata/_custom_type_script = "uid://cit67nwhs632o"
