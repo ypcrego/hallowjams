@@ -28,7 +28,7 @@ grow_vertical = 2
 
 [node name="SettingsLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Settings"
+text = "Configurações"
 horizontal_alignment = 1
 
 [node name="Spacer" type="Label" parent="VBoxContainer"]
@@ -48,7 +48,7 @@ columns = 2
 
 [node name="MasterLabel" type="Label" parent="VBoxContainer/Audio"]
 layout_mode = 2
-text = "Main"
+text = "Principal"
 
 [node name="Master" type="HSlider" parent="VBoxContainer/Audio"]
 custom_minimum_size = Vector2(300, 0)
@@ -59,7 +59,7 @@ value = 100.0
 
 [node name="MusicLabel" type="Label" parent="VBoxContainer/Audio"]
 layout_mode = 2
-text = "Music"
+text = "Música"
 
 [node name="Music" type="HSlider" parent="VBoxContainer/Audio"]
 layout_mode = 2
@@ -69,7 +69,7 @@ value = 100.0
 
 [node name="SfxLabel" type="Label" parent="VBoxContainer/Audio"]
 layout_mode = 2
-text = "Effects"
+text = "SFX"
 
 [node name="SFX" type="HSlider" parent="VBoxContainer/Audio"]
 layout_mode = 2
