@@ -12,6 +12,6 @@ V̷̝̅͊ò̸͙c̶͙̖̍͋ê̷̯͆̓ ̷̝͐n̸̯͔͗̑ã̵̢̛̬ó̷̪ ̸͖͝c
 - Espiar
 ███████...
 O̶̝͠ ̶͇̟̋m̴͔̊̽█n̴̘̆̑d̶͈̃█ ̷̨́̅͜ŝ̷̨e̷̙͎͊ ̶̢̅t̸̘̂͝o̶̧͕͋͛ṛ̷̜̒n̴͚͂a̸̡̓̔ ̸̱̆t̸̞͂█r̸̢̫͂v̸̂͝ͅ█.̸̤͋
-do MusicManager.set_music_bus_volume_db(4.0)
+do MusicManager.set_music_bus_volume_db(5.0)
 [signal arg="morreu"]
 do MusicManager.change_music_by_name("end")

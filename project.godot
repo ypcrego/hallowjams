@@ -28,6 +28,7 @@ GameState="*res://src/autoloads/game_state.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 Elevator="*res://src/scripts/elevator.gd"
 MusicManager="*res://src/autoloads/MusicManager.gd"
+SfxManager="*res://src/autoloads/SFXManager.gd"
 
 [debug]
 
@@ -132,7 +133,7 @@ text/input_action="dialogic_default_action"
 animations/join_default="Fade In Up"
 animations/leave_default="Instant Out"
 animations/cross_fade_default="Fade Cross"
-audio/type_sound_bus="SFX"
+audio/type_sound_bus="Voice"
 
 [display]
 

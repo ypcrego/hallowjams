@@ -22,13 +22,14 @@ Colega: Vem ver também.
 Você se aproxima.
 Porteiro: Sendo sincero, não faz mal a ninguém...
 - Espiar com colega
+	do SfxManager.play_sfx_by_name("scare")
 	[background arg="res://src/assets/facecards/Gk07wFaWUAAtO6-.jpeg" fade="0.0"]
 	do MusicManager.stop_music()
 	set {espiou_algo_creepy_dia_1} = true
-	[wait time="1.5"]
-	do MusicManager.change_music_by_name("d2c")
+	[wait time="2.1"]
 	[background fade="0.0"]
 	Colega: Que ***** é essa?
+	do MusicManager.change_music_by_name("d2c")
 	Colega: Que ***** é essa?
 	Ele fecha rapidamente a caixa, com as mãos tremendo.
 	Colega: Que desgraça...
