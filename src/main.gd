@@ -196,12 +196,10 @@ func force_day_transition() -> void:
 func end_game_sequence():
 	Dialogic.end_timeline(true)
 
-	# 2. Tela preta (Fade Out)
-	await fade_out(1.5)
+	await enable_grayscale(3.5)
 
-#	if current_scene:
-	#	current_scene.queue_free()
-	#	current_scene = null
+	# 2. Tela preta (Fade Out)
+	await fade_out(6.5)
 
 	# 3. Desabilita o jogador e a UI do jogo
 	player_node.process_mode = Node.PROCESS_MODE_DISABLED
@@ -216,5 +214,10 @@ func end_game_sequence():
 	# 5. Fade In para revelar a tela final
 	await fade_in(1.5)
 
-	# O script da tela `thanks_for_playing.gd` irá lidar com o input
-	# do usuário para voltar ao `main.tscn` (recomeçar/finalizar o aplicativo).
+func enable_grayscale(duration := 1.0):
+	var grayscale = $PostProcessGrayscale
+	grayscale.visible = true
+	var mat = grayscale.material as ShaderMaterial
+	mat.set_shader_parameter("intensity", 0.0)
+	var tween = create_tween()
+	tween.tween_property(mat, "shader_parameter/intensity", 1.0, duration)
