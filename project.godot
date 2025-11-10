@@ -45,6 +45,7 @@ directories/dtl_directory={
 "DIA_1_INTRO": "res://src/data/dialogic/DIA_1_INTRO.dtl",
 "DIA_1_TUTORIAL_DESK": "res://src/data/dialogic/DIA_1_TUTORIAL_DESK.dtl",
 "DIA_2_COLEGA": "res://src/data/dialogic/DIA_2_COLEGA.dtl",
+"DIA_2_INTRO": "res://src/data/dialogic/DIA_2_INTRO.dtl",
 "choose_elevator_floor": "res://src/data/dialogic/choose_elevator_floor.dtl",
 "delivery_end_day_1": "res://src/data/dialogic/delivery_end_day_1.dtl",
 "delivery_failure": "res://src/data/dialogic/delivery_failure.dtl",
@@ -77,8 +78,8 @@ text/text_reveal_skip_delay=0.1
 text/advance_delay=0.1
 text/autoadvance_per_character_delay=0.1
 text/autoadvance_ignored_characters_enabled=true
-animations/join_default_length=0.1
-animations/join_default_wait=false
+animations/join_default_length=0.3
+animations/join_default_wait=true
 animations/leave_default_length=0.5
 animations/leave_default_wait=false
 animations/cross_fade_default_length=0.5
@@ -118,8 +119,9 @@ variables={
 timer/process_in_physics=false
 layout/end_behaviour=0
 text/input_action="dialogic_default_action"
-animations/join_default="Instant In"
+animations/join_default="Fade In Up"
 animations/leave_default="Instant Out"
+animations/cross_fade_default="Fade Cross"
 
 [display]
 

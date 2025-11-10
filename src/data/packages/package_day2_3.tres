@@ -6,9 +6,10 @@
 script = ExtResource("1_74fms")
 package_name = "Som oco"
 recipient_apartment = "444"
-weight_description = "Caixa média, pesada e úmida embaixo."
-surface_hint = "Etiqueta borrada - mal dá pra ler o número do apartamento, apenas um “Ap. 4?4”.
-Um cheiro metálico forte, quase como sangue velho, sai pelas frestas."
+weight_description = "A caixa é média, pesada e ú̶m̴i̶d̴a̸ ̷e̴m̷b̸a̵i̵x̷o̶.̵"
+surface_hint = "A etiqueta está borrada - mal dá pra ler o número do apartamento, apenas um “Ap. 4?4”.
+U̴m̶ ̸c̴h̴e̴i̵r̷o̵ ̴m̴e̶t̵á̷l̷i̴c̸o̶ ̸f̴o̴r̸t̶e̸,̴ ̵q̸u̵a̸s̷e̶ ̴c̴o̶m̶o̴ ̷s̷a̷n̶g̷u̷e̸ ̴v̴e̷l̸h̷o̴,̵ ̸s̸a̴i̸ ̵p̸e̴l̴a̶s̴ ̶f̷r̴e̸s̶t̵a̷s̴.̵"
+real_content = "V̴̺̀͝ͅo̷̤͖͑͑͊̂c̵̪͊̕ê̶̟̥̾̄ ̵̧̖̜́̇́v̴̫̌̚ê̶̗̈́̀ ̸̛̱█̵̡̗̭̐̓█̴̭̘̄̓̽█̷̺̥͓̑͜█̷̋́ͅ█̴͈̏̐͝ ̵̨͓̃̚d̵̼̖̰͖̓̽͌ȩ̷͙̐̒̅̚n̸̬̼͖͛̉͜ť̷̪̳͓͠ṟ̷̱̽͊ö̴̧̗͝͝.̶̮̔̈ ̸̝̈͛̋É̴̪̹̦̪̽ ̷͇̼̒̂̈́͜ơ̸͍ ̸̨̟̞̯̉͘͘s̵̺̀é̴̟̱̮͚̀̈́u̵͚͑̀ ̸̭͉̙̔̈́̒̎f̶̦̙̤̀̎̋i̸͚͍͔̍̏̀m̴͚̙̎̂̍͝.̸̠̔̈́͗̿"
 is_creepy = true
 is_plot_critical = true
 metadata/_custom_type_script = "uid://cit67nwhs632o"

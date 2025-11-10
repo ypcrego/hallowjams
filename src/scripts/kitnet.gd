@@ -13,6 +13,12 @@ func start_sleep_sequence():
 	# 2. Conecta o sinal para avançar para o PRÓXIMO diálogo quando o sono terminar.
 	_connect_sleep_signal()
 
+	var main_node = get_tree().get_first_node_in_group("Main")
+
+	# 🚨 NOVO: Inicia o Fade In (Revelar a cena)
+	if main_node:
+		await main_node.fade_out(1.5) # Aguarda a tela revelar a cena (1.5s)
+
 	# 3. Inicia o diálogo de descanso/sono.
 	Dialogic.start(sleep_dialogue_timeline)
 
@@ -30,6 +36,8 @@ func _on_sleep_dialogue_ended():
 	# Desconecta o sinal atual
 	Dialogic.disconnect("timeline_ended", Callable(self, "_on_sleep_dialogue_ended"))
 
+	var main_node = get_tree().get_first_node_in_group("Main")
+	await main_node.fade_in(0.5)
 
 	# 1. Define o nome da timeline do NOVO diálogo (começo do dia N+1)
 	var next_day_number = GameState.current_day + 1
@@ -38,7 +46,3 @@ func _on_sleep_dialogue_ended():
 	GameState.advance_day()
 
 	print("LOG: Fim do sono. Próxima: Diálogo de novo dia para o dia: ", next_day_number, " (Timeline: ", new_day_dialogue_timeline, ")")
-
-
-	# 3. Inicia o diálogo de novo dia (sem await)
-	Dialogic.start(new_day_dialogue_timeline)

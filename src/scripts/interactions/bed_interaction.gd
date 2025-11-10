@@ -5,7 +5,6 @@ class_name BedInteraction
 @export var interact: GUIDEAction
 
 var player_in_range = false
-var _dialogic = null
 
 # Referência ao script da Kitnet, que contém a lógica de diálogo encadeado.
 # Assumimos que o script da Kitnet é o nó pai ou um nó facilmente acessível
@@ -29,7 +28,6 @@ func handle_bed_interaction():
 	# 2. Requer que o dia de trabalho esteja de fato completo antes de dormir
 	# Apenas permitimos dormir se não houver mais pacotes para entregar.
 	if not GameState.is_day_task_complete():
-		#_dialogic.start("not_all_packages_delivered") # **CRIE ESSA TIMELINE NO DIALOGIC** (Ex: "Ainda tenho entregas a fazer...")
 		return
 
 	print("LOG: Interação com a cama bem-sucedida. Iniciando sequência de sono.")
