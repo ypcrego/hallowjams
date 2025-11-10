@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://bswlu8qntiul6"]
+[gd_scene load_steps=23 format=3 uid="uid://bswlu8qntiul6"]
 
 [ext_resource type="Script" uid="uid://vl8ljkrn8kuv" path="res://src/scripts/player.gd" id="1_6dfmv"]
 [ext_resource type="Resource" uid="uid://c6tovgnwacf3x" path="res://src/input/move.tres" id="2_ievcg"]
 [ext_resource type="Texture2D" uid="uid://suftprwko5n7" path="res://src/assets/character_asset/pixil-frame-0 (25).png" id="3_qcopw"]
 [ext_resource type="Texture2D" uid="uid://dnqtedp5fdo71" path="res://src/assets/character_asset/pixil-frame-0 (26).png" id="4_hakhn"]
+[ext_resource type="AudioStream" uid="uid://coollan3fw7r2" path="res://src/assets/sounds/sfx/footsteps.mp3" id="5_hakhn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m1lfq"]
 
@@ -156,3 +157,7 @@ shape = SubResource("CapsuleShape2D_m1lfq")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gh1e0")
 animation = &"andando para frente"
+
+[node name="FootstepPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_hakhn")
+bus = &"SFX"

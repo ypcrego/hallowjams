@@ -105,6 +105,12 @@ audio/channel_defaults={
 "fade_length": 0.0,
 "loop": true,
 "volume": 0.0
+},
+"voice": {
+"audio_bus": "",
+"fade_length": 0.0,
+"loop": true,
+"volume": 0.0
 }
 }
 glossary/default_case_sensitive=true
@@ -125,6 +131,7 @@ text/input_action="dialogic_default_action"
 animations/join_default="Fade In Up"
 animations/leave_default="Instant Out"
 animations/cross_fade_default="Fade Cross"
+audio/type_sound_bus="SFX"
 
 [display]
 
