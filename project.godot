@@ -46,6 +46,8 @@ directories/dtl_directory={
 "DIA_1_TUTORIAL_DESK": "res://src/data/dialogic/DIA_1_TUTORIAL_DESK.dtl",
 "DIA_2_COLEGA": "res://src/data/dialogic/DIA_2_COLEGA.dtl",
 "DIA_2_INTRO": "res://src/data/dialogic/DIA_2_INTRO.dtl",
+"DIA_3_COLEGA": "res://src/data/dialogic/DIA_3_COLEGA.dtl",
+"DIA_3_INTRO": "res://src/data/dialogic/DIA_3_INTRO.dtl",
 "choose_elevator_floor": "res://src/data/dialogic/choose_elevator_floor.dtl",
 "delivery_end_day_1": "res://src/data/dialogic/delivery_end_day_1.dtl",
 "delivery_failure": "res://src/data/dialogic/delivery_failure.dtl",
@@ -63,7 +65,8 @@ directories/dtl_directory={
 "no_package_dialogue": "res://src/data/dialogic/no_package_dialogue.dtl",
 "pacotes": "res://src/assets/facecards/pacotes.dtl",
 "quadro_noticias": "res://src/data/dialogic/quadro_noticias.dtl",
-"sleep_day_1": "res://src/data/dialogic/sleep_day_1.dtl"
+"sleep_day_1": "res://src/data/dialogic/sleep_day_1.dtl",
+"sleep_day_2": "res://src/data/dialogic/sleep_day_2.dtl"
 }
 layout/style_directory={
 "": "res://src/data/dialogic/custom_syle.tres",
