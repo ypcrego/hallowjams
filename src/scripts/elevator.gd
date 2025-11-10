@@ -16,7 +16,7 @@ const FLOOR_MAP = {
 	0: {
 		# Exemplo: O storage/recepção ainda pode ser uma cena normal,
 		# ou você pode criar um Resource Data para ele também.
-		"scene_path": "res://src/game/storage.tscn",
+		"scene_path": "res://src/game/reception.tscn",
 		"spawn_point": "SP_From_Elevator",
 		"data": null # Nenhuma injeção de dados necessária aqui
 	},

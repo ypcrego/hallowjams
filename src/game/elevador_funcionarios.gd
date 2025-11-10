@@ -18,15 +18,15 @@ func handle_interaction():
 		return
 	if Dialogic.current_timeline != null:
 		return
-		
+
 	if not timeline_name.is_empty():
 		Dialogic.start(timeline_name)
-		
+
 	print("LOG: Diálogo da nota iniciado.")
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.name == "Player": 
+	if body.name == "Player":
 		player_in_range = true
 		# Se você tiver um nó para mostrar o prompt, ative-o aqui (ex: $PromptLabel.show())
 
