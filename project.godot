@@ -27,6 +27,7 @@ GUIDE="*res://addons/guide/guide.gd"
 GameState="*res://src/autoloads/game_state.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 Elevator="*res://src/scripts/elevator.gd"
+MusicManager="*res://src/autoloads/MusicManager.gd"
 
 [debug]
 
