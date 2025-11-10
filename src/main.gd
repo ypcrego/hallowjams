@@ -5,11 +5,11 @@ signal guide_ready
 
 # Caminho da cena de início (Sua Kitnet)
 const INITIAL_SCENE_PATH = "res://src/game/kitnet.tscn"
-
 # Variáveis para a cena e o jogador
 var current_scene: Node = null
 @onready var current_scene_container = $CurrentSceneContainer # Certifique-se que o nome do nó bate!
 @onready var player_node = $Player # Certifique-se que o nome do nó Player está correto!
+@onready var audio_player = $AudioStreamPlayer
 
 @onready var fade_layer: ColorRect = $FadeCanvas/FadeLayer
 var first_scene_loaded := false
@@ -34,6 +34,7 @@ func start_initial_game() -> void:
 
 	$UI.hide_ui("MainMenu")
 	player_node.process_mode = Node.PROCESS_MODE_INHERIT
+
 
 	if not $UI.is_preset_ready:
 		await $UI.preset_ready
@@ -142,6 +143,9 @@ func fade_out(duration: float = 1.0) -> void:
 func _on_dialogic_event(argument: String):
 	if argument == "mostrar_cena":
 		fade_in(1.5)
+
+	if argument == "play_bgm":
+		audio_player.play()
 
 	if argument == "finished_day_2":
 		# Inicia o fluxo de transição forçada
