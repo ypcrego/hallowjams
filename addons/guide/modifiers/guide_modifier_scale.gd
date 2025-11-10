@@ -24,7 +24,7 @@ func is_same_as(other:GUIDEModifier) -> bool:
 func _modify_input(input:Vector3, delta:float, value_type:GUIDEAction.GUIDEActionValueType) -> Vector3:
 	if not input.is_finite():
 		return Vector3.INF
-		
+
 	if apply_delta_time:
 		return input * scale * delta
 	else:

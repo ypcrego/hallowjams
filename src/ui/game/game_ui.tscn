@@ -16,6 +16,7 @@ prevent_joypad_focus_capture = true
 default_focus_control = NodePath("VBoxContainer/ToggleGuideDebugger")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
