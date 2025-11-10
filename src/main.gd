@@ -146,6 +146,12 @@ func _on_dialogic_event(argument: String):
 	if argument == "finished_day_2":
 		# Inicia o fluxo de transição forçada
 		force_day_transition()
+# >>> INÍCIO DA MUDANÇA PARA FIM DE JOGO
+	if argument == "morreu":
+		print("LOG: Sinal 'morreu' recebido. Iniciando sequência de Fim de Jogo.")
+		# Usamos call_deferred para garantir que o evento de diálogo atual termine
+		call_deferred("end_game_sequence")
+	# <<< FIM DA MUDANÇA PARA FIM DE JOGO
 
 func _input(event: InputEvent):
 	# Permite que a função de cheat seja chamada de qualquer lugar no jogo
@@ -186,3 +192,29 @@ func force_day_transition() -> void:
 
 	# 7. [FADE IN MANTIDO] Força o Fade In para revelar a cena e o diálogo.
 	await fade_in(1.5)
+
+func end_game_sequence():
+	Dialogic.end_timeline(true)
+
+	# 2. Tela preta (Fade Out)
+	await fade_out(1.5)
+
+#	if current_scene:
+	#	current_scene.queue_free()
+	#	current_scene = null
+
+	# 3. Desabilita o jogador e a UI do jogo
+	player_node.process_mode = Node.PROCESS_MODE_DISABLED
+	player_node.visible = false
+	if $UI.is_shown("Game"):
+		await $UI.hide_ui("Game") # Esconde a HUD/UI principal do jogo
+
+	# 4. Mostra a tela de "Obrigado por Jogar"
+	# "ThanksForPlaying" é o nome do nó da cena em src/ui/thanks_for_playing/thank_for_playing.tscn
+	$UI.show_ui("ThanksForPlaying")
+
+	# 5. Fade In para revelar a tela final
+	await fade_in(1.5)
+
+	# O script da tela `thanks_for_playing.gd` irá lidar com o input
+	# do usuário para voltar ao `main.tscn` (recomeçar/finalizar o aplicativo).
