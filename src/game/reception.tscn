@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://hoiep2xd14dy"]
+[gd_scene load_steps=36 format=3 uid="uid://hoiep2xd14dy"]
 
 [ext_resource type="Texture2D" uid="uid://dqaktyul2becp" path="res://src/assets/tileset/Inside_E.png" id="1_at6ha"]
 [ext_resource type="Script" uid="uid://bad35xwjevkko" path="res://src/scripts/reception.gd" id="1_vgxig"]
@@ -10,6 +10,12 @@
 [ext_resource type="Script" uid="uid://bwc67s3vtcbex" path="res://src/scripts/interactions/SceneChangeAction.gd" id="5_e4nf2"]
 [ext_resource type="Texture2D" uid="uid://n6hxhk53uu4q" path="res://src/assets/tileset/escada_pardde.png" id="6_vp3wh"]
 [ext_resource type="Texture2D" uid="uid://cen41e32wecll" path="res://src/assets/tileset/doors_updated.png" id="7_vgxig"]
+[ext_resource type="Script" uid="uid://c5vkyjk3kguo4" path="res://src/game/Note_Elevator.gd" id="10_x347c"]
+[ext_resource type="Resource" uid="uid://cokjrm8sl1nr4" path="res://src/input/interact.tres" id="11_h2p3x"]
+[ext_resource type="Script" uid="uid://c32pg54112lj3" path="res://src/game/elevador_funcionarios.gd" id="12_2i1nj"]
+[ext_resource type="Script" uid="uid://b7f64k52dg2p" path="res://src/game/quadro_noticias.gd" id="13_kb83b"]
+[ext_resource type="Script" uid="uid://bb3nop7nco47s" path="res://src/game/estatua.gd" id="14_xqc6k"]
+[ext_resource type="Script" uid="uid://cs2vg0yxef45c" path="res://src/game/maquina.gd" id="15_iyfq4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kvwdw"]
 resource_name = "Doors"
@@ -1257,7 +1263,9 @@ texture = ExtResource("2_kvwdw")
 26:21/0 = 0
 40:21/0 = 0
 44:21/0 = 0
+44:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.115197, -8, 8, -8, 8, 8, -5.036045, 8)
 45:21/0 = 0
+45:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -0.35971832, -8, -0.35971832, 8, -8, 8)
 0:22/0 = 0
 1:22/0 = 0
 3:22/0 = 0
@@ -1290,9 +1298,13 @@ texture = ExtResource("2_kvwdw")
 40:22/0 = 0
 41:22/0 = 0
 43:22/0 = 0
+43:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.5756207, -8, 8, -8, 8, 8, -5.5756207, 8)
 44:22/0 = 0
+44:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 8, -8, 8, 8)
 45:22/0 = 0
+45:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 46:22/0 = 0
+46:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.35971642, 8, -2.5180225, -8, -8, -8, -8, 8)
 0:23/0 = 0
 1:23/0 = 0
 3:23/0 = 0
@@ -1322,9 +1334,13 @@ texture = ExtResource("2_kvwdw")
 40:23/0 = 0
 41:23/0 = 0
 43:23/0 = 0
+43:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.2159033, -8, -5.3957624, 8, 8, 8, 8, -8)
 44:23/0 = 0
+44:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 8, -8, 8, 8)
 45:23/0 = 0
+45:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 46:23/0 = 0
+46:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.71943474, -8, 0.17985916, 8, -8, 8, -8, -8)
 12:24/0 = 0
 13:24/0 = 0
 15:24/0 = 0
@@ -1333,8 +1349,11 @@ texture = ExtResource("2_kvwdw")
 37:24/0 = 0
 39:24/0 = 0
 43:24/0 = 0
+43:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(3.4173164, -8, 3.4173164, 8, 8, 8, 8, -8)
 44:24/0 = 0
+44:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 8, -8, 8, 8)
 45:24/0 = 0
+45:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 46:24/0 = 0
 0:25/0 = 0
 1:25/0 = 0
@@ -1369,8 +1388,11 @@ texture = ExtResource("2_kvwdw")
 40:25/0 = 0
 41:25/0 = 0
 43:25/0 = 0
+43:25/0/physics_layer_0/polygon_0/points = PackedVector2Array(3.956892, -8, 4.4964676, 8, 8, 8, 8, -8)
 44:25/0 = 0
+44:25/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 8, -8, 8, 8)
 45:25/0 = 0
+45:25/0/physics_layer_0/polygon_0/points = PackedVector2Array(5.75548, -8, 5.75548, 8, -8, 8, -8, -8)
 46:25/0 = 0
 0:26/0 = 0
 1:26/0 = 0
@@ -1404,8 +1426,11 @@ texture = ExtResource("2_kvwdw")
 40:26/0 = 0
 41:26/0 = 0
 43:26/0 = 0
+43:26/0/physics_layer_0/polygon_0/points = PackedVector2Array(3.4173164, -8, 3.4173164, 8, 8, 8, 8, -8)
 44:26/0 = 0
+44:26/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, -8, -8, -8)
 45:26/0 = 0
+45:26/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, -8, -8, -8)
 46:26/0 = 0
 7:27/0 = 0
 10:27/0 = 0
@@ -5746,11 +5771,20 @@ target_scene_path = "res://src/game/storage.tscn"
 target_spawn_point_name = "SP_From_Reception"
 metadata/_custom_type_script = "uid://bwc67s3vtcbex"
 
-[sub_resource type="Resource" id="Resource_h2p3x"]
-script = ExtResource("5_e4nf2")
-target_scene_path = "res://src/game/kitnet.tscn"
-target_spawn_point_name = "SP_From_Reception"
-metadata/_custom_type_script = "uid://bwc67s3vtcbex"
+[sub_resource type="CircleShape2D" id="CircleShape2D_2i1nj"]
+radius = 2.828427
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kb83b"]
+radius = 18.439089
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xqc6k"]
+radius = 41.59327
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iyfq4"]
+radius = 47.095646
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_maclx"]
+radius = 49.193497
 
 [node name="Reception" type="Node2D"]
 script = ExtResource("1_vgxig")
@@ -5790,8 +5824,62 @@ door_tileset_texture = null
 door_texture_region = Rect2(0, 0, 0, 0)
 action = SubResource("Resource_x347c")
 
-[node name="Door_To_Kitnet" parent="." instance=ExtResource("4_pbver")]
-position = Vector2(1524, 416)
-door_tileset_texture = null
-door_texture_region = Rect2(0, 0, 0, 0)
-action = SubResource("Resource_h2p3x")
+[node name="Door_To_Storage" parent="SP_From_Storage" instance=ExtResource("4_pbver")]
+position = Vector2(831, 366)
+action = SubResource("Resource_vgxig")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(927, 110)
+scale = Vector2(5, 5)
+script = ExtResource("10_x347c")
+interact_action = ExtResource("11_h2p3x")
+
+[node name="CollisionShape2DElevador" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.40000492, 8.8)
+shape = SubResource("CircleShape2D_2i1nj")
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2(749, 149)
+script = ExtResource("12_2i1nj")
+interact_action = ExtResource("11_h2p3x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_kb83b")
+
+[node name="Area2D3" type="Area2D" parent="."]
+position = Vector2(685, 403)
+script = ExtResource("13_kb83b")
+interact_action = ExtResource("11_h2p3x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+position = Vector2(3, -3)
+shape = SubResource("CircleShape2D_xqc6k")
+
+[node name="Area2D4" type="Area2D" parent="."]
+position = Vector2(-181, 140)
+script = ExtResource("14_xqc6k")
+interact_action = ExtResource("11_h2p3x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
+position = Vector2(745, 526)
+shape = SubResource("CircleShape2D_iyfq4")
+
+[node name="Area2D5" type="Area2D" parent="."]
+script = ExtResource("15_iyfq4")
+interact_action = ExtResource("11_h2p3x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D5"]
+position = Vector2(440, 444)
+shape = SubResource("CircleShape2D_maclx")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
+[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D2" to="Area2D2" method="_on_body_exited"]
+[connection signal="body_entered" from="Area2D3" to="Area2D3" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D3" to="Area2D3" method="_on_body_exited"]
+[connection signal="body_entered" from="Area2D4" to="Area2D4" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D4" to="Area2D4" method="_on_body_exited"]
+[connection signal="body_entered" from="Area2D5" to="Area2D5" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D5" to="Area2D5" method="_on_body_exited"]
