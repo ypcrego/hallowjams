@@ -17,7 +17,7 @@ func _ready() -> void:
 	Dialogic.timeline_started.connect(_on_timeline_started)
 	Dialogic.timeline_ended.connect(set_physics_process.bind(true))
 	Dialogic.timeline_ended.connect(set_process_input.bind(true))
-	
+
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 
 func _on_dialogic_signal(arg : String) -> void:

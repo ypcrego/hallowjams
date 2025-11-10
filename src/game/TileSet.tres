@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=23 format=3 uid="uid://di4pepkglfqbm"]
+[gd_resource type="TileSet" load_steps=24 format=3 uid="uid://di4pepkglfqbm"]
 
 [ext_resource type="Texture2D" uid="uid://dqaktyul2becp" path="res://src/assets/tileset/Inside_E.png" id="1_p76u4"]
 [ext_resource type="Texture2D" uid="uid://drom2i3kon3tf" path="res://src/assets/tileset/Inside_C.png" id="2_ryrnt"]
@@ -5964,6 +5964,12 @@ texture = ExtResource("4_orfjf")
 18:19/0 = 0
 18:22/0 = 0
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ryrnt"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h4eqp"]
 resource_name = "Floors"
 texture = ExtResource("5_gvpt5")
@@ -6224,6 +6230,7 @@ texture = ExtResource("5_gvpt5")
 2:15/0 = 0
 3:15/0 = 0
 4:15/0 = 0
+4:15/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_ryrnt")
 5:15/0 = 0
 6:15/0 = 0
 7:15/0 = 0
@@ -6232,8 +6239,11 @@ texture = ExtResource("5_gvpt5")
 1:16/0 = 0
 2:16/0 = 0
 3:16/0 = 0
+3:16/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_ryrnt")
 4:16/0 = 0
+4:16/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_ryrnt")
 5:16/0 = 0
+5:16/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_ryrnt")
 6:16/0 = 0
 7:16/0 = 0
 8:16/0 = 0
@@ -6242,6 +6252,7 @@ texture = ExtResource("5_gvpt5")
 2:17/0 = 0
 3:17/0 = 0
 4:17/0 = 0
+4:17/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_ryrnt")
 5:17/0 = 0
 6:17/0 = 0
 7:17/0 = 0
