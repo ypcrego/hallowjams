@@ -143,6 +143,10 @@ func _on_dialogic_event(argument: String):
 	if argument == "mostrar_cena":
 		fade_in(1.5)
 
+	if argument == "finished_day_2":
+		# Inicia o fluxo de transição forçada
+		force_day_transition()
+
 func _input(event: InputEvent):
 	# Permite que a função de cheat seja chamada de qualquer lugar no jogo
 	if event.is_action_pressed("ui_accept") and Input.is_key_pressed(KEY_V):
@@ -151,3 +155,34 @@ func _input(event: InputEvent):
 
 		# Certifica-se de que GameState está carregado (é um Autoload, então deve estar)
 		GameState.cheat_complete_day()
+
+
+func force_day_transition() -> void:
+	# 1. Tela preta (Fade Out)
+	await fade_out(1.5)
+
+	# 2. [CORREÇÃO: TROCA DE CENA] Força o retorno para a Kitnet ANTES de avançar o dia
+	# O spawn point "SP_From_Bed" deve ser válido na cena da kitnet.
+	load_scene(INITIAL_SCENE_PATH, "SP_From_Bed")
+
+	# IMPORTANTE: Garante que a cena nova está pronta para a próxima instrução
+	# (load_scene já tem um await para _wait_scene_ready() e load_scene(..))
+
+	# 3. [DELAY MANTIDO] Adiciona o atraso na tela preta.
+	await get_tree().create_timer(1.5).timeout
+
+	# 4. Atualizar o estado do jogo para o novo dia
+	GameState.advance_day()
+	var next_day_number = GameState.current_day
+	var new_day_dialogue_timeline: String = "new_day_" + str(next_day_number)
+
+	print("LOG: Transição abrupta concluída. Iniciando diálogo para o dia: ", next_day_number)
+
+	# 5. Iniciar o novo diálogo
+	Dialogic.start(new_day_dialogue_timeline)
+
+	# 6. Espera um frame para o Dialogic (mantido)
+	await get_tree().process_frame
+
+	# 7. [FADE IN MANTIDO] Força o Fade In para revelar a cena e o diálogo.
+	await fade_in(1.5)
