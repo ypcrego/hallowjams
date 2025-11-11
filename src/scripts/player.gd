@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var speed:float = 100
+@export var speed:float = 300
 @export var move_action:GUIDEAction
 var can_move := true
 
@@ -96,7 +96,7 @@ func _keep_animation() -> void:
 		current_animation = "parado costas"
 	else:
 		# Padrão para "Lado" se não tinha um estado definido ou estava nos lados
-		current_animation = "parado lado"
+		current_animation = "parado frente"
 		# O flip_h deve ser mantido do último movimento lateral
 	sprite.play(current_animation)
 

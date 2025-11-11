@@ -6,8 +6,10 @@ class_name NpcColega
 @onready var area_interacao = $Area2D
 @onready var agent = $NavigationAgent2D
 
+signal terminou_movimento
 
-const SPEED = 100.0
+
+const SPEED = 50.0
 
 enum Estado {
 	PARADO,
@@ -40,7 +42,7 @@ func _physics_process(delta: float) -> void:
 
 	# 👇 Depois move e atualiza a velocidade real
 	move_and_slide()
-	
+
 # 💬 Recebe os sinais enviados pelo Dialogic
 func _on_dialogic_signal(argument: String):
 	print("[DEBUG] Sinal do Dialogic recebido:", argument)
@@ -55,7 +57,7 @@ func _on_dialogic_signal(argument: String):
 	var comando = args[0]
 	if comando.contains("."):
 		comando = comando.split(".")[-1]  # pega só a última parte, ex: mover_para
- 
+
 	print("[DEBUG] Comando interpretado:", comando)
 
 	# Verifica se é o comando de movimento
@@ -75,6 +77,8 @@ func _handle_movement_to_target(delta):
 
 	# Se chegou
 	if agent.is_navigation_finished():
+		print("me mata me mata me mate ma me tmaetma")
+		emit_signal("terminou_movimento")
 		mudar_estado(Estado.AGUARDANDO_INTERACAO)
 		velocity = Vector2.ZERO
 		return
