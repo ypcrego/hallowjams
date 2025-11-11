@@ -10,6 +10,7 @@ metadata/_custom_type_script = "uid://n8yc2dfxdli7"
 
 [resource]
 script = ExtResource("2_rndhq")
+position = Vector2(665, 335.5)
 apartment_number = "03"
 delivery_action = SubResource("Resource_wgmgl")
 metadata/_custom_type_script = "uid://gjyn4rojs8rn"

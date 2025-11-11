@@ -6,5 +6,6 @@
 
 [resource]
 script = ExtResource("1_5lc2j")
+position = Vector2(665, 335.5)
 delivery_action = ExtResource("1_yg3bb")
 metadata/_custom_type_script = "uid://gjyn4rojs8rn"
