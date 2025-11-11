@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://yjwduofn0grh"]
 
-[ext_resource type="TileSet" uid="uid://di4pepkglfqbm" path="res://src/game/TileSet.tres" id="2_ny2ur"]
+[ext_resource type="TileSet" uid="uid://di4pepkglfqbm" path="res://src/assets/tileset/TileSet.tres" id="2_ny2ur"]
 [ext_resource type="PackedScene" uid="uid://ccd4nglpnueb1" path="res://src/game/Door.tscn" id="5_sd6p6"]
 [ext_resource type="Script" uid="uid://bbqka14cnal6a" path="res://src/scripts/apartment_hall.gd" id="6_sd6p6"]
 [ext_resource type="Script" uid="uid://cjas1p3gxd660" path="res://src/scripts/interactions/DialogueAction.gd" id="7_q5oat"]

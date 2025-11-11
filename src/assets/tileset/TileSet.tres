@@ -1,17 +1,18 @@
-[gd_resource type="TileSet" load_steps=24 format=3 uid="uid://di4pepkglfqbm"]
+[gd_resource type="TileSet" load_steps=26 format=3 uid="uid://di4pepkglfqbm"]
 
-[ext_resource type="Texture2D" uid="uid://dqaktyul2becp" path="res://src/assets/tileset/Inside_E.png" id="1_p76u4"]
-[ext_resource type="Texture2D" uid="uid://drom2i3kon3tf" path="res://src/assets/tileset/Inside_C.png" id="2_ryrnt"]
-[ext_resource type="Texture2D" uid="uid://d286imsit4ows" path="res://src/assets/tileset/Inside_D.png" id="3_2r5pn"]
-[ext_resource type="Texture2D" uid="uid://bepelt4mg5j74" path="res://src/assets/tileset/A4.png" id="4_orfjf"]
-[ext_resource type="Texture2D" uid="uid://cksefu0phrhfq" path="res://src/assets/tileset/A5.png" id="5_gvpt5"]
-[ext_resource type="Texture2D" uid="uid://n6hxhk53uu4q" path="res://src/assets/tileset/escada_pardde.png" id="6_ay3eo"]
-[ext_resource type="Texture2D" uid="uid://cen41e32wecll" path="res://src/assets/tileset/doors_updated.png" id="7_mv0yf"]
-[ext_resource type="Texture2D" uid="uid://cc1i8lwja3pt4" path="res://src/assets/tileset/computer_updated.png" id="8_ryrnt"]
+[ext_resource type="Texture2D" uid="uid://dqaktyul2becp" path="res://src/assets/tileset/Inside_E.png" id="1_8aohs"]
+[ext_resource type="Texture2D" uid="uid://drom2i3kon3tf" path="res://src/assets/tileset/Inside_C.png" id="2_gml3u"]
+[ext_resource type="Texture2D" uid="uid://cc1i8lwja3pt4" path="res://src/assets/tileset/computer_updated.png" id="3_acwtv"]
+[ext_resource type="Texture2D" uid="uid://d286imsit4ows" path="res://src/assets/tileset/Inside_D.png" id="4_wsv3s"]
+[ext_resource type="Texture2D" uid="uid://bepelt4mg5j74" path="res://src/assets/tileset/A4.png" id="5_6gbad"]
+[ext_resource type="Texture2D" uid="uid://cksefu0phrhfq" path="res://src/assets/tileset/A5.png" id="6_mi0x8"]
+[ext_resource type="Texture2D" uid="uid://n6hxhk53uu4q" path="res://src/assets/tileset/escada_pardde.png" id="7_snuma"]
+[ext_resource type="Texture2D" uid="uid://cen41e32wecll" path="res://src/assets/tileset/doors_updated.png" id="8_aqp5y"]
+[ext_resource type="Texture2D" uid="uid://ddqjtok640me2" path="res://src/assets/tileset/ELR_CardBoardy_Boxes.png" id="9_gt0wr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_prake"]
 resource_name = "Doors"
-texture = ExtResource("1_p76u4")
+texture = ExtResource("1_8aohs")
 use_texture_padding = false
 0:1/0 = 0
 1:1/0 = 0
@@ -701,7 +702,7 @@ use_texture_padding = false
 46:44/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ww63o"]
-texture = ExtResource("2_ryrnt")
+texture = ExtResource("2_gml3u")
 35:0/0 = 0
 36:0/0 = 0
 39:0/0 = 0
@@ -2218,7 +2219,7 @@ texture = ExtResource("2_ryrnt")
 29:47/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ryrnt"]
-texture = ExtResource("8_ryrnt")
+texture = ExtResource("3_acwtv")
 35:0/0 = 0
 36:0/0 = 0
 39:0/0 = 0
@@ -3640,7 +3641,7 @@ texture = ExtResource("8_ryrnt")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yeaw1"]
 resource_name = "Escadas"
-texture = ExtResource("1_p76u4")
+texture = ExtResource("1_8aohs")
 0:1/0 = 0
 1:1/0 = 0
 2:1/0 = 0
@@ -4232,7 +4233,7 @@ texture = ExtResource("1_p76u4")
 10:12/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_so4wg"]
-texture = ExtResource("3_2r5pn")
+texture = ExtResource("4_wsv3s")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -5164,7 +5165,7 @@ agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6pdei"]
 resource_name = "Walls"
-texture = ExtResource("4_orfjf")
+texture = ExtResource("5_6gbad")
 0:15/0 = 0
 1:15/0 = 0
 2:15/0 = 0
@@ -5988,7 +5989,7 @@ agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h4eqp"]
 resource_name = "Floors"
-texture = ExtResource("5_gvpt5")
+texture = ExtResource("6_mi0x8")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -6370,7 +6371,7 @@ texture = SubResource("CompressedTexture2D_vgxig")
 11:4/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wfxx4"]
-texture = ExtResource("6_ay3eo")
+texture = ExtResource("7_snuma")
 4:2/0 = 0
 5:2/0 = 0
 6:2/0 = 0
@@ -6418,7 +6419,7 @@ texture = ExtResource("6_ay3eo")
 10:8/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_stkxy"]
-texture = ExtResource("7_mv0yf")
+texture = ExtResource("8_aqp5y")
 0:1/0 = 0
 1:1/0 = 0
 2:1/0 = 0
@@ -7201,6 +7202,53 @@ texture = ExtResource("7_mv0yf")
 46:44/0 = 0
 36:23/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uj63y"]
+texture = ExtResource("9_gt0wr")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+1:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+1:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+1:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+
 [resource]
 physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
@@ -7215,3 +7263,4 @@ sources/7 = SubResource("TileSetAtlasSource_wfxx4")
 sources/11 = SubResource("TileSetAtlasSource_yeaw1")
 sources/8 = SubResource("TileSetAtlasSource_stkxy")
 sources/10 = SubResource("TileSetAtlasSource_ryrnt")
+sources/9 = SubResource("TileSetAtlasSource_uj63y")

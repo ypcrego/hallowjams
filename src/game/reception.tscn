@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://hoiep2xd14dy"]
 
 [ext_resource type="Script" path="res://src/scripts/reception.gd" id="1_vgxig"]
-[ext_resource type="TileSet" uid="uid://di4pepkglfqbm" path="res://src/game/TileSet.tres" id="2_h2p3x"]
+[ext_resource type="TileSet" uid="uid://di4pepkglfqbm" path="res://src/assets/tileset/TileSet.tres" id="2_h2p3x"]
 [ext_resource type="PackedScene" uid="uid://ccd4nglpnueb1" path="res://src/game/Door.tscn" id="4_pbver"]
 [ext_resource type="Script" uid="uid://bwc67s3vtcbex" path="res://src/scripts/interactions/SceneChangeAction.gd" id="5_e4nf2"]
 [ext_resource type="Script" uid="uid://c5vkyjk3kguo4" path="res://src/game/Note_Elevator.gd" id="10_x347c"]
