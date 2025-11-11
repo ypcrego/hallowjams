@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var speed:float = 300
+@export var speed:float = 100
 @export var move_action:GUIDEAction
 var can_move := true
 
