@@ -144,7 +144,7 @@ door_texture_region = Rect2(0, 0, 0, 0)
 action = SubResource("Resource_ww63o")
 
 [node name="Elevador_Servico" parent="." instance=ExtResource("4_pbver")]
-position = Vector2(977, 112)
+position = Vector2(796, 118)
 door_tileset_texture = null
 door_texture_region = Rect2(0, 0, 0, 0)
 action = SubResource("Resource_ww63o")
