@@ -14,6 +14,7 @@ var completed_scene_intros: Dictionary = {}
 
 var _packages_to_deliver: Array[Package] = [] # Pacotes já cadastrados e prontos para entrega
 var is_processing_complete: bool = false # TRUE quando todos os pacotes foram cadastrados na mesa.
+var colega_terminou_todas_falas: bool = false
 
 
 func set_packages_to_deliver(new_packages: Array[Package]) -> void:

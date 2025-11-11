@@ -14,11 +14,12 @@ Colega: Nos pacotes, vai dizer que nunca deu uma olhadinha?
 Porteiro: Eu não..
 Colega: Meu amigo.. você não sabe o que tá perdendo..
 Colega: Tá vendo essas brechinhas nos pacotes?
-Colega: Meu amigo, isso aqui é ouro.
+Colega: Hehe, isso aqui é ouro.
 Colega: Se você der só uma espiadinha, já descobre tanta coisa...
 Colega: Tem gente que parece que prefere morrer do que descubram que comprou alguma coisa..
 Colega: E a gente consegue descobrir bastante coisa, hehe.
 Colega: Vou te mostrar, olha esse aqui..
+[signal arg="ColegaDaRecepcao.mover_para,944, 605"]
 Ele se aproxima com um carrinho cheio de pacotes.
 Colega: Dá uma olhada nesse.
 - Espiar pacote
@@ -32,7 +33,8 @@ Colega: Conversando com esse morador, ele disse que não tem filha..
 Colega: Nem esposa...
 Colega: E só precisou eu pressionar um pouquinho pra ele se dispor a me fazer calar a boca.. hehe.
 Colega: Claro, ele não deve ter nem ideia de que eu descobri por causa do pacote que ele recebeu.
-Colega: Emfim, vou indo nessa.. pode ficar com essas que sobraram.
+Colega: Enfim, vou indo nessa.. pode ficar com essas que sobraram.
 Colega: Mas fica a dica, cara.. se o dinheiro apertar.. você já sabe.
-Seu colega sai.
+[signal arg="ColegaDaRecepcao.mover_para,958, 595"]
+[signal arg="terminou_todas_falas"]
 Você fica em silêncio por alguns instantes, mas decide ir até a mesa para cadastrar e entregar os pacotes que sobraram.
