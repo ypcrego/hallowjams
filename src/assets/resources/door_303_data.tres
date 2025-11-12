@@ -6,11 +6,13 @@
 
 [sub_resource type="Resource" id="Resource_wgmgl"]
 script = ExtResource("1_rndhq")
+apartment_number = "303"
+dialogue_success_id = "dialogo_porta_303"
 metadata/_custom_type_script = "uid://n8yc2dfxdli7"
 
 [resource]
 script = ExtResource("2_rndhq")
 position = Vector2(665, 335.5)
-apartment_number = "03"
+apartment_number = "303"
 delivery_action = SubResource("Resource_wgmgl")
 metadata/_custom_type_script = "uid://gjyn4rojs8rn"

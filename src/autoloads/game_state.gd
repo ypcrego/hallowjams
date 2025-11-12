@@ -41,7 +41,7 @@ func start_day(day: int):
 	print("ESTAMOS INICIANDO UM NOVO DIA: ", day)
 	current_day_data = day_data
 	completed_scene_intros.clear()
-
+	colega_terminou_todas_falas = false
 	# Cria uma cópia da lista de pacotes para manipulação (remover, embaralhar)
 	set_packages_to_deliver([]) # Limpa a lista de pacotes a entregar do dia anterior
 	packages_to_process = day_data.packages_to_deliver.duplicate()

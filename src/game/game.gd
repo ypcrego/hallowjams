@@ -10,6 +10,8 @@ func _ready():
 
 	if GameState.current_day != 3 and GameState.colega_terminou_todas_falas:
 		colega.queue_free()
+	if GameState.current_day == 3:
+		colega.queue_free()
 
 	else:
 		colega.terminou_movimento.connect(_on_colega_terminou_movimento)

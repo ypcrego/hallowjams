@@ -52,11 +52,13 @@ const FLOOR_MAP = {
 # Esta é a função que o Dialogic chamará (o "calcanhar de Aquiles" da lógica)
 func go_to_floor(floor_id: int) -> void:
 	if FLOOR_MAP.has(floor_id):
+		print(floor_id)
 		var target_data = FLOOR_MAP[floor_id]
 		var target_scene_path = target_data.scene_path
 		var target_spawn_point_name = target_data.spawn_point
 		var floor_data_resource = target_data.data # Pode ser null
 
+		
 		# Se for um andar (Hall.tscn) que precisa de dados, emite o NOVO sinal:
 		if floor_data_resource != null:
 			GameState.scene_change_requested_with_data.emit(
